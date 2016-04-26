@@ -16,6 +16,7 @@ class StartViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var viewMap: GMSMapView!
     
+    @IBOutlet weak var backgroundContainer: UIView!
     @IBOutlet weak var map: MKMapView!
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
@@ -24,12 +25,7 @@ class StartViewController: UIViewController, MKMapViewDelegate {
     var location:CLLocation = CLLocation()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-//        let initialLocation = CLLocation(latitude: 21.5083, longitude: -104.89306)
-//        centerMapOnLocation(initialLocation)
-        // Do any additional setup after loading the view.
-        
+        super.viewDidLoad()        
         
         // Get current location 
         self.locationManager.delegate = self
@@ -45,6 +41,8 @@ class StartViewController: UIViewController, MKMapViewDelegate {
         
         let camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(48.857165, longitude: 2.354613, zoom: 8.0)
         viewMap.camera = camera
+     
+        backgroundContainer.layer.cornerRadius = 10
         
     }
     
