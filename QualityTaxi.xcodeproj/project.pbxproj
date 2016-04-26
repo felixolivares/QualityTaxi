@@ -24,6 +24,7 @@
 		30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D1D7351BEEDD2E00AE549B /* StartViewController.swift */; };
 		30D1D7381BEFAA6500AE549B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7371BEFAA6500AE549B /* MapKit.framework */; };
 		30D1D73A1BEFAA7000AE549B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7391BEFAA7000AE549B /* CoreLocation.framework */; };
+		8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */; };
 		8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */; };
 		C004D1FAD4D94027447FB81C /* Pods_QualityTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		30D1D7391BEFAA7000AE549B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3769D420F5BF79A37BC1BF3E /* Pods-QualityTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QualityTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 				30D1D7031BEAF1C000AE549B /* MainViewController.swift */,
 				30D1D7351BEEDD2E00AE549B /* StartViewController.swift */,
 				8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */,
+				8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				30D1D7011BEAF03400AE549B /* ENSideMenu.swift in Sources */,
 				30D1D72F1BED703E00AE549B /* UIColorExtensions.swift in Sources */,
 				30D1D7061BEAF21800AE549B /* NavigationController.swift in Sources */,
+				8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */,
 				30D1D6FC1BEAF01300AE549B /* MenuViewController.swift in Sources */,
 				30D1D7021BEAF03400AE549B /* ENSideMenuNavigationController.swift in Sources */,
 				30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */,

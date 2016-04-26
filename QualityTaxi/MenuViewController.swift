@@ -94,12 +94,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch (indexPath.row) {
         case 0:
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Main")
-            break
+            sideMenuController()?.setContentViewController(destViewController)
+        case 4:
+//            self.dismissViewControllerAnimated(true, completion: { })
+            navigationController?.popViewControllerAnimated(true)
         default:
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Main")
-            break
+            sideMenuController()?.setContentViewController(destViewController)
         }
-        sideMenuController()?.setContentViewController(destViewController)
+        
     }
     
     /*
