@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class StartViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class StartViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -45,7 +45,6 @@ class StartViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         
         let camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(48.857165, longitude: 2.354613, zoom: 8.0)
         viewMap.camera = camera
-        viewMap.addObserver(self, forKeyPath: "myLocation", options: NSKeyValueObservingOptions.New, context: nil)
         
     }
     
@@ -59,21 +58,6 @@ class StartViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
         super.viewDidAppear(animated)
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-            viewMap.myLocationEnabled = true
-        }
-    }
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if !didFindMyLocation {
-            let myLocation: CLLocation = change![NSKeyValueChangeNewKey] as! CLLocation
-            viewMap.camera = GMSCameraPosition.cameraWithTarget(myLocation.coordinate, zoom: 10.0)
-            viewMap.settings.myLocationButton = true
-            
-            didFindMyLocation = true
-        }
-    }
     
     
 /*
@@ -145,4 +129,33 @@ class StartViewController: UIViewController, CLLocationManagerDelegate, MKMapVie
     }
     */
 
+}
+
+extension StartViewController: CLLocationManagerDelegate {
+    // 2
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        // 3
+        if status == .AuthorizedWhenInUse {
+            
+            // 4
+            locationManager.startUpdatingLocation()
+            
+            //5
+            viewMap.myLocationEnabled = true
+            viewMap.settings.myLocationButton = true
+        }
+    }
+    
+    // 6
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            
+            // 7
+            viewMap.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            
+            // 8
+            locationManager.stopUpdatingLocation()
+        }
+        
+    }
 }

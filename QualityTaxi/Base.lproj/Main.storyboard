@@ -364,26 +364,30 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95D-8K-Hip" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="140" width="320" height="428"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95D-8K-Hip" customClass="GMSMapView">
+                                <rect key="frame" x="-4" y="64" width="328" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fM7-iA-WlZ" firstAttribute="leading" secondItem="tKf-CC-bmt" secondAttribute="leadingMargin" id="5eW-LU-VWq"/>
+                            <constraint firstItem="SO0-Qv-1IB" firstAttribute="top" secondItem="95D-8K-Hip" secondAttribute="bottom" id="8Y6-80-bJ8"/>
                             <constraint firstItem="a6m-Uq-O81" firstAttribute="trailing" secondItem="qFp-N3-4xZ" secondAttribute="trailing" id="D6o-gp-yIe"/>
                             <constraint firstItem="W9i-JS-NbV" firstAttribute="leading" secondItem="tKf-CC-bmt" secondAttribute="leadingMargin" constant="-20" id="GBB-MQ-eKI"/>
                             <constraint firstItem="fM7-iA-WlZ" firstAttribute="trailing" secondItem="qFp-N3-4xZ" secondAttribute="trailing" id="Ggc-QJ-e8c"/>
                             <constraint firstItem="SO0-Qv-1IB" firstAttribute="top" secondItem="W9i-JS-NbV" secondAttribute="bottom" id="Gpf-JE-W5j"/>
                             <constraint firstItem="qFp-N3-4xZ" firstAttribute="top" secondItem="fCy-DX-zlz" secondAttribute="bottom" constant="8" id="PI1-tq-gmf"/>
                             <constraint firstItem="8HC-YZ-VYj" firstAttribute="top" secondItem="tKf-CC-bmt" secondAttribute="topMargin" constant="68" id="Uky-T4-3NB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="95D-8K-Hip" secondAttribute="trailing" constant="-20" id="YoK-iy-bkc"/>
                             <constraint firstItem="W9i-JS-NbV" firstAttribute="top" secondItem="fM7-iA-WlZ" secondAttribute="bottom" constant="3" id="ZyR-Qz-EGm"/>
                             <constraint firstItem="qFp-N3-4xZ" firstAttribute="leading" secondItem="tKf-CC-bmt" secondAttribute="leadingMargin" id="dhO-6M-ae9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="W9i-JS-NbV" secondAttribute="trailing" constant="-20" id="eHP-I7-pM0"/>
                             <constraint firstItem="8HC-YZ-VYj" firstAttribute="leading" secondItem="fM7-iA-WlZ" secondAttribute="trailing" constant="2" id="gWD-KO-mwk"/>
                             <constraint firstItem="fM7-iA-WlZ" firstAttribute="top" secondItem="qFp-N3-4xZ" secondAttribute="bottom" constant="5" id="hvf-ZV-QYe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qFp-N3-4xZ" secondAttribute="trailing" constant="50" id="jIZ-zQ-O2d"/>
+                            <constraint firstItem="95D-8K-Hip" firstAttribute="top" secondItem="fCy-DX-zlz" secondAttribute="bottom" id="lK3-1P-EsH"/>
+                            <constraint firstItem="95D-8K-Hip" firstAttribute="leading" secondItem="tKf-CC-bmt" secondAttribute="leadingMargin" constant="-20" id="muh-a6-9CW"/>
                             <constraint firstItem="a6m-Uq-O81" firstAttribute="top" secondItem="qFp-N3-4xZ" secondAttribute="bottom" constant="2" id="oY2-4B-TOF"/>
                             <constraint firstItem="a6m-Uq-O81" firstAttribute="leading" secondItem="tKf-CC-bmt" secondAttribute="leadingMargin" constant="-10" id="wv8-to-Rdy"/>
                         </constraints>
@@ -394,11 +398,43 @@
                     <connections>
                         <outlet property="mapView" destination="W9i-JS-NbV" id="niY-TT-EH3"/>
                         <outlet property="viewMap" destination="95D-8K-Hip" id="gbY-b2-T9L"/>
+                        <segue destination="CA2-IH-5ow" kind="push" id="9ea-F1-02e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqn-gP-wzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="565" y="339"/>
+        </scene>
+        <!--Fijar Destino-->
+        <scene sceneID="Z7B-GE-h7g">
+            <objects>
+                <viewController id="CA2-IH-5ow" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dSu-E1-aDn"/>
+                        <viewControllerLayoutGuide type="bottom" id="vHV-AE-NJj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mbu-yk-uh4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-7u-5OP" customClass="GMSMapView">
+                                <rect key="frame" x="-4" y="64" width="328" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="O8c-7u-5OP" firstAttribute="leading" secondItem="Mbu-yk-uh4" secondAttribute="leadingMargin" constant="-20" id="5Zn-J1-I0Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O8c-7u-5OP" secondAttribute="trailing" constant="-20" id="RaP-61-nT8"/>
+                            <constraint firstItem="O8c-7u-5OP" firstAttribute="top" secondItem="dSu-E1-aDn" secondAttribute="bottom" id="nrf-0J-JEY"/>
+                            <constraint firstItem="vHV-AE-NJj" firstAttribute="top" secondItem="O8c-7u-5OP" secondAttribute="bottom" id="pzi-Pp-dSz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Fijar Destino" id="t4d-Ss-U5Q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="piC-aK-afJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1031" y="339"/>
         </scene>
     </scenes>
     <resources>

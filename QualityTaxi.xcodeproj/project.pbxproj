@@ -312,6 +312,7 @@
 				TargetAttributes = {
 					30D1D6C91BEAEAF900AE549B = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = NNWZVWTFJB;
 					};
 					30D1D6DD1BEAEAFA00AE549B = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -574,6 +575,7 @@
 			baseConfigurationReference = C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QualityTaxi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.foe.QualityTaxi;
@@ -587,6 +589,7 @@
 			baseConfigurationReference = 3769D420F5BF79A37BC1BF3E /* Pods-QualityTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QualityTaxi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.foe.QualityTaxi;
