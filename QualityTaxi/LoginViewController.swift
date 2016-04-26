@@ -12,10 +12,14 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var backgroundView: UIView!
     
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         backgroundView.layer.cornerRadius = 10
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +27,21 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginButtonPressed(sender: AnyObject) {
+        if (userTextField.text == "pasajero" && passwordTextField.text == "1234") {
+            performSegueWithIdentifier("toPassenger", sender: self)
+        }
+    }
+    
+    
+    @IBAction func createAccountPressed(sender: AnyObject) {
+    }
 
+    
+    @IBAction func forgotPassPressed(sender: AnyObject) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 

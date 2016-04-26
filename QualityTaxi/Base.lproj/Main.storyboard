@@ -10,6 +10,19 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="9mR-7r-LTl">
+            <objects>
+                <navigationController id="xbV-ke-pze" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cT0-cA-Bz1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="al3-rb-ltA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1996" y="676"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="Jp1-5J-fsS">
             <objects>
@@ -74,6 +87,9 @@
                                         <state key="normal" title="Entrar">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="TXb-SP-JE7" eventType="touchUpInside" id="XPE-ta-Cfg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Kt-iq-aQW">
                                         <rect key="frame" x="0.0" y="212" width="132" height="30"/>
@@ -85,6 +101,9 @@
                                         <state key="normal" title="Crea tu cuenta">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="createAccountPressed:" destination="TXb-SP-JE7" eventType="touchUpInside" id="yk3-Qk-jgQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gt2-L7-KTc">
                                         <rect key="frame" x="15" y="242" width="168" height="30"/>
@@ -96,6 +115,9 @@
                                         <state key="normal" title="Olvidaste tu contraseña? ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="forgotPassPressed:" destination="TXb-SP-JE7" eventType="touchUpInside" id="uDv-sd-q86"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
@@ -157,8 +179,10 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="Xa4-Ff-86J" id="XoT-bD-AJP"/>
-                        <segue destination="9HN-V0-K9X" kind="push" identifier="toPassenger" id="Wcg-3U-70K"/>
-                        <segue destination="If8-8c-xrF" kind="push" identifier="toDriver" id="Z1a-eT-hMV"/>
+                        <outlet property="passwordTextField" destination="8Qt-eS-tkv" id="glf-3J-ye2"/>
+                        <outlet property="userTextField" destination="bCt-Hs-Igz" id="yNA-gw-MtT"/>
+                        <segue destination="9HN-V0-K9X" kind="modal" identifier="toPassenger" id="Wcg-3U-70K"/>
+                        <segue destination="If8-8c-xrF" kind="modal" identifier="toDriver" id="Z1a-eT-hMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ttk-GG-dNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
