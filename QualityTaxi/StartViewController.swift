@@ -16,7 +16,9 @@ class StartViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var viewMap: GMSMapView!
     
+    @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var backgroundContainer: UIView!
+    
     @IBOutlet weak var map: MKMapView!
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
@@ -43,6 +45,7 @@ class StartViewController: UIViewController, MKMapViewDelegate {
         viewMap.camera = camera
      
         backgroundContainer.layer.cornerRadius = 10
+        searchButton.layer.cornerRadius = 10
         
     }
     
