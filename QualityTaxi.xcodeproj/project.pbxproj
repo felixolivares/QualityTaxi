@@ -24,6 +24,7 @@
 		30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D1D7351BEEDD2E00AE549B /* StartViewController.swift */; };
 		30D1D7381BEFAA6500AE549B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7371BEFAA6500AE549B /* MapKit.framework */; };
 		30D1D73A1BEFAA7000AE549B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7391BEFAA7000AE549B /* CoreLocation.framework */; };
+		8B4CB4661CD1862D003AC9D6 /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */; };
 		8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */; };
 		8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */; };
 		C004D1FAD4D94027447FB81C /* Pods_QualityTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */; };
@@ -73,6 +74,7 @@
 		30D1D7391BEFAA7000AE549B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3769D420F5BF79A37BC1BF3E /* Pods-QualityTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QualityTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
 		8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,7 +143,7 @@
 			children = (
 				8BB6D9BA1CCEECD000454859 /* AppDelegate */,
 				304BEB9A1BFC0C47008383FA /* Fonts */,
-				30D1D7341BED74C800AE549B /* Data Model */,
+				30D1D7341BED74C800AE549B /* Model */,
 				30D1D6FD1BEAF01B00AE549B /* Libraries */,
 				8BB6D9B91CCEECC300454859 /* Controllers */,
 				8BB6D9B81CCEEBAD00454859 /* Views */,
@@ -189,12 +191,12 @@
 			name = ENSwiftSideMenu;
 			sourceTree = "<group>";
 		};
-		30D1D7341BED74C800AE549B /* Data Model */ = {
+		30D1D7341BED74C800AE549B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				30D1D7311BED74C000AE549B /* QualityTaxi.xcdatamodeld */,
 			);
-			name = "Data Model";
+			name = Model;
 			sourceTree = "<group>";
 		};
 		8BB6D9B81CCEEBAD00454859 /* Views */ = {
@@ -214,6 +216,7 @@
 				30D1D7351BEEDD2E00AE549B /* StartViewController.swift */,
 				8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */,
 				8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */,
+				8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */,
 				30D1D6CE1BEAEAF900AE549B /* AppDelegate.swift in Sources */,
 				30D1D7041BEAF1C000AE549B /* MainViewController.swift in Sources */,
+				8B4CB4661CD1862D003AC9D6 /* MapTasks.swift in Sources */,
 				8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */,
 				30D1D7331BED74C000AE549B /* QualityTaxi.xcdatamodeld in Sources */,
 			);
