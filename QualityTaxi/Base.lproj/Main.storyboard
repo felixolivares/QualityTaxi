@@ -495,10 +495,10 @@
             </objects>
             <point key="canvasLocation" x="-403" y="1691"/>
         </scene>
-        <!--View Controller-->
+        <!--Pedidos de Taxi-->
         <scene sceneID="zys-wB-X5x">
             <objects>
-                <viewController id="tbC-ic-MJ0" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="tbC-ic-MJ0" customClass="TripsViewController" customModule="QualityTaxi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Ud-82-Eje"/>
                         <viewControllerLayoutGuide type="bottom" id="dBQ-zK-o8X"/>
@@ -506,9 +506,34 @@
                     <view key="view" contentMode="scaleToFill" id="G6Z-ci-lGL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rxi-vB-toL">
+                                <rect key="frame" x="-4" y="64" width="328" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tbC-ic-MJ0" id="a5y-hQ-KXx"/>
+                                    <outlet property="delegate" destination="tbC-ic-MJ0" id="Vnq-aI-fLy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rxi-vB-toL" firstAttribute="leading" secondItem="G6Z-ci-lGL" secondAttribute="leadingMargin" constant="-20" id="6d5-uH-N0v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rxi-vB-toL" secondAttribute="trailing" constant="-20" id="exD-Nr-dH0"/>
+                            <constraint firstItem="dBQ-zK-o8X" firstAttribute="top" secondItem="Rxi-vB-toL" secondAttribute="bottom" id="ifK-2c-FOr"/>
+                            <constraint firstItem="Rxi-vB-toL" firstAttribute="top" secondItem="6Ud-82-Eje" secondAttribute="bottom" id="y0L-bV-myy"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YV7-sB-NXc"/>
+                    <navigationItem key="navigationItem" title="Pedidos de Taxi" id="YV7-sB-NXc">
+                        <barButtonItem key="rightBarButtonItem" image="sortingBtn" id="dYt-Nj-2sv">
+                            <connections>
+                                <action selector="sortingPressed:" destination="tbC-ic-MJ0" id="hIc-gr-aA5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Rxi-vB-toL" id="TjT-m4-SLF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYk-mZ-agU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1137,6 +1162,7 @@
         <image name="menu-icon" width="19" height="15"/>
         <image name="pin" width="85" height="85"/>
         <image name="profile" width="80" height="80"/>
+        <image name="sortingBtn" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HtC-0X-BKU"/>

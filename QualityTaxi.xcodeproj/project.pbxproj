@@ -31,6 +31,11 @@
 		8B9714C81CD3D6940065BF58 /* SummaryTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */; };
 		8B9714CA1CD40F5B0065BF58 /* FindTaxiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */; };
 		8B9714CC1CD410500065BF58 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */; };
+		8B9714D21CD4754A0065BF58 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714D01CD4754A0065BF58 /* TripTableViewCell.swift */; };
+		8B9714D31CD4754A0065BF58 /* TripTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B9714D11CD4754A0065BF58 /* TripTableViewCell.xib */; };
+		8B9714D51CD47D510065BF58 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714D41CD47D510065BF58 /* TripsViewController.swift */; };
+		8B9714D71CD47F340065BF58 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714D61CD47F340065BF58 /* DataModel.swift */; };
+		8B9714DA1CD48C830065BF58 /* ClientTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714D91CD48C830065BF58 /* ClientTrip.swift */; };
 		8B9745F11CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */; };
 		8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */; };
 		8B9745F31CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */; };
@@ -90,6 +95,11 @@
 		8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTripViewController.swift; sourceTree = "<group>"; };
 		8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTaxiViewController.swift; sourceTree = "<group>"; };
 		8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
+		8B9714D01CD4754A0065BF58 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
+		8B9714D11CD4754A0065BF58 /* TripTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripTableViewCell.xib; sourceTree = "<group>"; };
+		8B9714D41CD47D510065BF58 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
+		8B9714D61CD47F340065BF58 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		8B9714D91CD48C830065BF58 /* ClientTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTrip.swift; sourceTree = "<group>"; };
 		8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityTrip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityTrip.swift; sourceTree = "<group>"; };
 		8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -218,13 +228,25 @@
 				8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */,
 				8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */,
 				30D1D7311BED74C000AE549B /* QualityTaxi.xcdatamodeld */,
+				8B9714D61CD47F340065BF58 /* DataModel.swift */,
+				8B9714D91CD48C830065BF58 /* ClientTrip.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8B9714CD1CD4745D0065BF58 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8B9714D01CD4754A0065BF58 /* TripTableViewCell.swift */,
+				8B9714D11CD4754A0065BF58 /* TripTableViewCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		8BB6D9B81CCEEBAD00454859 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8B9714CD1CD4745D0065BF58 /* Cells */,
 				8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */,
 				30D1D6D11BEAEAF900AE549B /* Main.storyboard */,
 				30D1D6D61BEAEAF900AE549B /* LaunchScreen.storyboard */,
@@ -244,6 +266,7 @@
 				8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */,
 				8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */,
 				8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */,
+				8B9714D41CD47D510065BF58 /* TripsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +408,7 @@
 				30D1D6D81BEAEAF900AE549B /* LaunchScreen.storyboard in Resources */,
 				30D1D6D51BEAEAF900AE549B /* Assets.xcassets in Resources */,
 				304BEB9C1BFC0D5D008383FA /* OpenSans-Bold.ttf in Resources */,
+				8B9714D31CD4754A0065BF58 /* TripTableViewCell.xib in Resources */,
 				30D1D6D31BEAEAF900AE549B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,9 +482,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B9714D21CD4754A0065BF58 /* TripTableViewCell.swift in Sources */,
+				8B9714D51CD47D510065BF58 /* TripsViewController.swift in Sources */,
 				30D1D7011BEAF03400AE549B /* ENSideMenu.swift in Sources */,
 				30D1D72F1BED703E00AE549B /* UIColorExtensions.swift in Sources */,
 				30D1D7061BEAF21800AE549B /* NavigationController.swift in Sources */,
+				8B9714DA1CD48C830065BF58 /* ClientTrip.swift in Sources */,
+				8B9714D71CD47F340065BF58 /* DataModel.swift in Sources */,
 				8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */,
 				8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */,
 				30D1D6FC1BEAF01300AE549B /* MenuViewController.swift in Sources */,

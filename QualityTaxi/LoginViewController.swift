@@ -49,6 +49,8 @@ class LoginViewController: UIViewController {
             currentUser.name = userTextField.text
             self.saveContext()
             performSegueWithIdentifier("toPassenger", sender: self)
+        }else if(userTextField.text == "chofer" && passwordTextField.text == "1234"){
+            performSegueWithIdentifier("toDriver", sender: self)
         }
     }
     
