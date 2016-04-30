@@ -4,9 +4,9 @@
 use_frameworks!
 
 target 'QualityTaxi' do
-  pod 'MagicalRecord/Shorthand'
   pod 'GoogleMaps'
   pod 'ChameleonFramework/Swift'
+  pod 'MagicalRecord'
 end
 
 target 'QualityTaxiTests' do

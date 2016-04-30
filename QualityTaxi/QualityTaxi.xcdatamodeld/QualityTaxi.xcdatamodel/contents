@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
-    <entity name="User" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
+    <entity name="QualityTrip" representedClassName=".QualityTrip" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destinationColony" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destinationLatitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destinationLongitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="destinationStreet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originColony" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originLatitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originLongitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originStreet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentAt" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="QualityUser" representedClassName=".QualityUser" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="QualityTrip" positionX="-63" positionY="9" width="128" height="195"/>
+        <element name="QualityUser" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

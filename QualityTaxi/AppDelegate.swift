@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,14 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // Override point for customization after application launch.    
+        
+        
+        MagicalRecord.setupCoreDataStackWithStoreNamed("QualityTaxi")
+        
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         navigationBarAppearace.tintColor = UIColor(rgb: 0xffffff)
         navigationBarAppearace.barTintColor = UIColor(rgb: 0x456190)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
-        GMSServices.provideAPIKey("AIzaSyBLkLS7K3MLLJt22Ra7DdmSVao12P2_yTY")
+        GMSServices.provideAPIKey("AIzaSyBLkLS7K3MLLJt22Ra7DdmSVao12P2_yTY")                                
+        
+        
         return true
     }
 

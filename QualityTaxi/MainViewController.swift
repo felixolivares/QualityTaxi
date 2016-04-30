@@ -30,6 +30,11 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         
         askButton.layer.cornerRadius = 5.0
         askButton.backgroundColor = UIColor(gradientStyle: .TopToBottom, withFrame: askButton.frame, andColors: [UIColor(hexString: "F7B731"),UIColor(hexString: "F6A408")])
+        
+        let users:[QualityUser] = QualityUser.MR_findAll() as! [QualityUser]
+        for eachUser:QualityUser in users{
+            print(eachUser.name)
+        }
 
     }
 

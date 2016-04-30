@@ -25,7 +25,16 @@
 		30D1D7381BEFAA6500AE549B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7371BEFAA6500AE549B /* MapKit.framework */; };
 		30D1D73A1BEFAA7000AE549B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7391BEFAA7000AE549B /* CoreLocation.framework */; };
 		8B4CB4661CD1862D003AC9D6 /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */; };
+		8B4CB46A1CD2599C003AC9D6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */; };
+		8B4CB46C1CD2998A003AC9D6 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */; };
 		8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */; };
+		8B9714C81CD3D6940065BF58 /* SummaryTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */; };
+		8B9714CA1CD40F5B0065BF58 /* FindTaxiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */; };
+		8B9714CC1CD410500065BF58 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */; };
+		8B9745F11CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */; };
+		8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */; };
+		8B9745F31CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */; };
+		8B9745F41CD2E30B00F4A8D9 /* QualityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */; };
 		8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */; };
 		C004D1FAD4D94027447FB81C /* Pods_QualityTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */; };
 /* End PBXBuildFile section */
@@ -75,7 +84,16 @@
 		3769D420F5BF79A37BC1BF3E /* Pods-QualityTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QualityTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
+		8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
 		8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTripViewController.swift; sourceTree = "<group>"; };
+		8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTaxiViewController.swift; sourceTree = "<group>"; };
+		8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
+		8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityTrip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityTrip.swift; sourceTree = "<group>"; };
+		8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityUser.swift; sourceTree = "<group>"; };
 		8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +194,7 @@
 		30D1D6FD1BEAF01B00AE549B /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */,
 				30D1D72E1BED703E00AE549B /* UIColorExtensions.swift */,
 				30D1D6FE1BEAF02900AE549B /* ENSwiftSideMenu */,
 			);
@@ -194,6 +213,10 @@
 		30D1D7341BED74C800AE549B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */,
+				8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */,
+				8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */,
+				8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */,
 				30D1D7311BED74C000AE549B /* QualityTaxi.xcdatamodeld */,
 			);
 			name = Model;
@@ -202,6 +225,7 @@
 		8BB6D9B81CCEEBAD00454859 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */,
 				30D1D6D11BEAEAF900AE549B /* Main.storyboard */,
 				30D1D6D61BEAEAF900AE549B /* LaunchScreen.storyboard */,
 			);
@@ -217,6 +241,9 @@
 				8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */,
 				8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */,
 				8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */,
+				8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */,
+				8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */,
+				8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -435,14 +462,23 @@
 				30D1D72F1BED703E00AE549B /* UIColorExtensions.swift in Sources */,
 				30D1D7061BEAF21800AE549B /* NavigationController.swift in Sources */,
 				8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */,
+				8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */,
 				30D1D6FC1BEAF01300AE549B /* MenuViewController.swift in Sources */,
 				30D1D7021BEAF03400AE549B /* ENSideMenuNavigationController.swift in Sources */,
+				8B9714C81CD3D6940065BF58 /* SummaryTripViewController.swift in Sources */,
 				30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */,
+				8B9714CA1CD40F5B0065BF58 /* FindTaxiViewController.swift in Sources */,
+				8B4CB46C1CD2998A003AC9D6 /* DestinationViewController.swift in Sources */,
 				30D1D6CE1BEAEAF900AE549B /* AppDelegate.swift in Sources */,
 				30D1D7041BEAF1C000AE549B /* MainViewController.swift in Sources */,
+				8B4CB46A1CD2599C003AC9D6 /* UIViewExtension.swift in Sources */,
+				8B9745F41CD2E30B00F4A8D9 /* QualityUser.swift in Sources */,
+				8B9714CC1CD410500065BF58 /* EZLoadingActivity.swift in Sources */,
+				8B9745F31CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift in Sources */,
 				8B4CB4661CD1862D003AC9D6 /* MapTasks.swift in Sources */,
 				8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */,
 				30D1D7331BED74C000AE549B /* QualityTaxi.xcdatamodeld in Sources */,
+				8B9745F11CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +572,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -573,6 +610,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -583,9 +621,46 @@
 			baseConfigurationReference = C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: J FELIX OLIVARES ESTRADA (SJ93ZUM77B)";
 				INFOPLIST_FILE = QualityTaxi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"ChameleonFramework\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.foe.QualityTaxi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QualityTaxi/QualityTaxi-Bridging-Header.h";
@@ -597,9 +672,46 @@
 			baseConfigurationReference = 3769D420F5BF79A37BC1BF3E /* Pods-QualityTaxi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: J FELIX OLIVARES ESTRADA (SJ93ZUM77B)";
 				INFOPLIST_FILE = QualityTaxi/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"icucore\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"ChameleonFramework\"",
+					"-framework",
+					"\"CoreBluetooth\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.foe.QualityTaxi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "QualityTaxi/QualityTaxi-Bridging-Header.h";

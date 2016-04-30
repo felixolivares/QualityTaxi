@@ -9,10 +9,10 @@
 #ifndef QualityTaxi_Bridging_Header_h
 #define QualityTaxi_Bridging_Header_h
 
-#define MR_SHORTHAND
 #import <GoogleMaps/GoogleMaps.h>
 #import <Foundation/Foundation.h>
 #import <MagicalRecord/MagicalRecord.h>
-
+//#import "QualityUser.h"
+//#import "QualityTrip.h"
 
 #endif /* QualityTaxi_Bridging_Header_h */

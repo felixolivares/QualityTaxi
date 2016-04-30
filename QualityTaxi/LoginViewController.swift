@@ -17,13 +17,20 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var accessTitleLabel: UILabel!
     
+    var currentUser:QualityUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        QualityUser.MR_truncateAll()
+        QualityTrip.MR_truncateAll()
+        
         backgroundView.layer.cornerRadius = 10
         lostPassBackground.alpha = 0
         lostPassBackground.layer.cornerRadius = 10
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,8 +38,16 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBAction func loginButtonPressed(sender: AnyObject) {
         if (userTextField.text == "pasajero" && passwordTextField.text == "1234") {
+            currentUser = QualityUser.MR_createEntity()
+            currentUser.name = userTextField.text
+            self.saveContext()
             performSegueWithIdentifier("toPassenger", sender: self)
         }
     }
@@ -62,6 +77,11 @@ class LoginViewController: UIViewController {
                     self.accessTitleLabel.alpha = 1
                 })
         }
+    }
+    
+    func saveContext(){
+//        NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
     
     /*

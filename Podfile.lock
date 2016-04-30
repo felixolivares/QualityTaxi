@@ -3,16 +3,18 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - GoogleMaps (1.13.0)
-  - MagicalRecord/Shorthand (2.2)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
   - GoogleMaps
-  - MagicalRecord/Shorthand
+  - MagicalRecord
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
-  MagicalRecord: 2dc87179ae7c1f2a274442624ec65a07d4357a6f
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 
 COCOAPODS: 0.39.0
