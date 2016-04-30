@@ -18,4 +18,5 @@ class ClientTrip: NSObject {
     var from = String()
     var rate = String()
     var distance = Double()
+    var id = String()
 }
