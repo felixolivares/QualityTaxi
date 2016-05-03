@@ -32,8 +32,8 @@ class SummaryTripViewController: UIViewController {
         let allTrips = QualityTrip.MR_executeFetchRequest(request)
         currentTrip = allTrips?.first as! QualityTrip
         
-        let origin = currentTrip.originStreet! + " " + currentTrip.originColony!
-        let destination = currentTrip.destinationStreet! + " " + currentTrip.destinationColony!
+        let origin = currentTrip.originStreet!
+        let destination = currentTrip.destinationStreet!
         
         self.mapTasks.getDirections(origin, destination: destination, waypoints: nil, travelMode: nil, completionHandler: { (status, success) -> Void in
             if success {

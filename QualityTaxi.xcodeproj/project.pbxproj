@@ -40,7 +40,10 @@
 		8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */; };
 		8B9745F31CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */; };
 		8B9745F41CD2E30B00F4A8D9 /* QualityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */; };
+		8B9A632B1CD7F1A5002F00BF /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A63291CD7F1A5002F00BF /* ResultsTableViewCell.swift */; };
+		8B9A632C1CD7F1A5002F00BF /* ResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B9A632A1CD7F1A5002F00BF /* ResultsTableViewCell.xib */; };
 		8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */; };
+		8BD182A21CD5070B005CD15F /* RequestSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */; };
 		C004D1FAD4D94027447FB81C /* Pods_QualityTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +107,10 @@
 		8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityTrip.swift; sourceTree = "<group>"; };
 		8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityUser.swift; sourceTree = "<group>"; };
+		8B9A63291CD7F1A5002F00BF /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
+		8B9A632A1CD7F1A5002F00BF /* ResultsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsTableViewCell.xib; sourceTree = "<group>"; };
 		8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSelectedViewController.swift; sourceTree = "<group>"; };
 		C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +245,8 @@
 			children = (
 				8B9714D01CD4754A0065BF58 /* TripTableViewCell.swift */,
 				8B9714D11CD4754A0065BF58 /* TripTableViewCell.xib */,
+				8B9A63291CD7F1A5002F00BF /* ResultsTableViewCell.swift */,
+				8B9A632A1CD7F1A5002F00BF /* ResultsTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -267,6 +275,7 @@
 				8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */,
 				8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */,
 				8B9714D41CD47D510065BF58 /* TripsViewController.swift */,
+				8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -407,6 +416,7 @@
 			files = (
 				30D1D6D81BEAEAF900AE549B /* LaunchScreen.storyboard in Resources */,
 				30D1D6D51BEAEAF900AE549B /* Assets.xcassets in Resources */,
+				8B9A632C1CD7F1A5002F00BF /* ResultsTableViewCell.xib in Resources */,
 				304BEB9C1BFC0D5D008383FA /* OpenSans-Bold.ttf in Resources */,
 				8B9714D31CD4754A0065BF58 /* TripTableViewCell.xib in Resources */,
 				30D1D6D31BEAEAF900AE549B /* Main.storyboard in Resources */,
@@ -493,8 +503,10 @@
 				8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */,
 				30D1D6FC1BEAF01300AE549B /* MenuViewController.swift in Sources */,
 				30D1D7021BEAF03400AE549B /* ENSideMenuNavigationController.swift in Sources */,
+				8B9A632B1CD7F1A5002F00BF /* ResultsTableViewCell.swift in Sources */,
 				8B9714C81CD3D6940065BF58 /* SummaryTripViewController.swift in Sources */,
 				30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */,
+				8BD182A21CD5070B005CD15F /* RequestSelectedViewController.swift in Sources */,
 				8B9714CA1CD40F5B0065BF58 /* FindTaxiViewController.swift in Sources */,
 				8B4CB46C1CD2998A003AC9D6 /* DestinationViewController.swift in Sources */,
 				30D1D6CE1BEAEAF900AE549B /* AppDelegate.swift in Sources */,

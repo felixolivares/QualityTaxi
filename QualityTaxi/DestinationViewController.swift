@@ -18,7 +18,10 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     @IBOutlet weak var viewMap: GMSMapView!
     @IBOutlet weak var backgroundContainer: UIView!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var resultsTableView: UITableView!
+    @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
     let regionRadius: CLLocationDistance = 200
@@ -28,6 +31,9 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     var didEnterAddress:Bool = false
     var currentTripTime:String = ""
     var currentTrip:QualityTrip!
+    let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    let kResultsCellIdentifier = "ResultsCellIdentifier"
+    var allResults : Array<Dictionary<NSObject, AnyObject>> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +52,7 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         backgroundContainer.layer.cornerRadius = 10
         searchButton.layer.cornerRadius = 10
         streetTextField.delegate = self
-        coloniaTextField.delegate = self
+//        coloniaTextField.delegate = self
         
         self.continueButton.alpha = 0
         
@@ -56,6 +62,29 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
         let allTrips = QualityTrip.MR_executeFetchRequest(request)
         currentTrip = allTrips?.first as! QualityTrip
+        
+        //Regiser custom Results cell
+        let registerNib = UINib(nibName: "ResultsTableViewCell", bundle: nil)
+        resultsTableView.registerNib(registerNib, forCellReuseIdentifier: kResultsCellIdentifier)
+        resultsTableView.alpha = 0
+        resultsTableView.layer.cornerRadius = 10
+    }
+
+    func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.searchAction()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        print("text field got focus")
+        if streetTextField.text?.characters.count > 0 {
+            self.showTableViewAnimated()
+        }
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,10 +93,22 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     }
     
     @IBAction func searchPressed(sender: AnyObject) {
+        self.searchAction()
+    }
+
+    func searchAction(){
         searchButton.lock()
+        self.dismissKeyboard()
+        if allResults.count == 0{
+            self.showTableViewAnimated()
+        }
+        
         didEnterAddress = true
-        let address = streetTextField.text! + " " + coloniaTextField.text!
-        print(address)
+        let locality = defaults.objectForKey("passengerLocality") as! String
+        let administrativeArea = defaults.objectForKey("passengerAdministrativeArea") as! String
+        let address = streetTextField.text! + " " + locality + " " + administrativeArea
+        //        let address = streetTextField.text!
+        print("address to search \(address)")
         self.mapTasks.geocodeAddress(address, withCompletionHandler: { (status, success) -> Void in
             if !success {
                 print(status)
@@ -77,19 +118,54 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                 }
             }
             else {
-                let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)
-                self.viewMap.camera = GMSCameraPosition.cameraWithTarget(coordinate, zoom: 16.0)
+                self.allResults = self.mapTasks.allResults
+                self.resultsTableView.reloadData()
                 self.searchButton.unlock()
-                self.currentTrip.destinationStreet = self.streetTextField.text
-                self.currentTrip.destinationColony = self.coloniaTextField.text
-                self.saveContext()
-                UIView.animateWithDuration(0.25) {
-                    self.continueButton.alpha = 1
-                }
+                /*
+                 for lookupAddressResults in self.allResults{
+                 var fetchedFormattedAddress: String!
+                 var fetchedAddressLongitude: Double!
+                 var fetchedAddressLatitude: Double!
+                 
+                 fetchedFormattedAddress = lookupAddressResults["formatted_address"] as! String
+                 let geometry = lookupAddressResults["geometry"] as! Dictionary<NSObject, AnyObject>
+                 fetchedAddressLongitude = ((geometry["location"] as! Dictionary<NSObject, AnyObject>)["lng"] as! NSNumber).doubleValue
+                 fetchedAddressLatitude = ((geometry["location"] as! Dictionary<NSObject, AnyObject>)["lat"] as! NSNumber).doubleValue
+                 
+                 print("-results: \(fetchedFormattedAddress) \(fetchedAddressLongitude) \(fetchedAddressLatitude)")
+                 }*/
+                
+                
             }
         })
     }
-
+    
+    func showTableViewAnimated(){
+        self.tableViewTopConstraint.constant = -2
+        self.tableViewBottomConstraint.constant = 10
+        UIView.animateWithDuration(0.4, animations: {
+            self.view.layoutIfNeeded()
+            self.resultsTableView.alpha = 1
+            self.continueButton.alpha = 0
+        }) { (value) in
+            self.tableViewTopConstraint.constant = 0
+            self.tableViewBottomConstraint.constant = 8
+            UIView.animateWithDuration(0.25, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func hideTableViewAnimated(){
+        self.tableViewTopConstraint.constant = -50
+        self.tableViewBottomConstraint.constant = 42
+        UIView.animateWithDuration(0.4, animations: {
+            self.view.layoutIfNeeded()
+            self.resultsTableView.alpha = 0
+            self.continueButton.alpha = 1
+        })
+    }
+    
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
         if (didMovedMap && !didEnterAddress) {
             UIView.animateWithDuration(0.25) {
@@ -101,9 +177,9 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
                     let lines = address.lines! as [String]
                     print(lines)
                     //                self.addressLabel.text = lines.joinWithSeparator("\n")
-                    self.streetTextField.text = lines.first
-                    self.coloniaTextField.text = lines[1]
-                    self.currentTrip.destinationStreet = lines.first
+                    self.streetTextField.text = lines.joinWithSeparator(" ")
+//                    self.coloniaTextField.text = lines[1]
+                    self.currentTrip.destinationStreet = lines.joinWithSeparator(" ")
                     self.currentTrip.destinationColony = lines[1]
                     self.saveContext()
                 }
@@ -131,7 +207,57 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         vc.currentTripTime = self.currentTripTime
     }
     
-
+    //Mark: - TableView Delegate Methods
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allResults.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell:ResultsTableViewCell = self.resultsTableView.dequeueReusableCellWithIdentifier(kResultsCellIdentifier) as! ResultsTableViewCell
+        
+        let address = self.allResults[indexPath.row]["formatted_address"] as? String
+        let addressArray = address!.characters.split{$0 == ","}.map(String.init)
+        var extraInfoString = ""
+        for index in 2..<addressArray.count{
+            print(index)
+            extraInfoString += addressArray[index].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) + " "
+        }
+        cell.resultLabel.text = addressArray.first! + ", " + addressArray[1]
+        cell.extraInfoLabel.text = extraInfoString
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let lookupAddressResults = self.allResults[indexPath.row]
+        var fetchedFormattedAddress: String!
+        var fetchedAddressLongitude: Double!
+        var fetchedAddressLatitude: Double!
+        
+        fetchedFormattedAddress = lookupAddressResults["formatted_address"] as! String
+        let geometry = lookupAddressResults["geometry"] as! Dictionary<NSObject, AnyObject>
+        fetchedAddressLongitude = ((geometry["location"] as! Dictionary<NSObject, AnyObject>)["lng"] as! NSNumber).doubleValue
+        fetchedAddressLatitude = ((geometry["location"] as! Dictionary<NSObject, AnyObject>)["lat"] as! NSNumber).doubleValue
+        
+        //        let coordinate = CLLocationCoordinate2D(latitude: self.mapTasks.fetchedAddressLatitude, longitude: self.mapTasks.fetchedAddressLongitude)
+        let coordinate = CLLocationCoordinate2D(latitude: fetchedAddressLatitude, longitude: fetchedAddressLongitude)
+        self.viewMap.camera = GMSCameraPosition.cameraWithTarget(coordinate, zoom: 16.0)
+        self.streetTextField.text = fetchedFormattedAddress
+        self.currentTrip.destinationStreet = fetchedFormattedAddress
+        //                self.currentTrip.originColony = self.coloniaTextField.text
+        self.saveContext()
+        self.view.endEditing(true)
+        self.hideTableViewAnimated()
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        self.dismissKeyboard()
+    }
 }
 
 extension DestinationViewController: CLLocationManagerDelegate {
@@ -157,7 +283,7 @@ extension DestinationViewController: GMSMapViewDelegate {
     func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
         reverseGeocodeCoordinate(position.target)
         self.streetTextField.resignFirstResponder()
-        self.coloniaTextField.resignFirstResponder()
+//        self.coloniaTextField.resignFirstResponder()
     }
     
     // Moved map user interaction

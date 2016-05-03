@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var backgroundView: UIView!
     
@@ -28,6 +28,8 @@ class LoginViewController: UIViewController {
         backgroundView.layer.cornerRadius = 10
         lostPassBackground.alpha = 0
         lostPassBackground.layer.cornerRadius = 10
+        userTextField.delegate = self
+        passwordTextField.delegate = self
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -38,12 +40,27 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        userTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.dismissKeyboard()
+        self.validateLogin()
+        return true
+    }
+    
     @IBAction func loginButtonPressed(sender: AnyObject) {
+        self.validateLogin()
+    }
+    
+    func validateLogin(){
         if (userTextField.text == "pasajero" && passwordTextField.text == "1234") {
             currentUser = QualityUser.MR_createEntity()
             currentUser.name = userTextField.text
@@ -54,10 +71,10 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
     @IBAction func createAccountPressed(sender: AnyObject) {
     }
 
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
     
     @IBAction func forgotPassPressed(sender: AnyObject) {
         UIView.animateWithDuration(0.4, animations: { 

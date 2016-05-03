@@ -96,8 +96,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Main")
             sideMenuController()?.setContentViewController(destViewController)
         case 4:
-//            self.dismissViewControllerAnimated(true, completion: { })
-            navigationController?.popViewControllerAnimated(true)
+            print("salir presionado")
+//            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
+//            sideMenuController()?.setContentViewController(destViewController)
+            let navController = sideMenuController() as! NavigationController
+            navController.goToLogin()
         default:
             destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Main")
             sideMenuController()?.setContentViewController(destViewController)

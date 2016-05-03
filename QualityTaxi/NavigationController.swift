@@ -16,7 +16,7 @@ class NavigationController: ENSideMenuNavigationController, ENSideMenuDelegate {
         // Do any additional setup after loading the view.
         
         sideMenu = ENSideMenu(sourceView: self.view, menuViewController: MenuViewController(), menuPosition:.Left)
-        //sideMenu?.delegate = self //optional
+        sideMenu?.delegate = self //optional
         sideMenu?.menuWidth = 180.0 // optional, default is 160
         sideMenu?.bouncingEnabled = false
         
@@ -47,6 +47,10 @@ class NavigationController: ENSideMenuNavigationController, ENSideMenuDelegate {
         print("sideMenuDidOpen")
     }
     
+    func goToLogin(){
+        print("go to login from navigation controller")
+        performSegueWithIdentifier("unwindToLogin", sender: self)
+    }
     
     /*
     // MARK: - Navigation

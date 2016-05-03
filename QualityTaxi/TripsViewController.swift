@@ -32,6 +32,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         trip1.rate = "35"
         trip1.distance = 12.0
         trip1.id = "234"
+        trip1.distanceToUser = 3.0
+        trip1.cash = "35"
+        trip1.name = "Juan"
         allTrips.append(trip1)
         
         let trip2 = ClientTrip()
@@ -40,6 +43,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         trip2.rate = "40"
         trip2.distance = 8.0
         trip2.id = "21"
+        trip2.distanceToUser = 3.0
+        trip2.cash = "35"
+        trip2.name = "Pedro"
         allTrips.append(trip2)
 
         let trip3 = ClientTrip()
@@ -48,6 +54,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         trip3.rate = "25"
         trip3.distance = 3.0
         trip3.id = "46"
+        trip3.distanceToUser = 3.0
+        trip3.cash = "35"
+        trip3.name = "Luis"
         allTrips.append(trip3)
 
         let trip4 = ClientTrip()
@@ -56,6 +65,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         trip4.rate = "30"
         trip4.distance = 5.0
         trip4.id = "1234"
+        trip4.distanceToUser = 3.0
+        trip4.cash = "35"
+        trip4.name = "Paco"
         allTrips.append(trip4)        
         
         //Sorted results by Distance at the beginning
@@ -153,6 +165,11 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 90
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("toSelectedRequest", sender: allTrips[indexPath.row])
+    }
+    
     @IBAction func sortingPressed(sender: AnyObject) {
         let optionMenu = UIAlertController(title: nil, message: "Selecciona el tipo de orden por:", preferredStyle: .ActionSheet)
         let distanceAction = UIAlertAction(title: "Distancia", style: .Default, handler: {
@@ -183,14 +200,14 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let vc:RequestSelectedViewController = segue.destinationViewController as! RequestSelectedViewController
+        vc.tripSelected = sender as! ClientTrip
     }
-    */
+    
 
 }

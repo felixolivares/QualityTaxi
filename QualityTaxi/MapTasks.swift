@@ -30,6 +30,8 @@ class MapTasks: NSObject {
     var totalDurationInSeconds: UInt = 0
     var totalDuration: String!
     
+    var allResults : Array<Dictionary<NSObject, AnyObject>>!
+    
     override init() {
         super.init()
     }
@@ -46,13 +48,13 @@ class MapTasks: NSObject {
                                 
                 do{
                     let dictionary: Dictionary<NSObject, AnyObject> = try NSJSONSerialization.JSONObjectWithData(geocodingResultsData!, options: NSJSONReadingOptions.MutableContainers) as! Dictionary<NSObject, AnyObject>
-                    print(dictionary)
+//                    print(dictionary)
                     // Get the response status.
                     let status = dictionary["status"] as! String
                     
                     if status == "OK" {
-                        let allResults = dictionary["results"] as! Array<Dictionary<NSObject, AnyObject>>
-                        self.lookupAddressResults = allResults[0]
+                        self.allResults = dictionary["results"] as! Array<Dictionary<NSObject, AnyObject>>
+                        self.lookupAddressResults = self.allResults[0]
                         
                         // Keep the most important values.
                         self.fetchedFormattedAddress = self.lookupAddressResults["formatted_address"] as! String
