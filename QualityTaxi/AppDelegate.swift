@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        navigationBarAppearace.barTintColor = UIColor(rgb: 0x456190)183C58
         navigationBarAppearace.barTintColor = UIColor(rgb: 0x183C58)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+//        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+
         
         GMSServices.provideAPIKey("AIzaSyBLkLS7K3MLLJt22Ra7DdmSVao12P2_yTY")                                
         
