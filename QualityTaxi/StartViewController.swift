@@ -50,12 +50,13 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
                 
         viewMap.delegate = self
         
-        backgroundContainer.layer.cornerRadius = 10
-        searchButton.layer.cornerRadius = 10
+        backgroundContainer.layer.cornerRadius = 5
+        searchButton.layer.cornerRadius = 5
         streetTextField.delegate = self
 //        coloniaTextField.delegate = self
         
-        self.continueButton.alpha = 0
+        continueButton.alpha = 0
+        continueButton.layer.cornerRadius = 5
         
         lastTime = String(format: "%.0f", NSDate().timeIntervalSince1970 * 1000)
         print("last time \(lastTime)")
@@ -66,7 +67,7 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         let registerNib = UINib(nibName: "ResultsTableViewCell", bundle: nil)
         resultsTableView.registerNib(registerNib, forCellReuseIdentifier: kResultsCellIdentifier)
         resultsTableView.alpha = 0
-        resultsTableView.layer.cornerRadius = 10
+        resultsTableView.layer.cornerRadius = 5
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StartViewController.dismissKeyboard))
 //        view.addGestureRecognizer(tap)

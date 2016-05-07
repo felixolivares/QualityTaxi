@@ -35,6 +35,8 @@
 		8B90C9C51CDD1EDE00F7A91E /* PassengerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90C9C41CDD1EDE00F7A91E /* PassengerMenuViewController.swift */; };
 		8B90C9CA1CDD228F00F7A91E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90C9C81CDD228F00F7A91E /* MenuTableViewCell.swift */; };
 		8B90C9CB1CDD228F00F7A91E /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B90C9C91CDD228F00F7A91E /* MenuTableViewCell.xib */; };
+		8B90C9D01CDDD8E800F7A91E /* STZPopupViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90C9CE1CDDD8E800F7A91E /* STZPopupViewConfig.swift */; };
+		8B90C9D11CDDD8E800F7A91E /* UIViewController+STZPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90C9CF1CDDD8E800F7A91E /* UIViewController+STZPopupView.swift */; };
 		8B9714C81CD3D6940065BF58 /* SummaryTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */; };
 		8B9714CA1CD40F5B0065BF58 /* FindTaxiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */; };
 		8B9714CC1CD410500065BF58 /* EZLoadingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */; };
@@ -110,6 +112,9 @@
 		8B90C9C41CDD1EDE00F7A91E /* PassengerMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerMenuViewController.swift; sourceTree = "<group>"; };
 		8B90C9C81CDD228F00F7A91E /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		8B90C9C91CDD228F00F7A91E /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		8B90C9CD1CDDD8E800F7A91E /* STZPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STZPopupView.h; path = STZPopupView/STZPopupView.h; sourceTree = "<group>"; };
+		8B90C9CE1CDDD8E800F7A91E /* STZPopupViewConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = STZPopupViewConfig.swift; path = STZPopupView/STZPopupViewConfig.swift; sourceTree = "<group>"; };
+		8B90C9CF1CDDD8E800F7A91E /* UIViewController+STZPopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+STZPopupView.swift"; path = "STZPopupView/UIViewController+STZPopupView.swift"; sourceTree = "<group>"; };
 		8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryTripViewController.swift; sourceTree = "<group>"; };
 		8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindTaxiViewController.swift; sourceTree = "<group>"; };
 		8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZLoadingActivity.swift; sourceTree = "<group>"; };
@@ -226,6 +231,7 @@
 		30D1D6FD1BEAF01B00AE549B /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8B90C9CC1CDDD89300F7A91E /* STZPopupView */,
 				8BCBBC561CDC24AF00DE1126 /* SWRevealViewController */,
 				8B9714CB1CD410500065BF58 /* EZLoadingActivity.swift */,
 				30D1D72E1BED703E00AE549B /* UIColorExtensions.swift */,
@@ -255,6 +261,16 @@
 				8B9714D91CD48C830065BF58 /* ClientTrip.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8B90C9CC1CDDD89300F7A91E /* STZPopupView */ = {
+			isa = PBXGroup;
+			children = (
+				8B90C9CD1CDDD8E800F7A91E /* STZPopupView.h */,
+				8B90C9CE1CDDD8E800F7A91E /* STZPopupViewConfig.swift */,
+				8B90C9CF1CDDD8E800F7A91E /* UIViewController+STZPopupView.swift */,
+			);
+			name = STZPopupView;
 			sourceTree = "<group>";
 		};
 		8B9714CD1CD4745D0065BF58 /* Cells */ = {
@@ -544,6 +560,7 @@
 				8B9A632B1CD7F1A5002F00BF /* ResultsTableViewCell.swift in Sources */,
 				8B9714C81CD3D6940065BF58 /* SummaryTripViewController.swift in Sources */,
 				30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */,
+				8B90C9D01CDDD8E800F7A91E /* STZPopupViewConfig.swift in Sources */,
 				8BD182A21CD5070B005CD15F /* RequestSelectedViewController.swift in Sources */,
 				8B9714CA1CD40F5B0065BF58 /* FindTaxiViewController.swift in Sources */,
 				8B4CB46C1CD2998A003AC9D6 /* DestinationViewController.swift in Sources */,
@@ -552,6 +569,7 @@
 				8B90C9CA1CDD228F00F7A91E /* MenuTableViewCell.swift in Sources */,
 				8B4CB46A1CD2599C003AC9D6 /* UIViewExtension.swift in Sources */,
 				8B9745F41CD2E30B00F4A8D9 /* QualityUser.swift in Sources */,
+				8B90C9D11CDDD8E800F7A91E /* UIViewController+STZPopupView.swift in Sources */,
 				8B54B4081CDAD44200D7632E /* DriverLocationViewController.swift in Sources */,
 				8B9714CC1CD410500065BF58 /* EZLoadingActivity.swift in Sources */,
 				8B9745F31CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift in Sources */,

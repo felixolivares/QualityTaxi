@@ -49,12 +49,13 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         let camera: GMSCameraPosition = GMSCameraPosition.cameraWithLatitude(48.857165, longitude: 2.354613, zoom: 8.0)
         viewMap.camera = camera
         
-        backgroundContainer.layer.cornerRadius = 10
-        searchButton.layer.cornerRadius = 10
+        backgroundContainer.layer.cornerRadius = 5
+        searchButton.layer.cornerRadius = 5
         streetTextField.delegate = self
 //        coloniaTextField.delegate = self
         
-        self.continueButton.alpha = 0
+        continueButton.alpha = 0
+        continueButton.layer.cornerRadius = 5
         
         print("current trip time \(currentTripTime)")
         
@@ -67,7 +68,7 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         let registerNib = UINib(nibName: "ResultsTableViewCell", bundle: nil)
         resultsTableView.registerNib(registerNib, forCellReuseIdentifier: kResultsCellIdentifier)
         resultsTableView.alpha = 0
-        resultsTableView.layer.cornerRadius = 10
+        resultsTableView.layer.cornerRadius = 5
     }
 
     func dismissKeyboard(){

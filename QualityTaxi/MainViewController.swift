@@ -16,6 +16,8 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
     @IBOutlet weak var askButton: UIButton!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    var menuOpened:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,7 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
 //        let blurView = UIVisualEffectView(effect: blur)
 //        blurView.frame = buttonBackground.bounds
 //        buttonBackground.addSubview(blurView)
+        
         
         print("Fonts \(UIFont.familyNames())")
         
@@ -42,6 +45,7 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
 
     }
 
@@ -50,10 +54,10 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func toggleMenu(sender: AnyObject) {
-//        toggleSideMenuView()
+    @IBAction func openMenuPressed(sender: AnyObject) {
+        print("menu pressed")
+        menuOpened = !menuOpened
     }
-
     
     @IBAction func askTaxi(sender: AnyObject) {
         self.performSegueWithIdentifier("toAskForTaxi", sender: nil)

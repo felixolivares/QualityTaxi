@@ -21,6 +21,7 @@ class FindTaxiViewController: UIViewController {
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewMap: GMSMapView!
+    @IBOutlet weak var goToStartBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +29,11 @@ class FindTaxiViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
         
         viewMap.alpha = 0
+        viewMap.layer.cornerRadius = 5
+        goToStartBtn.layer.cornerRadius = 5
+        
         driverDetailsContainer.alpha = 0
-        driverDetailsContainer.layer.cornerRadius = 10
+        driverDetailsContainer.layer.cornerRadius = 5
         driverDetailsContainer.layer.borderColor = UIColor(hexString: "BABDBE").CGColor
         driverDetailsContainer.layer.borderWidth = 1
         // Do any additional setup after loading the view.
