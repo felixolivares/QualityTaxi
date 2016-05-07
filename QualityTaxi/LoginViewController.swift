@@ -75,6 +75,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToLoginFromDriver(segue: UIStoryboardSegue) {}
     
     @IBAction func forgotPassPressed(sender: AnyObject) {
         UIView.animateWithDuration(0.4, animations: { 

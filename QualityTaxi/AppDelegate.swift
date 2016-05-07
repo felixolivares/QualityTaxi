@@ -24,8 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         navigationBarAppearace.tintColor = UIColor(rgb: 0xffffff)
+        navigationBarAppearace.translucent = false
 //        navigationBarAppearace.barTintColor = UIColor(rgb: 0x456190)183C58
         navigationBarAppearace.barTintColor = UIColor(rgb: 0x183C58)
+        navigationBarAppearace.shadowImage = UIImage()
+        navigationBarAppearace.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
 //        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
 

@@ -25,10 +25,10 @@ class RequestSelectedViewController: UIViewController {
         super.viewDidLoad()
     
         userLabel.text = tripSelected.name
-        rateLabel.text = tripSelected.rate
+        rateLabel.text = "$" + tripSelected.rate
         paymentTypeLabel.text = "Efectivo"
-        distanceToDestiny.text = String(tripSelected.distance)
-        distanceToUser.text = String(tripSelected.distanceToUser)
+        distanceToDestiny.text = String(tripSelected.distance) + " Km."
+        distanceToUser.text = String(tripSelected.distanceToUser) + " Km."
         toLabel.text = tripSelected.to
         fromLabel.text = tripSelected.from
     }

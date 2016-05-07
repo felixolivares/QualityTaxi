@@ -1,15 +1,15 @@
 //
-//  MenuViewController.swift
+//  DriverMenuViewController.swift
 //  QualityTaxi
 //
-//  Created by Felix Olivares on 11/4/15.
-//  Copyright © 2015 Felix Olivares. All rights reserved.
+//  Created by Developer on 5/4/16.
+//  Copyright © 2016 Felix Olivares. All rights reserved.
 //
 
 import UIKit
 import ChameleonFramework
 
-class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DriverMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let buttonToTimeFrame:UIButton = UIButton()
     let buttonToStatus:UIButton = UIButton()
@@ -93,30 +93,30 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         var destViewController : UIViewController
         switch (indexPath.row) {
         case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Main")
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainDriver")
             sideMenuController()?.setContentViewController(destViewController)
         case 1:
             print("salir presionado")
-//            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
-//            sideMenuController()?.setContentViewController(destViewController)
-            let navController = sideMenuController() as! NavigationController
+            //            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
+            //            sideMenuController()?.setContentViewController(destViewController)
+            let navController = sideMenuController() as! DriverNavController
             navController.goToLogin()
         default:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Main")
+            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainDriver")
             sideMenuController()?.setContentViewController(destViewController)
         }
         
     }
     
     /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     
 }

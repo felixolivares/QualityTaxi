@@ -20,38 +20,42 @@ class FindTaxiViewController: UIViewController {
     @IBOutlet weak var driverDetailsContainer: UIView!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var viewMap: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        taxiImage.alpha = 0
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        
+        viewMap.alpha = 0
         driverDetailsContainer.alpha = 0
         driverDetailsContainer.layer.cornerRadius = 10
         driverDetailsContainer.layer.borderColor = UIColor(hexString: "BABDBE").CGColor
         driverDetailsContainer.layer.borderWidth = 1
         // Do any additional setup after loading the view.
-        EZLoadingActivity.show("Buscando", disableUI: false)
+        EZLoadingActivity.show("Solicitando Taxi", disableUI: false)
         
         taskTimer = NSTimer.scheduledTimerWithTimeInterval(8, target: self, selector: #selector(FindTaxiViewController.runTimedCode), userInfo: nil, repeats: true)
         
+        /*
         if self.view.frame.size.height < 500{
             print("small screen")
             imageHeightConstraint.constant = 80.0
             imageWidthConstraint.constant = 80.0
             titleTopConstraint.constant = 5
             imageTopConstraint.constant = 5
-        }
+        }*/
         
     }
 
     func runTimedCode(){
-        EZLoadingActivity.hide(success: true, animated: true)
+        EZLoadingActivity.hide()
         taskTimer.invalidate()
         
         UIView.animateWithDuration(0.3) { 
-            self.taxiImage.alpha = 1
+            self.viewMap.alpha = 1
             self.driverDetailsContainer.alpha = 1
-            self.titleLabel.text = "Hemos encontrado un taxi para ti y ahora mismo va en camino!"
+            self.titleLabel.text = "Hemos asignado un taxi para ti y ahora mismo va en camino!"
             self.view.layoutIfNeeded()
         }
     }
@@ -60,6 +64,9 @@ class FindTaxiViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func goToStartPressed(sender: AnyObject) {
+        performSegueWithIdentifier("unwindToStart", sender: self)
+    }
 
     /*
     // MARK: - Navigation

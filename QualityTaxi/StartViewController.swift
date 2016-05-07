@@ -21,6 +21,7 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var resultsTableView: UITableView!
     
+    
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
     let regionRadius: CLLocationDistance = 200
@@ -275,7 +276,7 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         self.dismissKeyboard()
-    }
+    }    
 }
 
 extension StartViewController: CLLocationManagerDelegate {
@@ -294,7 +295,6 @@ extension StartViewController: CLLocationManagerDelegate {
             viewMap.camera = GMSCameraPosition(target: location.coordinate, zoom: 16, bearing: 0, viewingAngle: 0)
             locationManager.stopUpdatingLocation()
         }
-        
     }
 }
 

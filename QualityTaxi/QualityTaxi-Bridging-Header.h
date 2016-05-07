@@ -12,7 +12,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <Foundation/Foundation.h>
 #import <MagicalRecord/MagicalRecord.h>
-//#import "QualityUser.h"
-//#import "QualityTrip.h"
+#import "SWRevealViewController.h"
+
 
 #endif /* QualityTaxi_Bridging_Header_h */

@@ -14,6 +14,7 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
     @IBOutlet weak var buttonBackground: UIView!
     
     @IBOutlet weak var askButton: UIButton!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,12 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         for eachUser:QualityUser in users{
             print(eachUser.name)
         }
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
 
     }
 
@@ -44,13 +51,15 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
     }
 
     @IBAction func toggleMenu(sender: AnyObject) {
-        toggleSideMenuView()
+//        toggleSideMenuView()
     }
 
     
     @IBAction func askTaxi(sender: AnyObject) {
         self.performSegueWithIdentifier("toAskForTaxi", sender: nil)
     }
+    
+    @IBAction func unwindToStart(segue: UIStoryboardSegue) {}
     
     /*
     // MARK: - Navigation

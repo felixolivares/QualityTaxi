@@ -134,7 +134,7 @@ public struct EZLoadingActivity {
             
             textLabel = UILabel(frame: CGRect(x: 60, y: yPosition, width: Settings.ActivityWidth - 70, height: 40))
             textLabel.textColor = Settings.TextColor
-            textLabel.font = UIFont(name: Settings.FontName, size: 25)
+            textLabel.font = UIFont(name: Settings.FontName, size: 20)
             textLabel.adjustsFontSizeToFitWidth = true
             textLabel.minimumScaleFactor = 0.25
             textLabel.textAlignment = NSTextAlignment.Center

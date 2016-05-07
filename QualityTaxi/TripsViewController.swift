@@ -10,6 +10,7 @@ import UIKit
 
 class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var subBar: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     let kTripCellIdentifier = "TripTableViewCellIdentifier"
@@ -25,6 +26,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.registerNib(tripTableViewCell, forCellReuseIdentifier: kTripCellIdentifier)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         tableView.backgroundColor = UIColor(hexString: "E7EBEC")
+        
+//        subBar.layer.borderColor = UIColor(hexString: "8A6108").CGColor
+//        subBar.layer.borderWidth = 0.5
         
         let trip1 = ClientTrip()
         trip1.from = "Canario 51 Col. Nuevo Progreso"
@@ -77,6 +81,8 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         tripTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(addNewTrip), userInfo: nil, repeats: false)
         secondTimer = NSTimer.scheduledTimerWithTimeInterval(14, target: self, selector: #selector(addSecondTrip), userInfo: nil, repeats: false)
+        
+        
     }
 
     func addNewTrip(){

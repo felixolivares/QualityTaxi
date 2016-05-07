@@ -1,27 +1,27 @@
 //
-//  NavigationController.swift
+//  DriverNavController.swift
 //  QualityTaxi
 //
-//  Created by Felix Olivares on 11/4/15.
-//  Copyright © 2015 Felix Olivares. All rights reserved.
+//  Created by Developer on 5/4/16.
+//  Copyright © 2016 Felix Olivares. All rights reserved.
 //
 
 import UIKit
 
-class NavigationController: ENSideMenuNavigationController, ENSideMenuDelegate {
+class DriverNavController: ENSideMenuNavigationController, ENSideMenuDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
-        sideMenu = ENSideMenu(sourceView: self.view, menuViewController: MenuViewController(), menuPosition:.Left)
+        sideMenu = ENSideMenu(sourceView: self.view, menuViewController: DriverMenuViewController(), menuPosition:.Left)
         sideMenu?.delegate = self //optional
         sideMenu?.menuWidth = 180.0 // optional, default is 160
         sideMenu?.bouncingEnabled = false
         
         // make navigation bar showing over side menu
-        view.bringSubviewToFront(navigationBar)
+                view.bringSubviewToFront(navigationBar)
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,17 +49,17 @@ class NavigationController: ENSideMenuNavigationController, ENSideMenuDelegate {
     
     func goToLogin(){
         print("go to login from navigation controller")
-        performSegueWithIdentifier("unwindToLogin", sender: self)
+        performSegueWithIdentifier("unwindToLoginFromDriver", sender: self)
     }
     
     /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
 }
