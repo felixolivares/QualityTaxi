@@ -10,10 +10,15 @@ import UIKit
 
 class DriverMainViewController: UIViewController, ENSideMenuDelegate {
 
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +28,7 @@ class DriverMainViewController: UIViewController, ENSideMenuDelegate {
     
 
     @IBAction func toggleMenu(sender: AnyObject) {
-        toggleSideMenuView()
+        print("menu button pressed")
     }
     /*
     // MARK: - Navigation

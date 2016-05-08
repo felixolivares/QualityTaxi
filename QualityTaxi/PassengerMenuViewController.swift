@@ -51,11 +51,21 @@ class PassengerMenuViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {
+        switch indexPath.row{
+        case 0:
             performSegueWithIdentifier("toPassenger", sender: self)
+        case 1:
+            print("My trips")
+        case 2:
+            self.logout()
+        default:
+            print("Menu option invalid")
         }
     }
     
+    func logout(){
+        performSegueWithIdentifier("unwindToLogin", sender: self)
+    }
     /*
     // MARK: - Navigation
 

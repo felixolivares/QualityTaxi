@@ -2,42 +2,28 @@
 //  DriverMenuViewController.swift
 //  QualityTaxi
 //
-//  Created by Developer on 5/4/16.
+//  Created by Developer on 5/7/16.
 //  Copyright © 2016 Felix Olivares. All rights reserved.
 //
 
 import UIKit
-import ChameleonFramework
 
-class DriverMenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DriverMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    @IBOutlet weak var menuTableView: UITableView!
     
-    let buttonToTimeFrame:UIButton = UIButton()
-    let buttonToStatus:UIButton = UIButton()
-    let tableView:UITableView = UITableView()
-    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-    var selectedMenuItem : Int = 0
-    let viewNames:[String] = ["Inicio", "Cerrar Sesión"]
-    let newTaskTextField:UITextField = UITextField()
+    let titles:[String] = ["Inicio", "Cerrar Sesión"]
+    let kMenuCellIdentifier = "MenuCellIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        self.view.backgroundColor = UIColor.clearColor()
+        let menuTableViewCell = UINib(nibName: "MenuTableViewCell", bundle: nil)
+        menuTableView.registerNib(menuTableViewCell, forCellReuseIdentifier: kMenuCellIdentifier)
+        menuTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        menuTableView.backgroundColor = UIColor(hexString: "2C2A2A")
         
-        self.setStatusBarStyle(UIStatusBarStyleContrast)
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.frame = CGRectMake(0, 64, 180, 400)
-        tableView.separatorStyle = .None
-        tableView.backgroundColor = UIColor.clearColor()
-        tableView.scrollsToTop = false
-        self.view.addSubview(tableView)
-        
-        tableView.selectRowAtIndexPath(NSIndexPath(forRow: selectedMenuItem, inSection: 0), animated: false, scrollPosition: .Middle)
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,69 +31,39 @@ class DriverMenuViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    
-    // MARK: TableView Delegate Functions
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // Return the number of sections.
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of rows in the section.
-        return viewNames.count
+        return titles.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.tintColor = UIColor.whiteColor()
-        cell.backgroundColor = UIColor.clearColor()
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        let selectedBackgroundView = UIView(frame: CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height))
-        selectedBackgroundView.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.2)
-        cell.selectedBackgroundView = selectedBackgroundView
-        
-        cell.textLabel?.text = viewNames[indexPath.row]
+        let cell:MenuTableViewCell = tableView.dequeueReusableCellWithIdentifier(kMenuCellIdentifier) as! MenuTableViewCell
+        cell.titleLabel.text = titles[indexPath.row]
         
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 50.0
+        return 44
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print("did select row: \(indexPath.row)")
-        
-        if (indexPath.row == selectedMenuItem) {
-            return
-        }
-        
-        selectedMenuItem = indexPath.row
-        
-        //Present new view controller
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main",bundle: nil)
-        var destViewController : UIViewController
-        switch (indexPath.row) {
+        switch indexPath.row{
         case 0:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainDriver")
-            sideMenuController()?.setContentViewController(destViewController)
+            performSegueWithIdentifier("toDriver", sender: self)
         case 1:
-            print("salir presionado")
-            //            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("login")
-            //            sideMenuController()?.setContentViewController(destViewController)
-            let navController = sideMenuController() as! DriverNavController
-            navController.goToLogin()
+            self.logout()
         default:
-            destViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainDriver")
-            sideMenuController()?.setContentViewController(destViewController)
+            print("Menu option invalid")
         }
-        
     }
     
+    func logout(){
+        performSegueWithIdentifier("unwindToLoginFromDriver", sender: self)
+    }
     /*
      // MARK: - Navigation
      
@@ -117,7 +73,4 @@ class DriverMenuViewController: UIViewController, UITableViewDelegate, UITableVi
      // Pass the selected object to the new view controller.
      }
      */
-    
-    
 }
-

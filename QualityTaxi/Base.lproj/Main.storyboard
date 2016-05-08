@@ -227,72 +227,35 @@
                         <outlet property="lostPassBackground" destination="3Iq-A5-8BN" id="Bgj-66-8Va"/>
                         <outlet property="passwordTextField" destination="8Qt-eS-tkv" id="glf-3J-ye2"/>
                         <outlet property="userTextField" destination="bCt-Hs-Igz" id="yNA-gw-MtT"/>
-                        <segue destination="If8-8c-xrF" kind="modal" identifier="toDriver" id="Z1a-eT-hMV"/>
                         <segue destination="CBv-kG-DOk" kind="modal" identifier="toPassenger" id="X82-y0-4Iu"/>
+                        <segue destination="pGs-cV-jHg" kind="modal" identifier="toDriver" id="V1o-zC-vYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ttk-GG-dNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1054" y="1018"/>
+            <point key="canvasLocation" x="-1307" y="1013"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="qsF-aD-hHN">
+        <!--Reveal View Controller-->
+        <scene sceneID="PGP-66-3IA">
             <objects>
-                <tableViewController id="qdL-dP-2qK" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="g0r-my-at8">
+                <viewController id="pGs-cV-jHg" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g2u-51-iLN"/>
+                        <viewControllerLayoutGuide type="bottom" id="NG0-Es-Hl7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A7d-lE-Rm9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" red="0.17254901960784313" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
-                        <sections>
-                            <tableViewSection id="zcG-KP-XDd">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="i2f-Gz-3RJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i2f-Gz-3RJ" id="s35-Zf-474">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Inicio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-4C-Upj">
-                                                    <rect key="frame" x="18" y="11" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.17254901960784313" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i92-IG-gZ5">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i92-IG-gZ5" id="l6q-3h-nNg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cerrar Sesión" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-XZ-rrp">
-                                                    <rect key="frame" x="14" y="11" width="160" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.17254901960784313" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="qdL-dP-2qK" id="nAq-Bp-5CF"/>
-                            <outlet property="delegate" destination="qdL-dP-2qK" id="fCB-x0-3MB"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GZT-9x-YgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <connections>
+                        <segue destination="If8-8c-xrF" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="IuP-ne-VjL"/>
+                        <segue destination="ad9-db-k0V" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="hPH-IT-QBk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qa0-6g-I2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-757" y="-351"/>
+            <point key="canvasLocation" x="-821" y="1018"/>
         </scene>
         <!--Passenger Menu View Controller-->
         <scene sceneID="T6d-Gj-rhO">
@@ -327,9 +290,11 @@
                     <connections>
                         <outlet property="menuTableView" destination="GYE-Ts-V5k" id="udv-bw-Uuj"/>
                         <segue destination="9HN-V0-K9X" kind="custom" identifier="toPassenger" customClass="SWRevealViewControllerSeguePushController" id="hkI-F3-j9p"/>
+                        <segue destination="sFa-eK-v9H" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLogin:" id="ff0-8Q-AB7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmU-46-XPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sFa-eK-v9H" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-396" y="-351"/>
         </scene>
@@ -473,10 +438,10 @@
             </objects>
             <point key="canvasLocation" x="105" y="339"/>
         </scene>
-        <!--Driver Nav Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="xyM-Nm-DId">
             <objects>
-                <navigationController id="If8-8c-xrF" customClass="DriverNavController" customModule="QualityTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="If8-8c-xrF" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="H3x-3A-qMP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rP1-Q5-qmc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -491,6 +456,46 @@
                 <exit id="cVy-aI-WlR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-403" y="1018"/>
+        </scene>
+        <!--Driver Menu View Controller-->
+        <scene sceneID="H5H-TN-s0b">
+            <objects>
+                <viewController id="ad9-db-k0V" customClass="DriverMenuViewController" customModule="QualityTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uNY-iT-U2K"/>
+                        <viewControllerLayoutGuide type="bottom" id="4b1-JH-1Be"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xi8-aV-zQv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dh6-7s-7hj">
+                                <rect key="frame" x="-4" y="60" width="328" height="508"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ad9-db-k0V" id="Ycf-9d-2d4"/>
+                                    <outlet property="delegate" destination="ad9-db-k0V" id="hlB-KW-Irl"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.17254901960784313" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dh6-7s-7hj" firstAttribute="top" secondItem="uNY-iT-U2K" secondAttribute="bottom" constant="40" id="9Dy-QZ-l9y"/>
+                            <constraint firstItem="4b1-JH-1Be" firstAttribute="top" secondItem="dh6-7s-7hj" secondAttribute="bottom" id="Jeb-cH-aeC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dh6-7s-7hj" secondAttribute="trailing" constant="-20" id="hgA-rP-72T"/>
+                            <constraint firstItem="dh6-7s-7hj" firstAttribute="leading" secondItem="xi8-aV-zQv" secondAttribute="leadingMargin" constant="-20" id="ow7-g2-Hir"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="menuTableView" destination="dh6-7s-7hj" id="GF1-vg-uXS"/>
+                        <segue destination="If8-8c-xrF" kind="custom" identifier="toDriver" customClass="SWRevealViewControllerSeguePushController" id="coh-x7-M8b"/>
+                        <segue destination="Ues-A7-Lzu" kind="unwind" identifier="unwindToLoginFromDriver" unwindAction="unwindToLoginFromDriver:" id="FuY-B6-6S9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J8b-C4-HHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ues-A7-Lzu" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-619" y="1726"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="kjg-9b-VmY">
@@ -659,7 +664,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYc-G1-Ndb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-403" y="1691"/>
+            <point key="canvasLocation" x="-1060" y="1840"/>
         </scene>
         <!--Pedidos de Taxi-->
         <scene sceneID="zys-wB-X5x">
@@ -827,6 +832,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="soy-VL-M6f" id="EVb-uz-D7f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CT-hK-fzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1975,6 +1983,7 @@
         <image name="profile" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="coh-x7-M8b"/>
         <segue reference="hkI-F3-j9p"/>
         <segue reference="HtC-0X-BKU"/>
     </inferredMetricsTieBreakers>
