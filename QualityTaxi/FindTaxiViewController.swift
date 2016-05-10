@@ -12,7 +12,10 @@ import UIKit
 class FindTaxiViewController: UIViewController {
 
     var taskTimer: NSTimer!
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var moneyLeft = Float()
     
+    @IBOutlet weak var balanceTitleLabel: UILabel!
     @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
@@ -22,6 +25,7 @@ class FindTaxiViewController: UIViewController {
     @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewMap: GMSMapView!
     @IBOutlet weak var goToStartBtn: UIButton!
+    @IBOutlet weak var moneyLeftLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +44,8 @@ class FindTaxiViewController: UIViewController {
         EZLoadingActivity.show("Solicitando Taxi", disableUI: false)
         
         taskTimer = NSTimer.scheduledTimerWithTimeInterval(8, target: self, selector: #selector(FindTaxiViewController.runTimedCode), userInfo: nil, repeats: true)
+        
+        moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
         
         /*
         if self.view.frame.size.height < 500{
@@ -62,7 +68,9 @@ class FindTaxiViewController: UIViewController {
             self.titleLabel.text = "Hemos asignado un taxi para ti y ahora mismo va en camino!"
             self.view.layoutIfNeeded()
         }
-    }
+        defaults.setBool(true, forKey: "onGoingTrip")
+        self.showNewBalance()
+}
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -71,7 +79,25 @@ class FindTaxiViewController: UIViewController {
     @IBAction func goToStartPressed(sender: AnyObject) {
         performSegueWithIdentifier("unwindToStart", sender: self)
     }
-
+    
+    func showNewBalance(){
+        moneyLeft = defaults.floatForKey("moneyLeft")
+        moneyLeft = moneyLeft - 35.00
+        defaults.setFloat(moneyLeft, forKey: "moneyLeft")
+        defaults.synchronize()
+        UIView.animateWithDuration(0.4, animations: {
+            self.moneyLeftLabel.alpha = 0
+            self.balanceTitleLabel.alpha = 0
+            }) { (complete) in
+                UIView.animateWithDuration(0.4, animations: {
+                    self.moneyLeftLabel.text = String(format: "$%.2f", self.moneyLeft)
+                    self.balanceTitleLabel.text = "Saldo Actualizado:"
+                    self.moneyLeftLabel.alpha = 1
+                    self.balanceTitleLabel.alpha = 1
+                })
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

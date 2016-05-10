@@ -18,6 +18,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var tripTimer: NSTimer!
     var secondTimer: NSTimer!
     var sorting = ""
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()

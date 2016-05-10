@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var accessTitleLabel: UILabel!
     
     var currentUser:QualityUser!
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         lostPassBackground.layer.cornerRadius = 10
         userTextField.delegate = self
         passwordTextField.delegate = self
+        
+        defaults.setFloat(55.00, forKey: "moneyLeft")
+        defaults.synchronize()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)

@@ -12,6 +12,7 @@ class SummaryTripViewController: UIViewController {
 
     @IBOutlet weak var viewMap: GMSMapView!
     
+    @IBOutlet weak var moneyLeftLabel: UILabel!
     @IBOutlet weak var askTaxiBtn: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -24,6 +25,7 @@ class SummaryTripViewController: UIViewController {
     var currentTripTime:String = ""
     var currentTrip:QualityTrip!
     var mapTasks = MapTasks()
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,8 @@ class SummaryTripViewController: UIViewController {
                 print("status \(status)")
             }
         })
+        
+        moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +94,8 @@ class SummaryTripViewController: UIViewController {
     
 
     @IBAction func askTaxiButtonPressed(sender: AnyObject) {
+        performSegueWithIdentifier("toFindTaxi", sender: self)
+        /*
         let popupView = createPopupview()
         
         let popupConfig = STZPopupViewConfig()
@@ -105,7 +111,7 @@ class SummaryTripViewController: UIViewController {
             print("dismiss")
         }
         
-        presentPopupView(popupView, config: popupConfig)
+        presentPopupView(popupView, config: popupConfig)*/
     }
     
     func createPopupview() -> UIView {

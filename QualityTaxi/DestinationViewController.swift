@@ -12,6 +12,7 @@ import CoreLocation
 
 class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var moneyLeftLabel: UILabel!
     @IBOutlet weak var coloniaTextField: UITextField!
     @IBOutlet weak var streetTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -20,8 +21,8 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var resultsTableView: UITableView!
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
+    
     var locationManager = CLLocationManager()
     var didFindMyLocation = false
     let regionRadius: CLLocationDistance = 200
@@ -69,6 +70,8 @@ class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFiel
         resultsTableView.registerNib(registerNib, forCellReuseIdentifier: kResultsCellIdentifier)
         resultsTableView.alpha = 0
         resultsTableView.layer.cornerRadius = 5
+        
+        moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
     }
 
     func dismissKeyboard(){

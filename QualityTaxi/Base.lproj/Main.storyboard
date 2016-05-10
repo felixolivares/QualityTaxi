@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TXb-SP-JE7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="TXb-SP-JE7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ttk-GG-dNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1307" y="1013"/>
+            <point key="canvasLocation" x="-2374" y="1018"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="PGP-66-3IA">
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qa0-6g-I2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-821" y="1018"/>
+            <point key="canvasLocation" x="-1869" y="1575"/>
         </scene>
         <!--Passenger Menu View Controller-->
         <scene sceneID="T6d-Gj-rhO">
@@ -291,12 +291,13 @@
                         <outlet property="menuTableView" destination="GYE-Ts-V5k" id="udv-bw-Uuj"/>
                         <segue destination="9HN-V0-K9X" kind="custom" identifier="toPassenger" customClass="SWRevealViewControllerSeguePushController" id="hkI-F3-j9p"/>
                         <segue destination="sFa-eK-v9H" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLogin:" id="ff0-8Q-AB7"/>
+                        <segue destination="Epc-XQ-OxZ" kind="custom" identifier="toMyTrips" customClass="SWRevealViewControllerSeguePushController" id="HOm-m6-BW4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmU-46-XPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="sFa-eK-v9H" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="-351"/>
+            <point key="canvasLocation" x="-1415" y="508"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="dvp-Mg-oLu">
@@ -318,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uz0-NM-uKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-803" y="339"/>
+            <point key="canvasLocation" x="-1905" y="508"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I6z-7N-Y9Z">
@@ -337,7 +338,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azt-LH-wHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Mcf-rX-MAu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="395"/>
+            <point key="canvasLocation" x="-851" y="-132"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="J2b-mj-fS0">
+            <objects>
+                <navigationController id="Epc-XQ-OxZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dUs-Nc-ypg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="WcT-47-Kqf" kind="relationship" relationship="rootViewController" id="Ktp-Zk-ajs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LbP-Fv-5BN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-851" y="508"/>
         </scene>
         <!--Quality Taxi-->
         <scene sceneID="tne-QT-ifu">
@@ -365,26 +382,35 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHc-1I-iiU">
-                                        <rect key="frame" x="264" y="3" width="44" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="277" y="4" width="40.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwq-O1-JHU">
-                                        <rect key="frame" x="224" y="3" width="38" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="240" y="4" width="35.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kML-UF-8MC">
+                                        <rect key="frame" x="20" y="3" width="198" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.69803921570000005" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="RHc-1I-iiU" firstAttribute="centerY" secondItem="VkS-IR-sOv" secondAttribute="centerY" id="25E-nq-VOP"/>
+                                    <constraint firstItem="kML-UF-8MC" firstAttribute="leading" secondItem="VkS-IR-sOv" secondAttribute="leading" constant="20" id="8JW-NR-EHk"/>
+                                    <constraint firstAttribute="trailing" secondItem="kML-UF-8MC" secondAttribute="trailing" constant="110" id="GCS-1i-1pB"/>
                                     <constraint firstItem="RHc-1I-iiU" firstAttribute="leading" secondItem="bwq-O1-JHU" secondAttribute="trailing" constant="2" id="JVY-Db-E2R"/>
                                     <constraint firstAttribute="bottom" secondItem="b3m-o7-Wb2" secondAttribute="bottom" id="LzW-wJ-UO9"/>
                                     <constraint firstItem="RHc-1I-iiU" firstAttribute="centerY" secondItem="bwq-O1-JHU" secondAttribute="centerY" id="fiY-OY-Pix"/>
-                                    <constraint firstAttribute="trailing" secondItem="RHc-1I-iiU" secondAttribute="trailing" constant="20" id="jzN-sQ-5U3"/>
+                                    <constraint firstAttribute="trailing" secondItem="RHc-1I-iiU" secondAttribute="trailing" constant="10" id="jzN-sQ-5U3"/>
                                     <constraint firstAttribute="trailing" secondItem="b3m-o7-Wb2" secondAttribute="trailing" id="mku-TW-scN"/>
+                                    <constraint firstItem="kML-UF-8MC" firstAttribute="centerY" secondItem="VkS-IR-sOv" secondAttribute="centerY" id="mxs-LL-wRK"/>
                                     <constraint firstItem="b3m-o7-Wb2" firstAttribute="leading" secondItem="VkS-IR-sOv" secondAttribute="leading" id="pOU-1t-TxW"/>
                                     <constraint firstAttribute="height" constant="22" id="tAm-26-W2M"/>
                                 </constraints>
@@ -430,13 +456,42 @@
                     </navigationItem>
                     <connections>
                         <outlet property="askButton" destination="82a-p7-E1a" id="0dm-zc-reU"/>
+                        <outlet property="balanceTrailingConstraint" destination="jzN-sQ-5U3" id="dSi-SA-Uzt"/>
                         <outlet property="menuButton" destination="hdC-jd-L0j" id="zRn-73-4SK"/>
+                        <outlet property="moneyLeftLabel" destination="RHc-1I-iiU" id="iet-YR-12y"/>
+                        <outlet property="notificationLabel" destination="kML-UF-8MC" id="iQt-5g-1zY"/>
+                        <outlet property="notificationLeadingConstraint" destination="8JW-NR-EHk" id="dQu-dd-8XQ"/>
+                        <outlet property="notificationTrailingConstraint" destination="GCS-1i-1pB" id="DnE-eA-Cya"/>
                         <segue destination="bUj-ae-kPt" kind="push" identifier="toAskForTaxi" id="c1A-9b-zOi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105" y="339"/>
+            <point key="canvasLocation" x="-409" y="-132"/>
+        </scene>
+        <!--Mis Viajes-->
+        <scene sceneID="vCs-qT-623">
+            <objects>
+                <viewController id="WcT-47-Kqf" customClass="MyTripsViewController" customModule="QualityTaxi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bLO-pz-0dF"/>
+                        <viewControllerLayoutGuide type="bottom" id="0zA-Ql-8eR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fIa-lf-7KT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90588235294117647" green="0.92156862745098034" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mis Viajes" id="GIT-fB-Ama">
+                        <barButtonItem key="leftBarButtonItem" image="menu-icon" id="Ns6-Dx-AZo"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="Ns6-Dx-AZo" id="dPb-ag-Pzu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BZa-KT-BjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-409" y="508"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xyM-Nm-DId">
@@ -455,7 +510,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zi0-pq-sYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="cVy-aI-WlR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-403" y="1018"/>
+            <point key="canvasLocation" x="-851" y="1315"/>
         </scene>
         <!--Driver Menu View Controller-->
         <scene sceneID="H5H-TN-s0b">
@@ -495,7 +550,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8b-C4-HHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ues-A7-Lzu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-619" y="1726"/>
+            <point key="canvasLocation" x="-1379" y="1575"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="kjg-9b-VmY">
@@ -664,7 +719,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LYc-G1-Ndb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1060" y="1840"/>
+            <point key="canvasLocation" x="-2374" y="1726"/>
         </scene>
         <!--Pedidos de Taxi-->
         <scene sceneID="zys-wB-X5x">
@@ -756,7 +811,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYk-mZ-agU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="1018"/>
+            <point key="canvasLocation" x="50" y="1315"/>
         </scene>
         <!--Quality Taxi-->
         <scene sceneID="tzc-rC-f4j">
@@ -838,7 +893,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CT-hK-fzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105" y="1018"/>
+            <point key="canvasLocation" x="-394" y="1315"/>
         </scene>
         <!--Pedido Seleccionado-->
         <scene sceneID="M6r-r6-SMe">
@@ -1078,7 +1133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twD-fn-YEc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="1018"/>
+            <point key="canvasLocation" x="483" y="1315"/>
         </scene>
         <!--Iniciar-->
         <scene sceneID="sbX-5t-s66">
@@ -1152,7 +1207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zQ-zU-wap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1474" y="1018"/>
+            <point key="canvasLocation" x="900" y="1315"/>
         </scene>
         <!--Fijar Inicio-->
         <scene sceneID="65L-Te-oJ9">
@@ -1298,14 +1353,14 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEG-Tl-JYL">
-                                        <rect key="frame" x="264" y="3" width="44" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="277.5" y="4" width="40.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.26666666666666666" green="0.18431372549019609" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZT-0W-43K">
-                                        <rect key="frame" x="224" y="3" width="38" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="240" y="4" width="35.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.26666666666666666" green="0.18431372549019609" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1313,7 +1368,7 @@
                                 <color key="backgroundColor" red="0.96470588239999999" green="0.69803921570000005" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="CEG-Tl-JYL" firstAttribute="centerY" secondItem="l8R-NA-7t1" secondAttribute="centerY" id="8Ns-Z5-FXe"/>
-                                    <constraint firstAttribute="trailing" secondItem="CEG-Tl-JYL" secondAttribute="trailing" constant="20" id="Fzz-FD-SPv"/>
+                                    <constraint firstAttribute="trailing" secondItem="CEG-Tl-JYL" secondAttribute="trailing" constant="10" id="Fzz-FD-SPv"/>
                                     <constraint firstItem="CEG-Tl-JYL" firstAttribute="centerY" secondItem="qZT-0W-43K" secondAttribute="centerY" id="G7X-1M-jUP"/>
                                     <constraint firstItem="CEG-Tl-JYL" firstAttribute="leading" secondItem="qZT-0W-43K" secondAttribute="trailing" constant="2" id="HAI-2R-5as"/>
                                     <constraint firstAttribute="bottom" secondItem="sag-bN-iSA" secondAttribute="bottom" id="PH8-fP-1Md"/>
@@ -1362,6 +1417,7 @@
                     <connections>
                         <outlet property="backgroundContainer" destination="rIZ-yM-cs0" id="Ve8-av-YVY"/>
                         <outlet property="continueButton" destination="Wje-28-wnl" id="jYk-Y0-cN8"/>
+                        <outlet property="moneyLeftLabel" destination="CEG-Tl-JYL" id="Zz4-hU-V2f"/>
                         <outlet property="resultsTableView" destination="uS2-as-L2G" id="yRy-ae-UZx"/>
                         <outlet property="searchButton" destination="6tO-sJ-7Bj" id="3NT-UO-Nfw"/>
                         <outlet property="streetTextField" destination="ym5-jE-E1D" id="riW-ed-Ijc"/>
@@ -1372,7 +1428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqn-gP-wzH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="565" y="339"/>
+            <point key="canvasLocation" x="35" y="-132"/>
         </scene>
         <!--Fijar Destino-->
         <scene sceneID="Z7B-GE-h7g">
@@ -1478,14 +1534,14 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeJ-S1-cx8">
-                                        <rect key="frame" x="264" y="3" width="44" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="277.5" y="4" width="40.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st2-9k-qMM">
-                                        <rect key="frame" x="224" y="3" width="38" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="240" y="4" width="35.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1498,7 +1554,7 @@
                                     <constraint firstItem="ZeJ-S1-cx8" firstAttribute="leading" secondItem="st2-9k-qMM" secondAttribute="trailing" constant="2" id="Bqa-LQ-1id"/>
                                     <constraint firstItem="ZeJ-S1-cx8" firstAttribute="centerY" secondItem="MkZ-aM-mix" secondAttribute="centerY" id="Gtp-mm-qmr"/>
                                     <constraint firstItem="PuK-bu-g6Z" firstAttribute="leading" secondItem="MkZ-aM-mix" secondAttribute="leading" id="IzB-0L-M9d"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZeJ-S1-cx8" secondAttribute="trailing" constant="20" id="YZI-3S-q8a"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZeJ-S1-cx8" secondAttribute="trailing" constant="10" id="YZI-3S-q8a"/>
                                     <constraint firstAttribute="trailing" secondItem="PuK-bu-g6Z" secondAttribute="trailing" id="p7V-JJ-DV0"/>
                                 </constraints>
                             </view>
@@ -1531,6 +1587,7 @@
                     <connections>
                         <outlet property="backgroundContainer" destination="zQt-1s-J6u" id="QBu-iZ-vax"/>
                         <outlet property="continueButton" destination="RrV-jG-TUz" id="Qnl-il-MKL"/>
+                        <outlet property="moneyLeftLabel" destination="ZeJ-S1-cx8" id="FHM-01-yMV"/>
                         <outlet property="resultsTableView" destination="BXj-2z-yPb" id="aQD-F0-cYd"/>
                         <outlet property="searchButton" destination="wn7-Qg-hCF" id="uOr-9r-jSg"/>
                         <outlet property="streetTextField" destination="AEj-lY-eV8" id="EPc-9k-1xs"/>
@@ -1543,7 +1600,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piC-aK-afJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031" y="339"/>
+            <point key="canvasLocation" x="468" y="-132"/>
         </scene>
         <!--Pagar Con-->
         <scene sceneID="odK-sg-Skt">
@@ -1567,7 +1624,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MS2-iG-ndP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="339"/>
+            <point key="canvasLocation" x="885" y="-132"/>
         </scene>
         <!--Tu Viaje-->
         <scene sceneID="Fnc-CO-3r5">
@@ -1582,21 +1639,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$35.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FS-iN-if7">
-                                <rect key="frame" x="225" y="332" width="79" height="33"/>
+                                <rect key="frame" x="250.5" y="427" width="53.5" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="Ef0-u1-L7A"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" red="0.10980392156862745" green="0.24705882352941178" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.84102994109947637" green="0.0" blue="0.077480446136205999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precio por viaje:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0td-XA-Hmt">
-                                <rect key="frame" x="110" y="338" width="110" height="21"/>
+                                <rect key="frame" x="148" y="433" width="97.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="4cQ-pW-vES"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.21176470588235294" green="0.2196078431372549" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.84102994109947637" green="0.0" blue="0.077480446136205999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GI7-EG-iqi" customClass="GMSMapView">
@@ -1620,7 +1677,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTX-U7-5wn">
-                                <rect key="frame" x="16" y="362" width="91" height="21"/>
+                                <rect key="frame" x="16" y="332" width="91" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Y5A-rD-83A"/>
                                 </constraints>
@@ -1629,7 +1686,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJj-De-Pxe">
-                                <rect key="frame" x="16" y="383" width="288" height="21"/>
+                                <rect key="frame" x="16" y="353" width="288" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="z87-2a-LEr"/>
                                 </constraints>
@@ -1638,7 +1695,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiempo aproximado del viaje: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Hq-Nj-OCp">
-                                <rect key="frame" x="16" y="414" width="181" height="21"/>
+                                <rect key="frame" x="16" y="384" width="181" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="YDe-Le-EIw"/>
                                 </constraints>
@@ -1647,7 +1704,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDJ-iS-irh">
-                                <rect key="frame" x="16" y="435" width="288" height="21"/>
+                                <rect key="frame" x="16" y="405" width="288" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6He-xy-cEO"/>
                                 </constraints>
@@ -1666,14 +1723,14 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTT-Xx-qZN">
-                                        <rect key="frame" x="264" y="3" width="44" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="277.5" y="4" width="40.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeP-P1-cir">
-                                        <rect key="frame" x="224" y="3" width="38" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="240" y="4" width="35.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1684,12 +1741,21 @@
                                     <constraint firstAttribute="trailing" secondItem="WIv-6U-kro" secondAttribute="trailing" id="53y-rR-evH"/>
                                     <constraint firstItem="WTT-Xx-qZN" firstAttribute="leading" secondItem="WeP-P1-cir" secondAttribute="trailing" constant="2" id="Hjz-Yp-YCT"/>
                                     <constraint firstItem="WIv-6U-kro" firstAttribute="leading" secondItem="DNF-c6-dNf" secondAttribute="leading" id="RJO-IP-kdb"/>
-                                    <constraint firstAttribute="trailing" secondItem="WTT-Xx-qZN" secondAttribute="trailing" constant="20" id="WqY-yD-Ozw"/>
+                                    <constraint firstAttribute="trailing" secondItem="WTT-Xx-qZN" secondAttribute="trailing" constant="10" id="WqY-yD-Ozw"/>
                                     <constraint firstAttribute="height" constant="22" id="hx2-pp-643"/>
                                     <constraint firstAttribute="bottom" secondItem="WIv-6U-kro" secondAttribute="bottom" id="wMG-Vy-J6N"/>
                                     <constraint firstItem="WTT-Xx-qZN" firstAttribute="centerY" secondItem="DNF-c6-dNf" secondAttribute="centerY" id="yLI-Wc-S7c"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="El costo del viaje se sustraerá de su saldo actual. " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uuq-4n-yJz">
+                                <rect key="frame" x="16" y="452" width="288" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ej1-fv-ORj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.92156862745098034" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1704,10 +1770,13 @@
                             <constraint firstItem="tJj-De-Pxe" firstAttribute="leading" secondItem="Ije-C4-hoa" secondAttribute="leadingMargin" id="Mfa-57-61a"/>
                             <constraint firstItem="1FS-iN-if7" firstAttribute="leading" secondItem="0td-XA-Hmt" secondAttribute="trailing" constant="5" id="P9D-MG-axh"/>
                             <constraint firstItem="nhj-Kg-Efr" firstAttribute="trailing" secondItem="Ije-C4-hoa" secondAttribute="trailingMargin" id="QSV-Fk-dt7"/>
-                            <constraint firstItem="fTX-U7-5wn" firstAttribute="top" secondItem="GI7-EG-iqi" secondAttribute="bottom" constant="35" id="TKs-Rk-8gq"/>
+                            <constraint firstItem="fTX-U7-5wn" firstAttribute="top" secondItem="GI7-EG-iqi" secondAttribute="bottom" constant="5" id="TKs-Rk-8gq"/>
+                            <constraint firstItem="nhj-Kg-Efr" firstAttribute="trailing" secondItem="Uuq-4n-yJz" secondAttribute="trailing" id="Wen-nB-qRe"/>
                             <constraint firstItem="3Hq-Nj-OCp" firstAttribute="leading" secondItem="fTX-U7-5wn" secondAttribute="leading" id="Zhz-RA-Zqp"/>
-                            <constraint firstItem="1FS-iN-if7" firstAttribute="top" secondItem="GI7-EG-iqi" secondAttribute="bottom" constant="5" id="cRE-P4-Tn7"/>
+                            <constraint firstItem="nhj-Kg-Efr" firstAttribute="top" secondItem="Uuq-4n-yJz" secondAttribute="bottom" constant="5" id="bly-v8-3nA"/>
+                            <constraint firstItem="1FS-iN-if7" firstAttribute="top" secondItem="GI7-EG-iqi" secondAttribute="bottom" constant="100" id="cRE-P4-Tn7"/>
                             <constraint firstItem="1FS-iN-if7" firstAttribute="trailing" secondItem="Ije-C4-hoa" secondAttribute="trailingMargin" id="dLk-Ay-EHs"/>
+                            <constraint firstItem="nhj-Kg-Efr" firstAttribute="leading" secondItem="Uuq-4n-yJz" secondAttribute="leading" id="eFc-gm-bQd"/>
                             <constraint firstItem="GI7-EG-iqi" firstAttribute="top" secondItem="DNF-c6-dNf" secondAttribute="bottom" constant="10" id="eoT-YR-8cL"/>
                             <constraint firstItem="bDJ-iS-irh" firstAttribute="leading" secondItem="tJj-De-Pxe" secondAttribute="leading" id="hNu-9e-ZMq"/>
                             <constraint firstItem="bDJ-iS-irh" firstAttribute="top" secondItem="3Hq-Nj-OCp" secondAttribute="bottom" id="sBo-Eq-K4n"/>
@@ -1725,6 +1794,7 @@
                     <connections>
                         <outlet property="askTaxiBtn" destination="nhj-Kg-Efr" id="ccR-ec-Aik"/>
                         <outlet property="distanceLabel" destination="tJj-De-Pxe" id="VYr-ME-fUM"/>
+                        <outlet property="moneyLeftLabel" destination="WTT-Xx-qZN" id="SJ7-1u-zbV"/>
                         <outlet property="timeLabel" destination="bDJ-iS-irh" id="MDS-GV-3wm"/>
                         <outlet property="viewMap" destination="GI7-EG-iqi" id="8Xh-Gx-NeF"/>
                         <segue destination="Qdo-ql-fh5" kind="push" identifier="toFindTaxi" id="dx7-zY-3kb"/>
@@ -1732,7 +1802,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XnC-OT-GsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1927" y="339"/>
+            <point key="canvasLocation" x="1307" y="-132"/>
         </scene>
         <!--Quality Taxi-->
         <scene sceneID="ntV-bE-ur1">
@@ -1915,14 +1985,14 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imo-bN-apk">
-                                        <rect key="frame" x="264" y="3" width="44" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="277.5" y="4" width="40.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saldo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkj-hx-Ie1">
-                                        <rect key="frame" x="224" y="3" width="38" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <rect key="frame" x="240" y="4" width="35.5" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2666666667" green="0.1843137255" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1931,7 +2001,7 @@
                                 <constraints>
                                     <constraint firstItem="Imo-bN-apk" firstAttribute="centerY" secondItem="zkj-hx-Ie1" secondAttribute="centerY" id="3jO-Tt-qmt"/>
                                     <constraint firstAttribute="trailing" secondItem="prX-Vb-deQ" secondAttribute="trailing" id="5Hr-Vc-KXC"/>
-                                    <constraint firstAttribute="trailing" secondItem="Imo-bN-apk" secondAttribute="trailing" constant="20" id="OTq-00-Xne"/>
+                                    <constraint firstAttribute="trailing" secondItem="Imo-bN-apk" secondAttribute="trailing" constant="10" id="OTq-00-Xne"/>
                                     <constraint firstItem="prX-Vb-deQ" firstAttribute="leading" secondItem="Ya3-lt-109" secondAttribute="leading" id="TtV-7e-rbP"/>
                                     <constraint firstAttribute="bottom" secondItem="prX-Vb-deQ" secondAttribute="bottom" id="Y1z-Wu-prb"/>
                                     <constraint firstItem="Imo-bN-apk" firstAttribute="centerY" secondItem="Ya3-lt-109" secondAttribute="centerY" id="gfL-Mu-WeY"/>
@@ -1962,8 +2032,10 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="pqN-et-pZy"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="balanceTitleLabel" destination="zkj-hx-Ie1" id="zDe-1B-hMG"/>
                         <outlet property="driverDetailsContainer" destination="S33-N5-FPU" id="iPP-o8-4v6"/>
                         <outlet property="goToStartBtn" destination="teh-rS-nZy" id="ZdK-04-en4"/>
+                        <outlet property="moneyLeftLabel" destination="Imo-bN-apk" id="7MQ-Sg-6cm"/>
                         <outlet property="titleLabel" destination="Xmw-DX-Kqg" id="FAh-VU-HuD"/>
                         <outlet property="viewMap" destination="64o-XH-SHI" id="9F8-Pm-wK6"/>
                         <segue destination="xje-Nq-VRc" kind="unwind" identifier="unwindToStart" unwindAction="unwindToStart:" id="AdP-sk-nzV"/>
@@ -1972,7 +2044,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q35-eg-PIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xje-Nq-VRc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2371" y="339"/>
+            <point key="canvasLocation" x="1758" y="-132"/>
         </scene>
     </scenes>
     <resources>
@@ -1985,6 +2057,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="coh-x7-M8b"/>
         <segue reference="hkI-F3-j9p"/>
-        <segue reference="HtC-0X-BKU"/>
+        <segue reference="lgJ-xt-MFo"/>
     </inferredMetricsTieBreakers>
 </document>

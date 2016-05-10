@@ -14,6 +14,7 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
     
     @IBOutlet weak var viewMap: GMSMapView!
     
+    @IBOutlet weak var moneyLeftLabel: UILabel!
     @IBOutlet weak var coloniaTextField: UITextField!
     @IBOutlet weak var streetTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -71,6 +72,8 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StartViewController.dismissKeyboard))
 //        view.addGestureRecognizer(tap)
+        
+        moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
     }
     
     func dismissKeyboard(){

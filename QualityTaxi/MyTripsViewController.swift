@@ -1,22 +1,25 @@
 //
-//  CreateAccountViewController.swift
+//  MyTripsViewController.swift
 //  QualityTaxi
 //
-//  Created by Developer on 4/26/16.
+//  Created by Developer on 5/10/16.
 //  Copyright © 2016 Felix Olivares. All rights reserved.
 //
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class MyTripsViewController: UIViewController {
 
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var createBtn: UIButton!
-    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backgroundView.layer.cornerRadius = 10
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,17 +27,7 @@ class CreateAccountViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancelPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { 
-            
-        }
-    }
 
-    @IBAction func createPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { 
-            
-        }
-    }
     /*
     // MARK: - Navigation
 
