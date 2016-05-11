@@ -15,6 +15,8 @@ class FindTaxiViewController: UIViewController {
     let defaults = NSUserDefaults.standardUserDefaults()
     var moneyLeft = Float()
     
+    @IBOutlet weak var infoContainerView: UIView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var balanceTitleLabel: UILabel!
     @IBOutlet weak var titleTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
@@ -32,11 +34,13 @@ class FindTaxiViewController: UIViewController {
 
         self.navigationItem.setHidesBackButton(true, animated: false)
         
+        segmentedControl.alpha = 0
         viewMap.alpha = 0
         viewMap.layer.cornerRadius = 5
         goToStartBtn.layer.cornerRadius = 5
+        goToStartBtn.alpha = 0
+        infoContainerView.alpha = 0
         
-        driverDetailsContainer.alpha = 0
         driverDetailsContainer.layer.cornerRadius = 5
         driverDetailsContainer.layer.borderColor = UIColor(hexString: "BABDBE").CGColor
         driverDetailsContainer.layer.borderWidth = 1
@@ -62,9 +66,10 @@ class FindTaxiViewController: UIViewController {
         EZLoadingActivity.hide()
         taskTimer.invalidate()
         
-        UIView.animateWithDuration(0.3) { 
-            self.viewMap.alpha = 1
-            self.driverDetailsContainer.alpha = 1
+        UIView.animateWithDuration(0.3) {
+            self.segmentedControl.alpha = 1
+            self.infoContainerView.alpha = 1
+            self.goToStartBtn.alpha = 1
             self.titleLabel.text = "Hemos asignado un taxi para ti y ahora mismo va en camino!"
             self.view.layoutIfNeeded()
         }
@@ -98,6 +103,30 @@ class FindTaxiViewController: UIViewController {
         }
     }
     
+    @IBAction func segmentedControlAction(sender: AnyObject) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            print("info")
+            UIView.animateWithDuration(0.3, animations: {
+                self.viewMap.alpha = 0
+                }, completion: { (complete) in
+                    UIView.animateWithDuration(0.2, animations: {
+                        self.infoContainerView.alpha = 1
+                    })
+            })
+        case 1:
+            print("map")
+            UIView.animateWithDuration(0.3, animations: {
+                self.infoContainerView.alpha = 0
+                }, completion: { (complete) in
+                    UIView.animateWithDuration(0.2, animations: {
+                        self.viewMap.alpha = 1
+                    })
+            })
+        default:
+            print("default")
+        }
+    }
     /*
     // MARK: - Navigation
 
