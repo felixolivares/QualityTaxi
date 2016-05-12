@@ -2,6 +2,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - FontAwesome.swift (0.7.3)
   - GoogleMaps (1.13.0)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
@@ -9,11 +10,13 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
+  - FontAwesome.swift
   - GoogleMaps
   - MagicalRecord
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  FontAwesome.swift: f694fe0f667d6d3390b5919cdb0556a27b75d427
   GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
 

@@ -7,6 +7,7 @@ target 'QualityTaxi' do
   pod 'GoogleMaps'
   pod 'ChameleonFramework/Swift'
   pod 'MagicalRecord'
+  pod 'FontAwesome.swift'
 end
 
 target 'QualityTaxiTests' do

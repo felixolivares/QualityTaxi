@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 
-class FindTaxiViewController: UIViewController {
+class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate {
 
     var taskTimer: NSTimer!
     let defaults = NSUserDefaults.standardUserDefaults()
     var moneyLeft = Float()
+    var isMapTabActive:Bool = false
     
+    @IBOutlet weak var firstTab: UIView!
+    @IBOutlet weak var mapIconHorizontalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mapIconLabel: UILabel!
+    
+    @IBOutlet weak var mapIconLabelBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoContainerView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var balanceTitleLabel: UILabel!
@@ -28,13 +35,14 @@ class FindTaxiViewController: UIViewController {
     @IBOutlet weak var viewMap: GMSMapView!
     @IBOutlet weak var goToStartBtn: UIButton!
     @IBOutlet weak var moneyLeftLabel: UILabel!
+    @IBOutlet weak var mapIcon: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.setHidesBackButton(true, animated: false)
         
-        segmentedControl.alpha = 0
+//        segmentedControl.alpha = 0
         viewMap.alpha = 0
         viewMap.layer.cornerRadius = 5
         goToStartBtn.layer.cornerRadius = 5
@@ -51,15 +59,39 @@ class FindTaxiViewController: UIViewController {
         
         moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
         
-        /*
-        if self.view.frame.size.height < 500{
-            print("small screen")
-            imageHeightConstraint.constant = 80.0
-            imageWidthConstraint.constant = 80.0
-            titleTopConstraint.constant = 5
-            imageTopConstraint.constant = 5
-        }*/
+        let tap = UITapGestureRecognizer(target: self, action: #selector(activeMapTab))
+        tap.delegate = self
+        firstTab.addGestureRecognizer(tap)
         
+        mapIcon.font = UIFont.fontAwesomeOfSize(14)
+        mapIcon.text = String.fontAwesomeIconWithCode("fa-map-marker")
+        mapIcon.textColor = UIColor(hexString: "F7F7F7")
+        
+        
+        
+    }
+    
+    func activeMapTab(){
+        if isMapTabActive {
+            //Fade out
+            mapIconHorizontalConstraint.constant += 4
+            mapIconLabelBottomConstraint.constant -= 11
+            UIView.animateWithDuration(0.1) {
+                self.view.layoutIfNeeded()
+                self.mapIconLabel.alpha = 0
+                self.mapIcon.textColor = UIColor(hexString: "7F7F7F")
+            }
+        }else{
+            //Fade in
+            mapIconHorizontalConstraint.constant -= 4
+            mapIconLabelBottomConstraint.constant += 11
+            UIView.animateWithDuration(0.1) {
+                self.mapIconLabel.alpha = 1
+                self.mapIcon.textColor = UIColor(hexString: "F7F7F7")
+                self.view.layoutIfNeeded()
+            }
+        }
+        isMapTabActive = !isMapTabActive
     }
 
     func runTimedCode(){
@@ -67,7 +99,7 @@ class FindTaxiViewController: UIViewController {
         taskTimer.invalidate()
         
         UIView.animateWithDuration(0.3) {
-            self.segmentedControl.alpha = 1
+//            self.segmentedControl.alpha = 1
             self.infoContainerView.alpha = 1
             self.goToStartBtn.alpha = 1
             self.titleLabel.text = "Hemos asignado un taxi para ti y ahora mismo va en camino!"
