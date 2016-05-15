@@ -19,10 +19,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var currentUser:QualityUser!
     let defaults = NSUserDefaults.standardUserDefaults()
+    var devMode:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if devMode {
+            userTextField.text = "pasajero"
+            passwordTextField.text = "1234"
+        }
         QualityUser.MR_truncateAll()
         QualityTrip.MR_truncateAll()
         

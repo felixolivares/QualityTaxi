@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class DestinationViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
+class DestinationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var moneyLeftLabel: UILabel!
     @IBOutlet weak var coloniaTextField: UITextField!

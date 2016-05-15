@@ -105,6 +105,7 @@
 		8B54B4051CDAA27200D7632E /* DriverMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverMainViewController.swift; sourceTree = "<group>"; };
 		8B54B4071CDAD44200D7632E /* DriverLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverLocationViewController.swift; sourceTree = "<group>"; };
 		8B642C001CE46DF700415FF3 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
+		8B642C061CE7A47E00415FF3 /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Semibold.otf"; path = "Fonts/MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
 		8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		8B90C9C41CDD1EDE00F7A91E /* PassengerMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerMenuViewController.swift; sourceTree = "<group>"; };
 		8B90C9C81CDD228F00F7A91E /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -300,6 +301,7 @@
 				30D1D6D11BEAEAF900AE549B /* Main.storyboard */,
 				30D1D6D61BEAEAF900AE549B /* LaunchScreen.storyboard */,
 				8B642C001CE46DF700415FF3 /* MyriadPro-Regular.otf */,
+				8B642C061CE7A47E00415FF3 /* MyriadPro-Semibold.otf */,
 			);
 			name = Views;
 			sourceTree = "<group>";
