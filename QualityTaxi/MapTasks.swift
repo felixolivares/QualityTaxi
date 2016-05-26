@@ -150,12 +150,20 @@ class MapTasks: NSObject {
         let remainingMins = mins % 60
         let remainingSecs = totalDurationInSeconds % 60
         
+//        if days > 0 {
+//            totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+//        }else if remainingHours > 0{
+//            totalDuration = "\(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+//        }else{
+//            totalDuration = "\(remainingMins) mins, \(remainingSecs) secs"
+//        }
+        
         if days > 0 {
-            totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+            totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins"
         }else if remainingHours > 0{
-            totalDuration = "\(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"
+            totalDuration = "\(remainingHours) h, \(remainingMins) mins"
         }else{
-            totalDuration = "\(remainingMins) mins, \(remainingSecs) secs"
+            totalDuration = "\(remainingMins) mins"
         }
         
         

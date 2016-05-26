@@ -21,6 +21,8 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
     @IBOutlet weak var notificationLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var notificationTrailingConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     
     var menuOpened:Bool = false
@@ -35,12 +37,6 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         super.viewDidLoad()
         
         self.setStatusBarStyle(UIStatusBarStyleContrast)
-        
-//        buttonBackground.backgroundColor = UIColor(red: 247, green: 183, blue: 49, alpha: 0.1)
-//        let blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
-//        let blurView = UIVisualEffectView(effect: blur)
-//        blurView.frame = buttonBackground.bounds
-//        buttonBackground.addSubview(blurView)
         
         defaults.setBool(false, forKey: "onGoingTrip")
         print("Fonts \(UIFont.familyNames())")
@@ -71,6 +67,17 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         notificationLeadingConstraint.constant = notifLeadingValue
         notificationTrailingConstraint.constant = notifTrailingValue
         self.view.layoutIfNeeded()
+        
+        if QualityTrip.MR_countOfEntities() == 0 {
+            self.addTrips()
+        }
+        
+        let font = UIFont(name: ".SFUIText-Medium", size: 18)
+        let fontDescription = UIFont(name: ".SFUIText-Medium", size: 15)
+        
+        titleLabel.font = font
+        descriptionLabel.font = fontDescription
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -141,6 +148,43 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         })
     }
     
+    func addTrips(){
+        let trip1:QualityTrip = QualityTrip.MR_createEntity()!
+        trip1.createdAt = "1464119544450"
+        trip1.driverName = "Juan Luna"
+        trip1.carKind = "Accord"
+        trip1.carColor = "Verde"
+        trip1.carPlates = "CMD-1352"
+        trip1.rate = "$40.00"
+        trip1.isActive = false
+        trip1.timeAprox = "7 mins"
+        
+        let trip2:QualityTrip = QualityTrip.MR_createEntity()!
+        trip2.createdAt = "1464120558230"
+        trip2.driverName = "Luis Orozco"
+        trip2.carKind = "Mustang"
+        trip2.carColor = "Rojo"
+        trip2.carPlates = "CMD-2132"
+        trip2.rate = "$35.00"
+        trip2.isActive = false
+        trip2.timeAprox = "9 mins"
+        
+        let trip3:QualityTrip = QualityTrip.MR_createEntity()!
+        trip3.createdAt = "1464120630403"
+        trip3.driverName = "Martin Partida"
+        trip3.carKind = "Tsuru"
+        trip3.carColor = "Blanco"
+        trip3.carPlates = "CMD-5498"
+        trip3.rate = "$30.00"
+        trip3.isActive = false
+        trip3.timeAprox = "12 mins"
+        
+        self.saveContext()
+    }
+    
+    func saveContext(){
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+    }
     /*
     // MARK: - Navigation
 

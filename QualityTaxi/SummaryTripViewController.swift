@@ -12,15 +12,19 @@ class SummaryTripViewController: UIViewController {
 
     @IBOutlet weak var viewMap: GMSMapView!
     
+    @IBOutlet weak var myTripMapView: GMSMapView!
     @IBOutlet weak var moneyLeftLabel: UILabel!
     @IBOutlet weak var askTaxiBtn: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-    var originMarker: GMSMarker!
     
+    var originMarker: GMSMarker!
     var destinationMarker: GMSMarker!
+    var originMarkerMyTrip:GMSMarker!
+    var destinationMarkerMyTrip: GMSMarker!
     
     var routePolyline: GMSPolyline!
+    var routePolylineMyTrip: GMSPolyline!
     
     var currentTripTime:String = ""
     var currentTrip:QualityTrip!
@@ -54,23 +58,47 @@ class SummaryTripViewController: UIViewController {
         
         moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func saveContext(){
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+    }
+    
     func configureMapAndMarkersForRoute() {
         viewMap.camera = GMSCameraPosition.cameraWithTarget(mapTasks.originCoordinate, zoom: 11.0)
         originMarker = GMSMarker(position: self.mapTasks.originCoordinate)
         originMarker.map = self.viewMap
-        originMarker.icon = GMSMarker.markerImageWithColor(UIColor.greenColor())
+        originMarker.icon = GMSMarker.markerImageWithColor(UIColor.greenColor()).imageScaledToSize(CGSizeMake(9.0, 17.0))
         originMarker.title = self.mapTasks.originAddress
         
         destinationMarker = GMSMarker(position: self.mapTasks.destinationCoordinate)
         destinationMarker.map = self.viewMap
-        destinationMarker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+        destinationMarker.icon = GMSMarker.markerImageWithColor(UIColor.redColor()).imageScaledToSize(CGSizeMake(9.0, 17.0))
         destinationMarker.title = self.mapTasks.destinationAddress
+        
+        
+        myTripMapView.camera = GMSCameraPosition.cameraWithTarget(mapTasks.originCoordinate, zoom: 11.0)
+        originMarkerMyTrip = GMSMarker(position: self.mapTasks.originCoordinate)
+        originMarkerMyTrip.map = (self.myTripMapView)
+        originMarkerMyTrip.icon = GMSMarker.markerImageWithColor(UIColor.greenColor()).imageScaledToSize(CGSizeMake(9.0, 17.0))
+//        originMarkerMyTrip.icon = UIImage.init(named: "pin")
+        originMarkerMyTrip.title = self.mapTasks.originAddress
+        
+        destinationMarkerMyTrip = GMSMarker(position: self.mapTasks.destinationCoordinate)
+        destinationMarkerMyTrip.map = self.myTripMapView
+        destinationMarkerMyTrip.icon = GMSMarker.markerImageWithColor(UIColor.redColor()).imageScaledToSize(CGSizeMake(9.0, 17.0))
+        destinationMarkerMyTrip.title = self.mapTasks.destinationAddress
     }
     
     func drawRoute() {
@@ -83,6 +111,15 @@ class SummaryTripViewController: UIViewController {
         let bounds:GMSCoordinateBounds = GMSCoordinateBounds.init(path: path)
         let update:GMSCameraUpdate = GMSCameraUpdate.fitBounds(bounds)
         viewMap.moveCamera(update)
+        
+        //
+        let routeMyTrip = mapTasks.overviewPolyline["points"] as! String
+        let pathMyTrip = GMSPath(fromEncodedPath: routeMyTrip)!
+        routePolylineMyTrip = GMSPolyline(path: pathMyTrip)
+        routePolylineMyTrip.map = myTripMapView
+        let boundsMyTrip:GMSCoordinateBounds = GMSCoordinateBounds.init(path: pathMyTrip)
+        let updateMyTrip:GMSCameraUpdate = GMSCameraUpdate.fitBounds(boundsMyTrip)
+        myTripMapView.moveCamera(updateMyTrip)
     }
 
     func displayRouteInfo() {
@@ -90,10 +127,37 @@ class SummaryTripViewController: UIViewController {
         print("distance: \(mapTasks.totalDistance) duration: \(mapTasks.totalDuration)")
         distanceLabel.text = mapTasks.totalDistance
         timeLabel.text = mapTasks.totalDuration
+        currentTrip.totalDistance = mapTasks.totalDistance
+        currentTrip.timeAprox = mapTasks.totalDuration
+        currentTrip.rate = "$30.00"
+        currentTrip.driverName = "Pedro Lopez"
+        currentTrip.carKind = "Altima"
+        currentTrip.carColor = "Amarillo"
+        currentTrip.carPlates = "CMD-3246"
+        self.saveContext()
+        
     }
     
 
     @IBAction func askTaxiButtonPressed(sender: AnyObject) {
+        defaults.setObject(currentTripTime, forKey: "currentTrip")
+        defaults.synchronize()
+        
+        myTripMapView.hidden = false
+        UIGraphicsBeginImageContextWithOptions(myTripMapView.frame.size, false, 0.0)
+        self.myTripMapView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        guard let imageData = UIImageJPEGRepresentation(image, 1) else {
+            // handle failed conversion
+            print("jpg error")
+            return
+        }
+        print("image saved = \(image)")
+        currentTrip.tripImage = imageData
+        self.saveContext()
+        UIGraphicsEndImageContext()
+        myTripMapView.hidden = true
+        
         performSegueWithIdentifier("toFindTaxi", sender: self)
         /*
         let popupView = createPopupview()
@@ -165,6 +229,11 @@ class SummaryTripViewController: UIViewController {
         performSegueWithIdentifier("toFindTaxi", sender: self)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let vc:FindTaxiViewController = segue.destinationViewController as! FindTaxiViewController
+        vc.currentTripTime = self.currentTripTime
+        vc.fromMyTrips = false
+    }
     /*
     // MARK: - Navigation
 

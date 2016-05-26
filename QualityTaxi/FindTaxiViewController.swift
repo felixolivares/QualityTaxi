@@ -24,17 +24,34 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     var locationMarker: GMSMarker!
     var bounds:GMSCoordinateBounds!
     var update:GMSCameraUpdate!
+    var currentTripTime:String = ""
+    var currentTrip:QualityTrip!
+    var fromMyTrips:Bool!
     
+    //Tab bar
+    @IBOutlet weak var secondIconLabelBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var secondIconHorizontalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var secondIconLabel: UILabel!
+    @IBOutlet weak var secondIcon: UILabel!
+    @IBOutlet weak var firstIconHorizontalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var firstIconLabel: UILabel!
+    @IBOutlet weak var firstIcon: UILabel!
     @IBOutlet weak var secondTab: UIView!
-    @IBOutlet weak var informationIconLabel: UILabel!
-    @IBOutlet weak var informationIcon: UILabel!
-    @IBOutlet weak var informationIconLabelBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var informationIconHorizontalConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var secondIconLabel: UILabel!
+//    @IBOutlet weak var secondIcon: UILabel!
+//    @IBOutlet weak var secondIconLabelBottomConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var secondIconHorizontalConstraint: NSLayoutConstraint!
     @IBOutlet weak var firstTab: UIView!
-    @IBOutlet weak var mapIconHorizontalConstraint: NSLayoutConstraint!
-    @IBOutlet weak var mapIconLabel: UILabel!
+//    @IBOutlet weak var firstIconHorizontalConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var firstIconLabel: UILabel!
     
-    @IBOutlet weak var mapIconLabelBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainContainerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var timeAproxLabel: UILabel!
+    @IBOutlet weak var driverName: UILabel!
+    @IBOutlet weak var carPlatesLabel: UILabel!
+    @IBOutlet weak var carColorLabel: UILabel!
+    @IBOutlet weak var carKindLabel: UILabel!
+    @IBOutlet weak var firstIconLabelBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var infoContainerView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var balanceTitleLabel: UILabel!
@@ -48,13 +65,11 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     @IBOutlet weak var viewMap: GMSMapView!
     @IBOutlet weak var goToStartBtn: UIButton!
     @IBOutlet weak var moneyLeftLabel: UILabel!
-    @IBOutlet weak var mapIcon: UILabel!
+//    @IBOutlet weak var firstIcon: UILabel!
     @IBOutlet weak var mainContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.setHidesBackButton(true, animated: false)
         
 //        segmentedControl.alpha = 0
         viewMap.delegate = self
@@ -67,44 +82,69 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         driverDetailsContainer.layer.cornerRadius = 5
         driverDetailsContainer.layer.borderColor = UIColor(hexString: "D3D5D5").CGColor
         driverDetailsContainer.layer.borderWidth = 1
-        // Do any additional setup after loading the view.
-        EZLoadingActivity.show("Solicitando Taxi", disableUI: false)
-        
-        taskTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(FindTaxiViewController.runTimedCode), userInfo: nil, repeats: true)
         
         moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
         
-        let tapMap = UITapGestureRecognizer(target: self, action: #selector(pressedMapTab))
-        tapMap.delegate = self
-        firstTab.addGestureRecognizer(tapMap)
+        let tapFirst = UITapGestureRecognizer(target: self, action: #selector(pressedFirstTab))
+        tapFirst.delegate = self
+        firstTab.addGestureRecognizer(tapFirst)
         
-        let tapInformation = UITapGestureRecognizer(target: self, action: #selector(pressedInformationTab))
-        tapInformation.delegate = self
-        secondTab.addGestureRecognizer(tapInformation)
+        let tapSecond = UITapGestureRecognizer(target: self, action: #selector(pressedSecondTab))
+        tapSecond.delegate = self
+        secondTab.addGestureRecognizer(tapSecond)
             
         
-        mapIcon.font = UIFont.fontAwesomeOfSize(14)
-        mapIcon.text = String.fontAwesomeIconWithCode("fa-map-marker")
-        mapIcon.textColor = UIColor(hexString: "F7F7F7")
-        mapIconLabel.alpha = 0
+        firstIcon.font = UIFont.fontAwesomeOfSize(14)
+        firstIcon.text = String.fontAwesomeIconWithCode("fa-map-marker")
+        firstIcon.textColor = UIColor(hexString: "F7F7F7")
+        firstIconLabel.alpha = 0
         
-        informationIcon.font = UIFont.fontAwesomeOfSize(14)
-        informationIcon.text = String.fontAwesomeIconWithCode("fa-taxi")
-        informationIcon.textColor = UIColor(hexString: "F7F7F7")
-        informationIconLabel.alpha = 0
+        secondIcon.font = UIFont.fontAwesomeOfSize(14)
+        secondIcon.text = String.fontAwesomeIconWithCode("fa-taxi")
+        secondIcon.textColor = UIColor(hexString: "F7F7F7")
+        secondIconLabel.alpha = 0
         
         
-        self.mapIconLabel.alpha = 0
-        self.mapIcon.textColor = UIColor(hexString: "F7F7F7")
+        self.firstIconLabel.alpha = 0
+        self.firstIcon.textColor = UIColor(hexString: "F7F7F7")
         
         //Information tab is always hidden at the begining
-        informationIconLabel.alpha = 0
-        informationIcon.textColor = UIColor(hexString: "7F7F7F")
+        secondIconLabel.alpha = 0
+        secondIcon.textColor = UIColor(hexString: "7F7F7F")
         
         mainContainer.layer.borderWidth = 1
         mainContainer.layer.borderColor = UIColor(hexString: "E4E4E4").CGColor
         
         self.addLocations()
+        
+        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
+        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
+        let allTrips = QualityTrip.MR_executeFetchRequest(request)
+        currentTrip = allTrips?.first as! QualityTrip
+        
+        driverName.text = currentTrip.driverName
+        carKindLabel.text = currentTrip.carKind
+        carColorLabel.text = currentTrip.carColor
+        carPlatesLabel.text = currentTrip.carPlates
+        timeAproxLabel.text = currentTrip.timeAprox
+        
+        if !fromMyTrips {
+            self.navigationItem.setHidesBackButton(true, animated: false)
+            EZLoadingActivity.show("Solicitando Taxi", disableUI: false)
+            mainContainerBottomConstraint.constant = 65
+            taskTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(FindTaxiViewController.runTimedCode), userInfo: nil, repeats: true)
+        }else{
+            goToStartBtn.hidden = true
+            mainContainerBottomConstraint.constant = 10
+            let isActive:Bool = currentTrip.isActive as! Bool
+            self.showElementsFromMyTrips(isActive)
+        }
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.timerLocations.invalidate()
     }
     
     func addLocations(){
@@ -161,13 +201,13 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         viewMap.moveCamera(update)
     }
     
-    func pressedMapTab(){
+    func pressedFirstTab(){
         if !isMapTabActive {
             //Map fade in
-            self.mapFadeIn()
+            self.firstFadeIn()
             
             //Information fade out
-            self.informationFadeOut()
+            self.secondFadeOut()
             
             UIView.animateWithDuration(0.2, animations: {
                 self.infoContainerView.alpha = 0
@@ -180,13 +220,13 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         }
     }
     
-    func pressedInformationTab(){
+    func pressedSecondTab(){
         if !isInformationTabActive{
             //Information fade out
-            self.informationFadeIn()
+            self.secondFadeIn()
             
             //Map fade in
-            self.mapFadeOut()
+            self.firstFadeOut()
             
             UIView.animateWithDuration(0.2, animations: {
                 self.viewMap.alpha = 0
@@ -199,45 +239,45 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         }
     }
 
-    func mapFadeIn(){
-        mapIconHorizontalConstraint.constant -= 4
-        mapIconLabelBottomConstraint.constant += 7
+    func firstFadeIn(){
+        firstIconHorizontalConstraint.constant -= 4
+        firstIconLabelBottomConstraint.constant += 7
         UIView.animateWithDuration(0.2) {
-            self.mapIconLabel.alpha = 1
-            self.mapIcon.textColor = UIColor(hexString: "F7F7F7")
+            self.firstIconLabel.alpha = 1
+            self.firstIcon.textColor = UIColor(hexString: "F7F7F7")
             self.view.layoutIfNeeded()
         }
         isMapTabActive = true
     }
     
-    func mapFadeOut(){
-        mapIconHorizontalConstraint.constant += 4
-        mapIconLabelBottomConstraint.constant -= 7
+    func firstFadeOut(){
+        firstIconHorizontalConstraint.constant += 4
+        firstIconLabelBottomConstraint.constant -= 7
         UIView.animateWithDuration(0.2) {
             self.view.layoutIfNeeded()
-            self.mapIconLabel.alpha = 0
-            self.mapIcon.textColor = UIColor(hexString: "7F7F7F")
+            self.firstIconLabel.alpha = 0
+            self.firstIcon.textColor = UIColor(hexString: "7F7F7F")
         }
         isMapTabActive = false
     }
     
-    func informationFadeOut(){
-        informationIconHorizontalConstraint.constant += 4
-        informationIconLabelBottomConstraint.constant -= 7
+    func secondFadeOut(){
+        secondIconHorizontalConstraint.constant += 4
+        secondIconLabelBottomConstraint.constant -= 7
         UIView.animateWithDuration(0.2) {
             self.view.layoutIfNeeded()
-            self.informationIconLabel.alpha = 0
-            self.informationIcon.textColor = UIColor(hexString: "7F7F7F")
+            self.secondIconLabel.alpha = 0
+            self.secondIcon.textColor = UIColor(hexString: "7F7F7F")
         }
         isInformationTabActive = false
     }
     
-    func informationFadeIn(){
-        informationIconHorizontalConstraint.constant -= 4
-        informationIconLabelBottomConstraint.constant += 7
+    func secondFadeIn(){
+        secondIconHorizontalConstraint.constant -= 4
+        secondIconLabelBottomConstraint.constant += 7
         UIView.animateWithDuration(0.2) {
-            self.informationIconLabel.alpha = 1
-            self.informationIcon.textColor = UIColor(hexString: "F7F7F7")
+            self.secondIconLabel.alpha = 1
+            self.secondIcon.textColor = UIColor(hexString: "F7F7F7")
             self.view.layoutIfNeeded()
         }
         isInformationTabActive = true
@@ -254,11 +294,30 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
             self.titleLabel.text = "Hemos asignado un taxi para ti y ahora mismo va en camino!"
             self.view.layoutIfNeeded()
             self.locationMarker = GMSMarker(position: self.locations[0] as CLLocationCoordinate2D)
-            self.timerLocations = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(self.updateTaxiLocation), userInfo: nil, repeats: true)
+            self.timerLocations = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateTaxiLocation), userInfo: nil, repeats: true)
+            self.currentTrip.isActive = true
+            self.saveContext()
         }
-        self.mapFadeIn()
+        self.firstFadeIn()
         defaults.setBool(true, forKey: "onGoingTrip")
         self.showNewBalance()
+    }
+    
+    func showElementsFromMyTrips(isActive:Bool){
+        UIView.animateWithDuration(0.3) {
+            if isActive{
+                self.titleLabel.text = "El taxi que hemos asignado para ti ahora mismo va en camino!"
+            }else{
+                self.titleLabel.text = "Esta es la información de tu viaje previo."
+            }
+            self.viewMap.alpha = 1
+            self.goToStartBtn.alpha = 1
+            self.view.layoutIfNeeded()
+            self.locationMarker = GMSMarker(position: self.locations[0] as CLLocationCoordinate2D)
+            self.timerLocations = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateTaxiLocation), userInfo: nil, repeats: true)
+            self.saveContext()
+        }
+        self.firstFadeIn()
     }
     
     func taxiLocationDetachThread(){
@@ -273,6 +332,10 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     
     @IBAction func goToStartPressed(sender: AnyObject) {
         performSegueWithIdentifier("unwindToStart", sender: self)
+    }
+    
+    func saveContext(){
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
     
     func showNewBalance(){
@@ -336,7 +399,7 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     func setupLocationMarker(coordinate:CLLocationCoordinate2D, marker:GMSMarker){
         marker.position = coordinate
         marker.map = viewMap
-        UIView.animateWithDuration(1) {
+        UIView.animateWithDuration(2) {
             marker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
         }
         marker.opacity = 0.75

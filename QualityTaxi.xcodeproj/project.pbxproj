@@ -23,10 +23,14 @@
 		30D1D7381BEFAA6500AE549B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7371BEFAA6500AE549B /* MapKit.framework */; };
 		30D1D73A1BEFAA7000AE549B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7391BEFAA7000AE549B /* CoreLocation.framework */; };
 		8B0ADF041CE1AF1100E074C2 /* MyTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0ADF031CE1AF1100E074C2 /* MyTripsViewController.swift */; };
+		8B0E753D1CF4E9E60067BDBB /* QualityTrip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E753B1CF4E9E60067BDBB /* QualityTrip+CoreDataProperties.swift */; };
+		8B0E753E1CF4E9E60067BDBB /* QualityTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E753C1CF4E9E60067BDBB /* QualityTrip.swift */; };
 		8B17BE001CDE484E00440C44 /* DriverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17BDFF1CDE484E00440C44 /* DriverMenuViewController.swift */; };
 		8B4CB4661CD1862D003AC9D6 /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */; };
 		8B4CB46A1CD2599C003AC9D6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */; };
 		8B4CB46C1CD2998A003AC9D6 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */; };
+		8B52CBDB1CEE75F00020B9D2 /* MyTripsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52CBD91CEE75F00020B9D2 /* MyTripsTableViewCell.swift */; };
+		8B52CBDC1CEE75F00020B9D2 /* MyTripsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B52CBDA1CEE75F00020B9D2 /* MyTripsTableViewCell.xib */; };
 		8B54B4061CDAA27200D7632E /* DriverMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B54B4051CDAA27200D7632E /* DriverMainViewController.swift */; };
 		8B54B4081CDAD44200D7632E /* DriverLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B54B4071CDAD44200D7632E /* DriverLocationViewController.swift */; };
 		8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */; };
@@ -43,8 +47,6 @@
 		8B9714D51CD47D510065BF58 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714D41CD47D510065BF58 /* TripsViewController.swift */; };
 		8B9714D71CD47F340065BF58 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714D61CD47F340065BF58 /* DataModel.swift */; };
 		8B9714DA1CD48C830065BF58 /* ClientTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9714D91CD48C830065BF58 /* ClientTrip.swift */; };
-		8B9745F11CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */; };
-		8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */; };
 		8B9745F31CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */; };
 		8B9745F41CD2E30B00F4A8D9 /* QualityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */; };
 		8B9A632B1CD7F1A5002F00BF /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9A63291CD7F1A5002F00BF /* ResultsTableViewCell.swift */; };
@@ -98,10 +100,14 @@
 		3769D420F5BF79A37BC1BF3E /* Pods-QualityTaxi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.release.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.release.xcconfig"; sourceTree = "<group>"; };
 		46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QualityTaxi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0ADF031CE1AF1100E074C2 /* MyTripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
+		8B0E753B1CF4E9E60067BDBB /* QualityTrip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityTrip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8B0E753C1CF4E9E60067BDBB /* QualityTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityTrip.swift; sourceTree = "<group>"; };
 		8B17BDFF1CDE484E00440C44 /* DriverMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverMenuViewController.swift; sourceTree = "<group>"; };
 		8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
 		8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
+		8B52CBD91CEE75F00020B9D2 /* MyTripsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTripsTableViewCell.swift; sourceTree = "<group>"; };
+		8B52CBDA1CEE75F00020B9D2 /* MyTripsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTripsTableViewCell.xib; sourceTree = "<group>"; };
 		8B54B4051CDAA27200D7632E /* DriverMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverMainViewController.swift; sourceTree = "<group>"; };
 		8B54B4071CDAD44200D7632E /* DriverLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverLocationViewController.swift; sourceTree = "<group>"; };
 		8B642C001CE46DF700415FF3 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
@@ -121,8 +127,6 @@
 		8B9714D41CD47D510065BF58 /* TripsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		8B9714D61CD47F340065BF58 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		8B9714D91CD48C830065BF58 /* ClientTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTrip.swift; sourceTree = "<group>"; };
-		8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityTrip+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityTrip.swift; sourceTree = "<group>"; };
 		8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityUser.swift; sourceTree = "<group>"; };
 		8B9A63291CD7F1A5002F00BF /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
@@ -251,8 +255,8 @@
 		30D1D7341BED74C800AE549B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8B9745ED1CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift */,
-				8B9745EE1CD2E30B00F4A8D9 /* QualityTrip.swift */,
+				8B0E753B1CF4E9E60067BDBB /* QualityTrip+CoreDataProperties.swift */,
+				8B0E753C1CF4E9E60067BDBB /* QualityTrip.swift */,
 				8B9745EF1CD2E30B00F4A8D9 /* QualityUser+CoreDataProperties.swift */,
 				8B9745F01CD2E30B00F4A8D9 /* QualityUser.swift */,
 				30D1D7311BED74C000AE549B /* QualityTaxi.xcdatamodeld */,
@@ -289,6 +293,8 @@
 				8B9A632A1CD7F1A5002F00BF /* ResultsTableViewCell.xib */,
 				8B90C9C81CDD228F00F7A91E /* MenuTableViewCell.swift */,
 				8B90C9C91CDD228F00F7A91E /* MenuTableViewCell.xib */,
+				8B52CBD91CEE75F00020B9D2 /* MyTripsTableViewCell.swift */,
+				8B52CBDA1CEE75F00020B9D2 /* MyTripsTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -474,6 +480,7 @@
 				8B90C9CB1CDD228F00F7A91E /* MenuTableViewCell.xib in Resources */,
 				30D1D6D51BEAEAF900AE549B /* Assets.xcassets in Resources */,
 				8B9A632C1CD7F1A5002F00BF /* ResultsTableViewCell.xib in Resources */,
+				8B52CBDC1CEE75F00020B9D2 /* MyTripsTableViewCell.xib in Resources */,
 				304BEB9C1BFC0D5D008383FA /* OpenSans-Bold.ttf in Resources */,
 				8B9714D31CD4754A0065BF58 /* TripTableViewCell.xib in Resources */,
 				30D1D6D31BEAEAF900AE549B /* Main.storyboard in Resources */,
@@ -558,8 +565,8 @@
 				8B9714D71CD47F340065BF58 /* DataModel.swift in Sources */,
 				8B0ADF041CE1AF1100E074C2 /* MyTripsViewController.swift in Sources */,
 				8B17BE001CDE484E00440C44 /* DriverMenuViewController.swift in Sources */,
+				8B52CBDB1CEE75F00020B9D2 /* MyTripsTableViewCell.swift in Sources */,
 				8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */,
-				8B9745F21CD2E30B00F4A8D9 /* QualityTrip.swift in Sources */,
 				30D1D7021BEAF03400AE549B /* ENSideMenuNavigationController.swift in Sources */,
 				8B9A632B1CD7F1A5002F00BF /* ResultsTableViewCell.swift in Sources */,
 				8B9714C81CD3D6940065BF58 /* SummaryTripViewController.swift in Sources */,
@@ -573,6 +580,7 @@
 				8B90C9CA1CDD228F00F7A91E /* MenuTableViewCell.swift in Sources */,
 				8B4CB46A1CD2599C003AC9D6 /* UIViewExtension.swift in Sources */,
 				8B9745F41CD2E30B00F4A8D9 /* QualityUser.swift in Sources */,
+				8B0E753E1CF4E9E60067BDBB /* QualityTrip.swift in Sources */,
 				8B90C9D11CDDD8E800F7A91E /* UIViewController+STZPopupView.swift in Sources */,
 				8B54B4081CDAD44200D7632E /* DriverLocationViewController.swift in Sources */,
 				8B9714CC1CD410500065BF58 /* EZLoadingActivity.swift in Sources */,
@@ -581,8 +589,8 @@
 				8BCBBC591CDC24C700DE1126 /* SWRevealViewController.m in Sources */,
 				8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */,
 				8B54B4061CDAA27200D7632E /* DriverMainViewController.swift in Sources */,
+				8B0E753D1CF4E9E60067BDBB /* QualityTrip+CoreDataProperties.swift in Sources */,
 				30D1D7331BED74C000AE549B /* QualityTaxi.xcdatamodeld in Sources */,
-				8B9745F11CD2E30B00F4A8D9 /* QualityTrip+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
