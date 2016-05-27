@@ -84,13 +84,6 @@ class MyTripsViewController: UIViewController, UITableViewDataSource, UITableVie
         secondIcon.textColor = UIColor(hexString: "F7F7F7")
         secondIconLabel.alpha = 0
         
-        
-//        self.firstIconLabel.alpha = 1
-//        self.firstIcon.textColor = UIColor(hexString: "F7F7F7")
-//        
-//        //Information tab is always hidden at the begining
-//        secondIconLabel.alpha = 0
-//        secondIcon.textColor = UIColor(hexString: "7F7F7F")
     }
     
     override func viewWillAppear(animated: Bool) {

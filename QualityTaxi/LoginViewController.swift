@@ -17,6 +17,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var accessTitleLabel: UILabel!
     
+    @IBOutlet weak var createAccountTitleLabel: UILabel!
+    @IBOutlet weak var registerContainer: UIView!
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var acceptBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var forgotPassTitleLabel: UILabel!
+    
+    @IBOutlet weak var cancelPassBtn: UIButton!
+    @IBOutlet weak var sendPassBtn: UIButton!
     var currentUser:QualityUser!
     let defaults = NSUserDefaults.standardUserDefaults()
     var devMode:Bool = true
@@ -31,11 +40,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         QualityUser.MR_truncateAll()
         QualityTrip.MR_truncateAll()
         
+        forgotPassTitleLabel.alpha = 0
+        createAccountTitleLabel.alpha = 0
+        registerContainer.layer.cornerRadius = 10
+        registerContainer.alpha = 0
         backgroundView.layer.cornerRadius = 10
         lostPassBackground.alpha = 0
         lostPassBackground.layer.cornerRadius = 10
         userTextField.delegate = self
         passwordTextField.delegate = self
+        
+        loginBtn.layer.cornerRadius = 5
+        acceptBtn.layer.cornerRadius = 5
+        cancelBtn.layer.cornerRadius = 5
+        sendPassBtn.layer.cornerRadius = 5
+        cancelPassBtn.layer.cornerRadius = 5
         
         defaults.setFloat(55.00, forKey: "moneyLeft")
         defaults.synchronize()
@@ -81,6 +100,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createAccountPressed(sender: AnyObject) {
+        UIView.animateWithDuration(0.4, animations: {
+            self.backgroundView.alpha = 0
+            self.lostPassBackground.alpha = 0
+            self.accessTitleLabel.alpha = 0
+        }) { (Value) in
+            UIView.animateWithDuration(0.4, animations: {
+                self.registerContainer.alpha = 1
+                self.createAccountTitleLabel.alpha = 1
+            })
+        }
     }
 
     //Mark - Unwind segues
@@ -90,17 +119,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func forgotPassPressed(sender: AnyObject) {
         UIView.animateWithDuration(0.4, animations: { 
             self.backgroundView.alpha = 0
+            self.registerContainer.alpha = 0
+            self.createAccountTitleLabel.alpha = 0
             self.accessTitleLabel.alpha = 0
             }) { (Value) in
                 UIView.animateWithDuration(0.4, animations: { 
                     self.lostPassBackground.alpha = 1
+                    self.forgotPassTitleLabel.alpha = 1
                 })
         }
     }
     
+    //Recover pass
     @IBAction func sendToRecoverPass(sender: AnyObject) {
         UIView.animateWithDuration(0.4, animations: { 
             self.lostPassBackground.alpha = 0
+            self.forgotPassTitleLabel.alpha = 0
             }) { (value) in
                 UIView.animateWithDuration(0.4, animations: { 
                     self.backgroundView.alpha = 1
@@ -108,11 +142,46 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 })
         }
     }
+    @IBAction func cancelRecoverPassPressed(sender: AnyObject) {
+        UIView.animateWithDuration(0.4, animations: {
+            self.lostPassBackground.alpha = 0
+            self.forgotPassTitleLabel.alpha = 0
+        }) { (value) in
+            UIView.animateWithDuration(0.4, animations: {
+                self.backgroundView.alpha = 1
+                self.accessTitleLabel.alpha = 1
+            })
+        }
+    }
     
     func saveContext(){
-//        NSManagedObjectContext.defaultContext().saveToPersistentStoreAndWait()
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
+    
+    //Register
+    @IBAction func acceptPressed(sender: AnyObject) {
+        UIView.animateWithDuration(0.4, animations: {
+            self.registerContainer.alpha = 0
+            self.createAccountTitleLabel.alpha = 0
+        }) { (Value) in
+            UIView.animateWithDuration(0.4, animations: {
+                self.backgroundView.alpha = 1
+                self.accessTitleLabel.alpha = 1
+            })
+        }
+    }
+    @IBAction func cancelPressed(sender: AnyObject) {
+        UIView.animateWithDuration(0.4, animations: {
+            self.registerContainer.alpha = 0
+            self.createAccountTitleLabel.alpha = 0
+        }) { (Value) in
+            UIView.animateWithDuration(0.4, animations: {
+                self.backgroundView.alpha = 1
+                self.accessTitleLabel.alpha = 1
+            })
+        }
+    }
+    
     
     /*
     // MARK: - Navigation
