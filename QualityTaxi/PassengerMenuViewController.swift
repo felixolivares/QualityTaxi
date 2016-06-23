@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class PassengerMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var menuTableView: UITableView!
     
-    let titles:[String] = ["Inicio", "Mis Viajes", "Cerrar Sesión"]
+    let titles:[String] = ["Inicio", "Mis Viajes", "Perfil", "Acerca de", "Ajustes", "Cerrar Sesión"]
     let kMenuCellIdentifier = "MenuCellIdentifier"
     
     override func viewDidLoad() {
@@ -44,6 +45,23 @@ class PassengerMenuViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:MenuTableViewCell = tableView.dequeueReusableCellWithIdentifier(kMenuCellIdentifier) as! MenuTableViewCell
         cell.titleLabel.text = titles[indexPath.row]
+        
+        switch indexPath.row{
+        case 0:
+            cell.iconLabel.text = String.fontAwesomeIconWithCode("fa-taxi")
+        case 1:
+            cell.iconLabel.text = String.fontAwesomeIconWithCode("fa-road")
+        case 2:
+            cell.iconLabel.text = String.fontAwesomeIconWithCode("fa-user")
+        case 3:
+            cell.iconLabel.text = String.fontAwesomeIconWithCode("fa-info-circle")
+        case 4:
+            cell.iconLabel.text = String.fontAwesomeIconWithCode("fa-sliders")
+        default:
+            cell.iconLabel.text = String.fontAwesomeIconWithCode("fa-sign-out")
+        }
+        cell.iconLabel.font = UIFont.fontAwesomeOfSize(17)
+        cell.iconLabel.textColor = UIColor(hexString: "F7F7F7")
         return cell
     }
     
@@ -52,12 +70,13 @@ class PassengerMenuViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         switch indexPath.row{
-        case 0:
+        case 0:            
             performSegueWithIdentifier("toPassenger", sender: self)
         case 1:
             performSegueWithIdentifier("toMyTrips", sender: self)
-        case 2:
+        case titles.count - 1:
             self.logout()
         default:
             print("Menu option invalid")
@@ -65,11 +84,13 @@ class PassengerMenuViewController: UIViewController, UITableViewDataSource, UITa
         let cell:MenuTableViewCell = tableView.cellForRowAtIndexPath(indexPath) as! MenuTableViewCell
         cell.selectionStyle = UITableViewCellSelectionStyle.Gray
         cell.titleLabel.textColor = UIColor(hexString: "2C2A2A")
+        cell.iconLabel.textColor = UIColor(hexString: "2C2A2A")
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell:MenuTableViewCell = tableView.cellForRowAtIndexPath(indexPath) as! MenuTableViewCell
         cell.titleLabel.textColor = UIColor(hexString: "ffffff")
+        cell.iconLabel.textColor = UIColor(hexString: "F7F7F7")
     }
     
     func logout(){

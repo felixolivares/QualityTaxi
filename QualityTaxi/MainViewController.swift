@@ -9,7 +9,7 @@
 import UIKit
 import ChameleonFramework
 
-class MainViewController: UIViewController, ENSideMenuDelegate {
+class MainViewController: UIViewController, ENSideMenuDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var buttonBackground: UIView!
     
@@ -31,12 +31,28 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
     var notifLeadingValue = CGFloat()
     var notifTrailingValue = CGFloat()
     var balanceTrailingValue = CGFloat()
-    
+    var viewTouchOverlayFull = UIView()
+    var shadowView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setStatusBarStyle(UIStatusBarStyleContrast)
+        
+        viewTouchOverlayFull = UIView(frame: self.view.frame)
+        viewTouchOverlayFull.backgroundColor = UIColor.clearColor()
+        self.view.addSubview(viewTouchOverlayFull)
+        let tapOverlay = UITapGestureRecognizer(target: self, action: #selector(touchViewOverlayPressed))
+        tapOverlay.delegate = self
+        viewTouchOverlayFull.addGestureRecognizer(tapOverlay)
+        viewTouchOverlayFull.hidden = true
+        
+        shadowView = UIView(frame: CGRectMake(UIScreen.mainScreen().bounds.origin.x,UIScreen.mainScreen().bounds.origin.y,5,UIScreen.mainScreen().bounds.size.height))
+//        shadowView.backgroundColor = UIColor(hexString: "2C2A2A")
+        shadowView.backgroundColor = GradientColor(UIGradientStyle.LeftToRight, frame: shadowView.frame, colors: [UIColor.blackColor(), UIColor.clearColor()])
+        shadowView.hidden = true
+        self.navigationController!.view.addSubview(shadowView)
+        
         
         defaults.setBool(false, forKey: "onGoingTrip")
         print("Fonts \(UIFont.familyNames())")
@@ -50,9 +66,11 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         }
         
         if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+//            menuButton.target = self.revealViewController()
+//            menuButton.action = #selector(self.menuPressed)
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.revealViewController().toggleAnimationType = .Spring
+            self.revealViewController().rearViewRevealOverdraw = 0
         }
         
         //Button is big for clickable area, will shrink image to make it look small
@@ -83,6 +101,7 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
     override func viewWillAppear(animated: Bool) {
         moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
     }
+
     
     override func viewDidAppear(animated: Bool) {
         let onGoingTrip = defaults.boolForKey("onGoingTrip")
@@ -113,8 +132,22 @@ class MainViewController: UIViewController, ENSideMenuDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    func touchViewOverlayPressed(){
+        viewTouchOverlayFull.hidden = true
+        shadowView.hidden = true
+        self.revealViewController().revealToggle(self)
+        menuOpened = !menuOpened
+    }
+    
     @IBAction func openMenuPressed(sender: AnyObject) {
-        print("menu pressed")
+        self.revealViewController().revealToggle(self)
+        if !menuOpened {
+            viewTouchOverlayFull.hidden = false
+            shadowView.hidden = false
+        }else{
+            viewTouchOverlayFull.hidden = true
+            shadowView.hidden = true
+        }
         menuOpened = !menuOpened
     }
     

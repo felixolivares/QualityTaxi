@@ -57,6 +57,7 @@ static CGFloat statusBarAdjustment( UIView* view )
 @property (nonatomic, readonly) UIView *rearView;
 @property (nonatomic, readonly) UIView *rightView;
 @property (nonatomic, readonly) UIView *frontView;
+@property (nonatomic, readonly) UIView *customShadow;
 @property (nonatomic, assign) BOOL disableLayout;
 
 @end
@@ -92,9 +93,11 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     
         _frontView = [[UIView alloc] initWithFrame:bounds];
         _frontView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        [self reloadShadow];
+//        _customShadow = [[UIView alloc] initWithFrame:CGRectMake(self.frame.origin.x - 2, self.frame.origin.y, 1, self.bounds.size.height)];
+//        [self reloadShadow];
 
         [self addSubview:_frontView];
+        [self addSubview:_customShadow];
     }
     return self;
 }
@@ -103,6 +106,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 - (void)reloadShadow
 {
     CALayer *frontViewLayer = _frontView.layer;
+//    CALayer *frontViewLayer = _customShadow.layer;
     frontViewLayer.shadowColor = [_c.frontViewShadowColor CGColor];
     frontViewLayer.shadowOpacity = _c.frontViewShadowOpacity;
     frontViewLayer.shadowOffset = _c.frontViewShadowOffset;
@@ -224,9 +228,12 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     BOOL viewLoaded = frontViewController != nil && frontViewController.isViewLoaded;
     BOOL viewNotRemoved = position > FrontViewPositionLeftSideMostRemoved && position < FrontViewPositionRightMostRemoved;
     CGRect shadowBounds = viewLoaded && viewNotRemoved  ? _frontView.bounds : CGRectZero;
+//    CGRect shadowBounds = viewLoaded && viewNotRemoved  ? _customShadow.bounds : CGRectZero;
+    NSLog(@"%@",NSStringFromCGRect(_customShadow.bounds));
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:shadowBounds];
     _frontView.layer.shadowPath = shadowPath.CGPath;
+//    _customShadow.layer.shadowPath = shadowPath.CGPath;
 }
 
 
@@ -517,9 +524,12 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 
     if ( fromViewController )
     {
+//        [UIView transitionFromView:fromViewController.view toView:toViewController.view duration:_duration
+//            options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionOverrideInheritedOptions
+//            completion:^(BOOL finished) { [transitionContext completeTransition:finished]; }];
         [UIView transitionFromView:fromViewController.view toView:toViewController.view duration:_duration
-            options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionOverrideInheritedOptions
-            completion:^(BOOL finished) { [transitionContext completeTransition:finished]; }];
+                           options:UIViewAnimationOptionTransitionNone|UIViewAnimationOptionOverrideInheritedOptions
+                        completion:^(BOOL finished) { [transitionContext completeTransition:finished]; }];
     }
     else
     {
@@ -661,7 +671,8 @@ const int FrontViewPositionNone = 0xff;
     _springDampingRatio = 1;
     _replaceViewAnimationDuration = 0.25;
     _frontViewShadowRadius = 2.5f;
-    _frontViewShadowOffset = CGSizeMake(0.0f, 2.5f);
+//    _frontViewShadowOffset = CGSizeMake(0.0f, 2.5f);
+    _frontViewShadowOffset = CGSizeMake(3.0f, 2.5f);
     _frontViewShadowOpacity = 1.0f;
     _frontViewShadowColor = [UIColor blackColor];
     _userInteractionStore = YES;
@@ -1362,6 +1373,7 @@ const int FrontViewPositionNone = 0xff;
 
 - (void)_dispatchPushFrontViewController:(UIViewController *)newFrontViewController animated:(BOOL)animated
 {
+    NSLog(@"push view controller animation");
     FrontViewPosition preReplacementPosition = FrontViewPositionLeft;
     if ( _frontViewPosition > FrontViewPositionLeft ) preReplacementPosition = FrontViewPositionRightMost;
     if ( _frontViewPosition < FrontViewPositionLeft ) preReplacementPosition = FrontViewPositionLeftSideMost;
@@ -1448,6 +1460,7 @@ const int FrontViewPositionNone = 0xff;
 //- (void)_performTransitionToViewController:(UIViewController*)new operation:(SWRevealControllerOperation)operation animated:(BOOL)animated
 - (void)_performTransitionOperation:(SWRevealControllerOperation)operation withViewController:(UIViewController*)new animated:(BOOL)animated
 {
+    NSLog(@"transition operation");
     if ( [_delegate respondsToSelector:@selector(revealController:willAddViewController:forOperation:animated:)] )
         [_delegate revealController:self willAddViewController:new forOperation:operation animated:animated];
 
@@ -1494,6 +1507,7 @@ const int FrontViewPositionNone = 0xff;
     }
     else
     {
+        NSLog(@"transition not animated");
         animationCompletion();
     }
 }

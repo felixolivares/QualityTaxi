@@ -8,6 +8,7 @@ target 'QualityTaxi' do
   pod 'ChameleonFramework/Swift'
   pod 'MagicalRecord'
   pod 'FontAwesome.swift'
+  pod 'Alamofire', '~> 3.4'
 end
 
 target 'QualityTaxiTests' do

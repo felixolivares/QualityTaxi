@@ -34,6 +34,7 @@
 		8B54B4061CDAA27200D7632E /* DriverMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B54B4051CDAA27200D7632E /* DriverMainViewController.swift */; };
 		8B54B4081CDAD44200D7632E /* DriverLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B54B4071CDAD44200D7632E /* DriverLocationViewController.swift */; };
 		8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */; };
+		8B7FC0411D0B785500102B35 /* PassengerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7FC0401D0B785500102B35 /* PassengerNavigationController.swift */; };
 		8B90C9C51CDD1EDE00F7A91E /* PassengerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90C9C41CDD1EDE00F7A91E /* PassengerMenuViewController.swift */; };
 		8B90C9CA1CDD228F00F7A91E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90C9C81CDD228F00F7A91E /* MenuTableViewCell.swift */; };
 		8B90C9CB1CDD228F00F7A91E /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B90C9C91CDD228F00F7A91E /* MenuTableViewCell.xib */; };
@@ -113,6 +114,7 @@
 		8B642C001CE46DF700415FF3 /* MyriadPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadPro-Regular.otf"; sourceTree = "<group>"; };
 		8B642C061CE7A47E00415FF3 /* MyriadPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MyriadPro-Semibold.otf"; path = "Fonts/MyriadPro-Semibold.otf"; sourceTree = "<group>"; };
 		8B6C9DCA1CCFF6A400A28613 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		8B7FC0401D0B785500102B35 /* PassengerNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerNavigationController.swift; sourceTree = "<group>"; };
 		8B90C9C41CDD1EDE00F7A91E /* PassengerMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassengerMenuViewController.swift; sourceTree = "<group>"; };
 		8B90C9C81CDD228F00F7A91E /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		8B90C9C91CDD228F00F7A91E /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				8B90C9C41CDD1EDE00F7A91E /* PassengerMenuViewController.swift */,
 				8B17BDFF1CDE484E00440C44 /* DriverMenuViewController.swift */,
 				8B0ADF031CE1AF1100E074C2 /* MyTripsViewController.swift */,
+				8B7FC0401D0B785500102B35 /* PassengerNavigationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				8B0ADF041CE1AF1100E074C2 /* MyTripsViewController.swift in Sources */,
 				8B17BE001CDE484E00440C44 /* DriverMenuViewController.swift in Sources */,
 				8B52CBDB1CEE75F00020B9D2 /* MyTripsTableViewCell.swift in Sources */,
+				8B7FC0411D0B785500102B35 /* PassengerNavigationController.swift in Sources */,
 				8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */,
 				30D1D7021BEAF03400AE549B /* ENSideMenuNavigationController.swift in Sources */,
 				8B9A632B1CD7F1A5002F00BF /* ResultsTableViewCell.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class MyTripsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
 
@@ -33,15 +34,32 @@ class MyTripsViewController: UIViewController, UITableViewDataSource, UITableVie
     let defaults = NSUserDefaults.standardUserDefaults()
     var isFirstTabActive:Bool = false
     var isSecondTabActive:Bool = false
+    var menuOpened:Bool = false
+    var viewTouchOverlayFull = UIView()
+    var shadowView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+//            menuButton.target = self.revealViewController()
+//            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        viewTouchOverlayFull = UIView(frame: self.view.frame)
+        viewTouchOverlayFull.backgroundColor = UIColor.clearColor()
+        self.view.addSubview(viewTouchOverlayFull)
+        let tapOverlay = UITapGestureRecognizer(target: self, action: #selector(touchViewOverlayPressed))
+        tapOverlay.delegate = self
+        viewTouchOverlayFull.addGestureRecognizer(tapOverlay)
+        viewTouchOverlayFull.hidden = true
+        
+        shadowView = UIView(frame: CGRectMake(UIScreen.mainScreen().bounds.origin.x,UIScreen.mainScreen().bounds.origin.y,5,UIScreen.mainScreen().bounds.size.height))
+        //        shadowView.backgroundColor = UIColor(hexString: "2C2A2A")
+        shadowView.backgroundColor = GradientColor(UIGradientStyle.LeftToRight, frame: shadowView.frame, colors: [UIColor.blackColor(), UIColor.clearColor()])
+        shadowView.hidden = true
+        self.navigationController!.view.addSubview(shadowView)
         
         let tripTableViewCell = UINib(nibName: "MyTripsTableViewCell", bundle: nil)
         let tripHistoryTableViewCell = UINib(nibName: "MyTripsTableViewCell", bundle: nil)
@@ -96,10 +114,34 @@ class MyTripsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func touchViewOverlayPressed(){
+        viewTouchOverlayFull.hidden = true
+        shadowView.hidden = true
+        self.revealViewController().revealToggle(self)
+        menuOpened = !menuOpened
+    }
+    
+    @IBAction func openMenuPressed(sender: AnyObject) {
+        self.revealViewController().revealToggle(self)
+        if !menuOpened {
+            viewTouchOverlayFull.hidden = false
+            shadowView.hidden = false
+        }else{
+            viewTouchOverlayFull.hidden = true
+            shadowView.hidden = true
+        }
+        menuOpened = !menuOpened
+    }
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -208,9 +250,9 @@ class MyTripsViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.secondTableView.alpha = 0
                 self.tableView.alpha = 1
                 }, completion: { (complete) in
-                    UIView.animateWithDuration(0.1, animations: {
-                        
-                    })
+//                    UIView.animateWithDuration(0.1, animations: {
+//                        
+//                    })
             })
         }
     }
@@ -229,9 +271,9 @@ class MyTripsViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.tableView.alpha = 0
                 self.secondTableView.alpha = 1
                 }, completion: { (complete) in
-                    UIView.animateWithDuration(0.1, animations: {
-                        
-                    })
+//                    UIView.animateWithDuration(0.1, animations: {
+//                        
+//                    })
             })
         }
     }
@@ -240,9 +282,9 @@ class MyTripsViewController: UIViewController, UITableViewDataSource, UITableVie
         firstIconHorizontalConstraint.constant -= 4
         firstIconLabelBottomConstraint.constant += 7
         UIView.animateWithDuration(0.2) {
+//            self.view.layoutIfNeeded()
             self.firstIconLabel.alpha = 1
             self.firstIcon.textColor = UIColor(hexString: "F7F7F7")
-            self.view.layoutIfNeeded()
         }
         isFirstTabActive = true
     }

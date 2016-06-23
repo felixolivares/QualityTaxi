@@ -35,6 +35,7 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
     let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let kResultsCellIdentifier = "ResultsCellIdentifier"
     var allResults : Array<Dictionary<NSObject, AnyObject>> = []
+    var searchTimer = NSTimer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,11 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
         moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
     }
 
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.searchTimer.invalidate()
+    }
+    
     func dismissKeyboard(){
         view.endEditing(true)
     }
@@ -83,11 +89,22 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        self.searchTimer.invalidate()
+        self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.searchAction), userInfo: nil, repeats: false)
+        return true
+    }
+    
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         print("text field got focus")
         if streetTextField.text?.characters.count > 0 {
             self.showTableViewAnimated()
         }
+        return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        self.hideTableViewAnimated()
         return true
     }
 
@@ -171,7 +188,8 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
     }
     
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
-        if (didMovedMap && !didEnterAddress) {
+//        if (didMovedMap && !didEnterAddress) {
+        if (didMovedMap) {
             UIView.animateWithDuration(0.25) {
                 self.continueButton.alpha = 1
             }
@@ -185,6 +203,8 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
 //                    self.coloniaTextField.text = lines[1]
                     self.currentTrip.destinationStreet = lines.joinWithSeparator(" ")
                     self.currentTrip.destinationColony = lines[1]
+                    self.currentTrip.destinationLatitude = String(coordinate.latitude)
+                    self.currentTrip.destinationLongitude = String(coordinate.longitude)
                     self.saveContext()
                 }
             }

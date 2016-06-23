@@ -37,6 +37,8 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
     let kResultsCellIdentifier = "ResultsCellIdentifier"
     var restultsArray:[GMSReverseGeocodeResponse]!
     var allResults : Array<Dictionary<NSObject, AnyObject>> = []
+    let marker = GMSMarker()
+    var searchTimer = NSTimer()
     
     @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
@@ -46,7 +48,7 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         
         // Get current location 
         self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
                 
@@ -75,6 +77,16 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
 //        view.addGestureRecognizer(tap)
         
         moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
+        
+        marker.map = self.viewMap
+        marker.draggable = true
+        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.flat = true
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.searchTimer.invalidate()
     }
     
     func dismissKeyboard(){
@@ -86,6 +98,12 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         return true
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        self.searchTimer.invalidate()
+        self.searchTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.searchAction), userInfo: nil, repeats: false)
+        return true
+    }
+    
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         print("text field got focus")
         if streetTextField.text?.characters.count > 0 {
@@ -94,8 +112,17 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         return true
     }
     
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        self.hideTableViewAnimated()
+        return true
+    }
+    
     @IBAction func searchPressed(sender: AnyObject) {
         self.searchAction()
+    }
+    
+    func searchTest(){
+        print("triggered search after a second")
     }
     
     func searchAction(){
@@ -177,7 +204,8 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
     }
     
     func reverseGeocodeCoordinate(coordinate: CLLocationCoordinate2D) {
-        if (didMovedMap && !didEnterAddress) {
+//        if (didMovedMap && !didEnterAddress) {
+        if (didMovedMap) {
             UIView.animateWithDuration(0.25) {
                 self.continueButton.alpha = 1
             }
@@ -185,16 +213,16 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
             geocoder.reverseGeocodeCoordinate(coordinate) { response, error in
                 if let address = response?.firstResult() {
                     let lines = address.lines! as [String]
-                    let coordinates = address.coordinate
-                    print("address-1: \(address)")
-                    print("response result \(response?.results())")
+//                    let coordinates = address.coordinate
+//                    print("address-1: \(address)")
+//                    print("response result \(response?.results())")
                     //                self.addressLabel.text = lines.joinWithSeparator("\n")
                     self.streetTextField.text = lines.joinWithSeparator(" ")
 //                    self.coloniaTextField.text = lines[1]
                     self.currentTrip.originStreet = lines.joinWithSeparator(" ")
                     self.currentTrip.originColony = lines[1]
-                    self.currentTrip.originLatitude = String(coordinates.latitude)
-                    self.currentTrip.originLongitude = String(coordinates.longitude)
+                    self.currentTrip.originLatitude = String(coordinate.latitude)
+                    self.currentTrip.originLongitude = String(coordinate.longitude)
                     self.saveContext()
                 }
             }
@@ -277,6 +305,8 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         self.saveContext()
         self.view.endEditing(true)
         self.hideTableViewAnimated()
+        
+//        self.marker.position = coordinate
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -299,6 +329,10 @@ extension StartViewController: CLLocationManagerDelegate {
             self.reverseGeocodeCoordinateGetCountry(location.coordinate)
             viewMap.camera = GMSCameraPosition(target: location.coordinate, zoom: 16, bearing: 0, viewingAngle: 0)
             locationManager.stopUpdatingLocation()
+            
+            
+//            marker.position = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+            
         }
     }
 }
@@ -306,6 +340,7 @@ extension StartViewController: CLLocationManagerDelegate {
 // MARK: - GMSMapViewDelegate
 extension StartViewController: GMSMapViewDelegate {
     func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
+        print("map idle at camera position target: \(position.target)")
         reverseGeocodeCoordinate(position.target)
         self.streetTextField.resignFirstResponder()
 //        self.coloniaTextField.resignFirstResponder()
@@ -313,6 +348,7 @@ extension StartViewController: GMSMapViewDelegate {
     
     // Moved map user interaction
     func mapView(mapView: GMSMapView, willMove gesture: Bool) {
+        print("map moving")
         if gesture{
             didMovedMap = true
             dispatch_async(dispatch_get_main_queue(),{
@@ -322,5 +358,27 @@ extension StartViewController: GMSMapViewDelegate {
             })
         }
     }
+    
+    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        print("marker tap")
+        return true
+    }
+    
+    func mapView(mapView: GMSMapView, didEndDraggingMarker marker: GMSMarker) {
+        didMovedMap = true
+        print("position \(marker.position)")
+//        reverseGeocodeCoordinate(marker.position)
+    }
+    
+    func mapView(mapView: GMSMapView, didBeginDraggingMarker marker: GMSMarker) {
+        print("start dragging")
+    }
+    
+//    func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+//        didMovedMap = true
+//        print("coordinates \(coordinate)")
+//        marker.position = coordinate
+//        reverseGeocodeCoordinate(coordinate)
+//    }
     
 }

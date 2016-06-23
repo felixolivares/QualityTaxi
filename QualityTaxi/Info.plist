@@ -24,6 +24,16 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>http://www.qualitytaxi.com.mx/</key>
+			<string></string>
+		</dict>
+	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Para mostrarle diferentes ubicaciones dentro del mapa.</string>
 	<key>UIAppFonts</key>

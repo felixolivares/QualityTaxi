@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -61,6 +63,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        let user = "quality"
+        let password = "taxbitch"
+        
+        let credentialData = "\(user):\(password)".dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64Credentials = credentialData.base64EncodedStringWithOptions([])
+        
+        let headers = ["Authorization": "Basic \(base64Credentials)"]
+        
+        Alamofire.request(.GET, "http://www.qualitytaxi.com.mx/", headers: headers)
+            .responseString { response in
+                debugPrint(response)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
