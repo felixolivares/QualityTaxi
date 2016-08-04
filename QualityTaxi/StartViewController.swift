@@ -374,6 +374,14 @@ extension StartViewController: GMSMapViewDelegate {
         print("start dragging")
     }
     
+    func didTapMyLocationButtonForMapView(mapView: GMSMapView) -> Bool {
+        locationManager.startUpdatingLocation()
+        didMovedMap = true
+        print("my location button tapped \(mapView.camera.target)")
+        reverseGeocodeCoordinate(mapView.camera.target)
+        return true
+    }
+    
 //    func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
 //        didMovedMap = true
 //        print("coordinates \(coordinate)")

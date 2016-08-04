@@ -229,7 +229,6 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     BOOL viewNotRemoved = position > FrontViewPositionLeftSideMostRemoved && position < FrontViewPositionRightMostRemoved;
     CGRect shadowBounds = viewLoaded && viewNotRemoved  ? _frontView.bounds : CGRectZero;
 //    CGRect shadowBounds = viewLoaded && viewNotRemoved  ? _customShadow.bounds : CGRectZero;
-    NSLog(@"%@",NSStringFromCGRect(_customShadow.bounds));
     
     UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:shadowBounds];
     _frontView.layer.shadowPath = shadowPath.CGPath;
@@ -1373,7 +1372,6 @@ const int FrontViewPositionNone = 0xff;
 
 - (void)_dispatchPushFrontViewController:(UIViewController *)newFrontViewController animated:(BOOL)animated
 {
-    NSLog(@"push view controller animation");
     FrontViewPosition preReplacementPosition = FrontViewPositionLeft;
     if ( _frontViewPosition > FrontViewPositionLeft ) preReplacementPosition = FrontViewPositionRightMost;
     if ( _frontViewPosition < FrontViewPositionLeft ) preReplacementPosition = FrontViewPositionLeftSideMost;
@@ -1460,7 +1458,6 @@ const int FrontViewPositionNone = 0xff;
 //- (void)_performTransitionToViewController:(UIViewController*)new operation:(SWRevealControllerOperation)operation animated:(BOOL)animated
 - (void)_performTransitionOperation:(SWRevealControllerOperation)operation withViewController:(UIViewController*)new animated:(BOOL)animated
 {
-    NSLog(@"transition operation");
     if ( [_delegate respondsToSelector:@selector(revealController:willAddViewController:forOperation:animated:)] )
         [_delegate revealController:self willAddViewController:new forOperation:operation animated:animated];
 
@@ -1507,7 +1504,6 @@ const int FrontViewPositionNone = 0xff;
     }
     else
     {
-        NSLog(@"transition not animated");
         animationCompletion();
     }
 }

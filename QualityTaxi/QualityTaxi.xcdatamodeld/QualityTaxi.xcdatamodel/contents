@@ -26,9 +26,11 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="QualityTrip" positionX="-63" positionY="9" width="128" height="345"/>
-        <element name="QualityUser" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="QualityUser" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

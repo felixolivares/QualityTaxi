@@ -8,6 +8,7 @@
 
 import UIKit
 import MagicalRecord
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey("AIzaSyBLkLS7K3MLLJt22Ra7DdmSVao12P2_yTY")                                
         
+        IQKeyboardManager.sharedManager().enable = true
         
         return true
     }

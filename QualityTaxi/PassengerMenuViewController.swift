@@ -13,7 +13,7 @@ class PassengerMenuViewController: UIViewController, UITableViewDataSource, UITa
 
     @IBOutlet weak var menuTableView: UITableView!
     
-    let titles:[String] = ["Inicio", "Mis Viajes", "Perfil", "Acerca de", "Ajustes", "Cerrar Sesión"]
+    let titles:[String] = ["Inicio", "Mis Viajes", "Mi Cuenta", "Acerca de Quality", "Ajustes", "Cerrar Sesión"]
     let kMenuCellIdentifier = "MenuCellIdentifier"
     
     override func viewDidLoad() {
@@ -76,6 +76,12 @@ class PassengerMenuViewController: UIViewController, UITableViewDataSource, UITa
             performSegueWithIdentifier("toPassenger", sender: self)
         case 1:
             performSegueWithIdentifier("toMyTrips", sender: self)
+        case 2:
+            performSegueWithIdentifier("toMyProfile", sender: self)
+        case 3:
+            performSegueWithIdentifier("toAbout", sender: self)
+        case 4:
+            performSegueWithIdentifier("toSettingsPassenger", sender: self)
         case titles.count - 1:
             self.logout()
         default:

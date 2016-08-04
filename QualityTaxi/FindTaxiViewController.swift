@@ -245,7 +245,7 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         UIView.animateWithDuration(0.2) {
             self.firstIconLabel.alpha = 1
             self.firstIcon.textColor = UIColor(hexString: "F7F7F7")
-            self.view.layoutIfNeeded()
+//            self.view.layoutIfNeeded()
         }
         isMapTabActive = true
     }

@@ -2,7 +2,7 @@
 //  QualityUser.swift
 //  
 //
-//  Created by Developer on 4/28/16.
+//  Created by Developer on 8/4/16.
 //
 //
 

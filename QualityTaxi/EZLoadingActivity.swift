@@ -150,7 +150,7 @@ public struct EZLoadingActivity {
             addSubview(activityView)
             addSubview(textLabel)
             
-            topMostController!.view.addSubview(self)
+            topMostController()!.view.addSubview(self)
         }
         
         func showLoadingWithController(controller:UIViewController){

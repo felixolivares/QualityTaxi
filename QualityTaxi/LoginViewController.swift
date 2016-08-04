@@ -26,10 +26,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var forgotPassTitleLabel: UILabel!
     
+    @IBOutlet weak var registerPasswordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var mailTextField: UITextField!
     @IBOutlet weak var cancelPassBtn: UIButton!
     @IBOutlet weak var sendPassBtn: UIButton!
     var currentUser:QualityUser!
     let defaults = NSUserDefaults.standardUserDefaults()
+    
     var devMode:Bool = true
     
     override func viewDidLoad() {
@@ -176,15 +180,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //Register
     @IBAction func acceptPressed(sender: AnyObject) {
-        UIView.animateWithDuration(0.4, animations: {
-            self.registerContainer.alpha = 0
-            self.createAccountTitleLabel.alpha = 0
-        }) { (Value) in
-            UIView.animateWithDuration(0.4, animations: {
-                self.backgroundView.alpha = 1
-                self.accessTitleLabel.alpha = 1
-            })
-        }
+//        UIView.animateWithDuration(0.4, animations: {
+//            self.registerContainer.alpha = 0
+//            self.createAccountTitleLabel.alpha = 0
+//        }) { (Value) in
+//            UIView.animateWithDuration(0.4, animations: {
+//                self.backgroundView.alpha = 1
+//                self.accessTitleLabel.alpha = 1
+//            })
+//        }
+        performSegueWithIdentifier("toVerificationCode", sender: self)
     }
     @IBAction func cancelPressed(sender: AnyObject) {
         UIView.animateWithDuration(0.4, animations: {
