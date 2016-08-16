@@ -31,7 +31,7 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
     var didMovedMap:Bool = false
     var didEnterAddress:Bool = false
     var currentTripTime:String = ""
-    var currentTrip:QualityTrip!
+    var currentTrip:QTTrip!
     let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let kResultsCellIdentifier = "ResultsCellIdentifier"
     var allResults : Array<Dictionary<NSObject, AnyObject>> = []
@@ -40,6 +40,9 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        currentTrip = QTUserManager.sharedInstance.getCurrentTrip()
+        print("trip info \( currentTrip.createdAt)")
+        
         // Get current location
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -59,12 +62,14 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
         continueButton.alpha = 0
         continueButton.layer.cornerRadius = 5
         
-        print("current trip time \(currentTripTime)")
+//        print("current trip time \(currentTripTime)")
         
-        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
-        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
-        let allTrips = QualityTrip.MR_executeFetchRequest(request)
-        currentTrip = allTrips?.first as! QualityTrip
+        
+//        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
+//        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
+//        let allTrips = QualityTrip.MR_executeFetchRequest(request)
+//        currentTrip = allTrips?.first as! QualityTrip
+        
         
         //Regiser custom Results cell
         let registerNib = UINib(nibName: "ResultsTableViewCell", bundle: nil)
@@ -201,11 +206,18 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
                     //                self.addressLabel.text = lines.joinWithSeparator("\n")
                     self.streetTextField.text = lines.joinWithSeparator(" ")
 //                    self.coloniaTextField.text = lines[1]
+                    
                     self.currentTrip.destinationStreet = lines.joinWithSeparator(" ")
                     self.currentTrip.destinationColony = lines[1]
                     self.currentTrip.destinationLatitude = String(coordinate.latitude)
                     self.currentTrip.destinationLongitude = String(coordinate.longitude)
-                    self.saveContext()
+                    
+//                     self.currentTrip.destinationStreet =      lines.joinWithSeparator(" ")
+//                     self.currentTrip.destinationColony =      lines[1]
+//                     self.currentTrip.destinationLatitude =    String(coordinate.latitude)
+//                     self.currentTrip.destinationLongitude =   String(coordinate.longitude)
+                    QTUserManager.sharedInstance.updateTrip(self.currentTrip)
+//                    self.saveContext()
                 }
             }
         }
@@ -272,9 +284,11 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
         let coordinate = CLLocationCoordinate2D(latitude: fetchedAddressLatitude, longitude: fetchedAddressLongitude)
         self.viewMap.camera = GMSCameraPosition.cameraWithTarget(coordinate, zoom: 16.0)
         self.streetTextField.text = fetchedFormattedAddress
-        self.currentTrip.destinationStreet = fetchedFormattedAddress
+//        self.currentTrip.destinationStreet = fetchedFormattedAddress
+        currentTrip.destinationStreet = fetchedFormattedAddress
+        QTUserManager.sharedInstance.updateTrip(currentTrip)
         //                self.currentTrip.originColony = self.coloniaTextField.text
-        self.saveContext()
+//        self.saveContext()
         self.view.endEditing(true)
         self.hideTableViewAnimated()
     }

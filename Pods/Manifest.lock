@@ -1,32 +1,67 @@
 PODS:
-  - Alamofire (3.4.0)
-  - AwesomeTextField (0.1.0)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - Alamofire (3.4.1)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - FontAwesome.swift (0.7.3)
-  - GoogleMaps (1.13.0)
+  - DZNEmptyDataSet (1.8.1)
+  - DZNPhotoPickerController (2.0):
+    - DZNPhotoPickerController/Core (= 2.0)
+  - DZNPhotoPickerController/Core (2.0):
+    - DZNEmptyDataSet (~> 1.7)
+    - DZNPhotoPickerController/Editor
+    - DZNPhotoPickerController/Services
+    - SDWebImage (~> 3.7)
+  - DZNPhotoPickerController/Editor (2.0)
+  - DZNPhotoPickerController/Services (2.0):
+    - AFNetworking (~> 3.0)
+  - FontAwesome.swift (0.8.0)
+  - GoogleMaps (2.0.1):
+    - GoogleMaps/Maps (= 2.0.1)
+  - GoogleMaps/Base (2.0.1)
+  - GoogleMaps/Maps (2.0.1):
+    - GoogleMaps/Base (= 2.0.1)
   - IQKeyboardManagerSwift (4.0.4)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
-  - AwesomeTextField
   - ChameleonFramework/Swift
+  - DZNPhotoPickerController
   - FontAwesome.swift
   - GoogleMaps
   - IQKeyboardManagerSwift
   - MagicalRecord
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  AwesomeTextField: 9539cb8dfc2741abf624f3e58ee6a151e1aaf670
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  FontAwesome.swift: f694fe0f667d6d3390b5919cdb0556a27b75d427
-  GoogleMaps: 7a6caeb8336d7cb42982e969fc9b1b20a889fe79
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  DZNPhotoPickerController: 1a9b83a53a2f35094e35c163417ab0aeb8653fd1
+  FontAwesome.swift: f8c6cc5c42cbe93bdc04371363bc7b371fb3d3a1
+  GoogleMaps: f09da64fc987c1aa29394567c3cab5a3df83c402
   IQKeyboardManagerSwift: e0964d04d6a29b71016fd346dca13ecb80a2823a
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
 COCOAPODS: 0.39.0

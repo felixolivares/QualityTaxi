@@ -32,7 +32,7 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
     var didMovedMap:Bool = false
     var didEnterAddress:Bool = false
     var lastTime:String!
-    var currentTrip:QualityTrip!
+    var currentTrip:QTTrip!
     let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     let kResultsCellIdentifier = "ResultsCellIdentifier"
     var restultsArray:[GMSReverseGeocodeResponse]!
@@ -64,7 +64,12 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         
         lastTime = String(format: "%.0f", NSDate().timeIntervalSince1970 * 1000)
         print("last time \(lastTime)")
-        currentTrip = QualityTrip.MR_createEntity()
+        
+//        currentTrip = QualityTrip.MR_createEntity()
+//        currentTrip.createdAt = lastTime
+        QTUserManager.sharedInstance.currentUser.trip = QualityTrip.MR_createEntity()
+        currentTrip = QTTrip()
+        
         currentTrip.createdAt = lastTime
         
         //Regiser custom Results cell
@@ -219,11 +224,18 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
                     //                self.addressLabel.text = lines.joinWithSeparator("\n")
                     self.streetTextField.text = lines.joinWithSeparator(" ")
 //                    self.coloniaTextField.text = lines[1]
-                    self.currentTrip.originStreet = lines.joinWithSeparator(" ")
-                    self.currentTrip.originColony = lines[1]
-                    self.currentTrip.originLatitude = String(coordinate.latitude)
-                    self.currentTrip.originLongitude = String(coordinate.longitude)
-                    self.saveContext()
+                    
+//                    self.currentTrip.originStreet = lines.joinWithSeparator(" ")
+//                    self.currentTrip.originColony = lines[1]
+//                    self.currentTrip.originLatitude = String(coordinate.latitude)
+//                    self.currentTrip.originLongitude = String(coordinate.longitude)
+                    
+                     self.currentTrip.originStreet =       lines.joinWithSeparator(" ")
+                     self.currentTrip.originColony =       lines[1]
+                     self.currentTrip.originLatitude =     String(coordinate.latitude)
+                     self.currentTrip.originLongitude =    String(coordinate.longitude)
+                    QTUserManager.sharedInstance.updateTrip(self.currentTrip)
+//                    self.saveContext()
                 }
             }
         }
@@ -300,8 +312,10 @@ class StartViewController: UIViewController, MKMapViewDelegate, UITextFieldDeleg
         let coordinate = CLLocationCoordinate2D(latitude: fetchedAddressLatitude, longitude: fetchedAddressLongitude)
         self.viewMap.camera = GMSCameraPosition.cameraWithTarget(coordinate, zoom: 16.0)
         self.streetTextField.text = fetchedFormattedAddress
-        self.currentTrip.originStreet = fetchedFormattedAddress
+//        self.currentTrip.originStreet = fetchedFormattedAddress
+         currentTrip.originStreet = fetchedFormattedAddress
         //                self.currentTrip.originColony = self.coloniaTextField.text
+        QTUserManager.sharedInstance.updateTrip(currentTrip)
         self.saveContext()
         self.view.endEditing(true)
         self.hideTableViewAnimated()

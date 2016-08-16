@@ -27,7 +27,7 @@ class SummaryTripViewController: UIViewController {
     var routePolylineMyTrip: GMSPolyline!
     
     var currentTripTime:String = ""
-    var currentTrip:QualityTrip!
+    var currentTrip:QTTrip!
     var mapTasks = MapTasks()
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -37,16 +37,22 @@ class SummaryTripViewController: UIViewController {
         askTaxiBtn.layer.cornerRadius = 5
         viewMap.layer.cornerRadius = 5
         
-        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
-        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
-        let allTrips = QualityTrip.MR_executeFetchRequest(request)
-        currentTrip = allTrips?.first as! QualityTrip
+//        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
+//        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
+//        let allTrips = QualityTrip.MR_executeFetchRequest(request)
+//        currentTrip = allTrips?.first as! QualityTrip
         
 //        let origin = currentTrip.originStreet!
 //        let destination = currentTrip.destinationStreet!
         
-        let origin = currentTrip.originLatitude! + "," + currentTrip.originLongitude!
-        let destination = currentTrip.destinationLatitude! + "," + currentTrip.destinationLongitude!
+//        let origin = currentTrip.originLatitude! + "," + currentTrip.originLongitude!
+//        let destination = currentTrip.destinationLatitude! + "," + currentTrip.destinationLongitude!
+        
+        print("latitude \(QTUserManager.sharedInstance.currentUser.trip?.originLatitude!)")
+        
+        let origin = (QTUserManager.sharedInstance.currentUser.trip?.originLatitude!)! + "," + (QTUserManager.sharedInstance.currentUser.trip?.originLongitude!)!
+        let destination = (QTUserManager.sharedInstance.currentUser.trip?.destinationLatitude!)! + "," + (QTUserManager.sharedInstance.currentUser.trip?.destinationLongitude!)!
+        
         
         self.mapTasks.getDirections(origin, destination: destination, waypoints: nil, travelMode: nil, completionHandler: { (status, success) -> Void in
             if success {
@@ -130,14 +136,24 @@ class SummaryTripViewController: UIViewController {
         print("distance: \(mapTasks.totalDistance) duration: \(mapTasks.totalDuration)")
         distanceLabel.text = mapTasks.totalDistance
         timeLabel.text = mapTasks.totalDuration
-        currentTrip.totalDistance = mapTasks.totalDistance
-        currentTrip.timeAprox = mapTasks.totalDuration
-        currentTrip.rate = "$30.00"
-        currentTrip.driverName = "Pedro Lopez"
-        currentTrip.carKind = "Altima"
-        currentTrip.carColor = "Amarillo"
-        currentTrip.carPlates = "CMD-3246"
-        self.saveContext()
+        
+//        currentTrip.totalDistance = mapTasks.totalDistance
+//        currentTrip.timeAprox = mapTasks.totalDuration
+//        currentTrip.rate = "$30.00"
+//        currentTrip.driverName = "Pedro Lopez"
+//        currentTrip.carKind = "Altima"
+//        currentTrip.carColor = "Amarillo"
+//        currentTrip.carPlates = "CMD-3246"
+//        self.saveContext()
+        
+        QTUserManager.sharedInstance.currentUser.trip?.totalDistance = mapTasks.totalDistance
+        QTUserManager.sharedInstance.currentUser.trip?.timeAprox = mapTasks.totalDuration
+        QTUserManager.sharedInstance.currentUser.trip?.rate = "$30.00"
+        QTUserManager.sharedInstance.currentUser.trip?.driverName = "Pedro Lopez"
+        QTUserManager.sharedInstance.currentUser.trip?.carKind = "Altima"
+        QTUserManager.sharedInstance.currentUser.trip?.carColor = "Amarillo"
+        QTUserManager.sharedInstance.currentUser.trip?.carPlates = "CMD-3245"
+        QTUserManager.sharedInstance.saveContext()
         
     }
     
@@ -156,7 +172,8 @@ class SummaryTripViewController: UIViewController {
             return
         }
         print("image saved = \(image)")
-        currentTrip.tripImage = imageData
+//        currentTrip.tripImage = imageData
+        QTUserManager.sharedInstance.currentUser.trip?.tripImage = imageData
         self.saveContext()
         UIGraphicsEndImageContext()
         myTripMapView.hidden = true

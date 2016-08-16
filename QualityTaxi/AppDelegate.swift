@@ -38,6 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.sharedManager().enable = true
         
+        QualityUser.MR_truncateAll()
+        QualityTrip.MR_truncateAll()
+        
+        QTUserManager.sharedInstance
+        QTFakeUsers().createUsers()
+        
         return true
     }
 

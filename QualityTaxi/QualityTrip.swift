@@ -2,7 +2,7 @@
 //  QualityTrip.swift
 //  
 //
-//  Created by Developer on 5/24/16.
+//  Created by Developer on 8/8/16.
 //
 //
 

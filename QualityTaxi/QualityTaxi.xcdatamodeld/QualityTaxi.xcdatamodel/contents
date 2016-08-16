@@ -21,16 +21,20 @@
         <attribute name="timeAprox" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalDistance" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tripImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QualityUser" inverseName="trip" inverseEntity="QualityUser" syncable="YES"/>
     </entity>
     <entity name="QualityUser" representedClassName=".QualityUser" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phoneIsVerified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QualityTrip" inverseName="user" inverseEntity="QualityTrip" syncable="YES"/>
     </entity>
     <elements>
-        <element name="QualityTrip" positionX="-63" positionY="9" width="128" height="345"/>
-        <element name="QualityUser" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="QualityTrip" positionX="-63" positionY="9" width="128" height="360"/>
+        <element name="QualityUser" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

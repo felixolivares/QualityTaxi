@@ -9,8 +9,8 @@ target 'QualityTaxi' do
   pod 'MagicalRecord'
   pod 'FontAwesome.swift'
   pod 'Alamofire', '~> 3.4'
-  pod "AwesomeTextField"
   pod 'IQKeyboardManagerSwift'
+  pod "DZNPhotoPickerController"
 end
 
 target 'QualityTaxiTests' do

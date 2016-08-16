@@ -20,6 +20,10 @@ class VerificationCodeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var code4TextField: UITextField!
     @IBOutlet weak var resendCodeButton: UIButton!
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    var commingFrom = String()
+    var currentUser:QTUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainContainerView.layer.cornerRadius = 10
@@ -30,7 +34,10 @@ class VerificationCodeViewController: UIViewController, UITextFieldDelegate {
         code3TextField.addTarget(self, action: #selector(VerificationCodeViewController.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         code4TextField.addTarget(self, action: #selector(VerificationCodeViewController.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
 
+        print("Current user registred: \(QTUserManager.sharedInstance.currentUser.email)")
+        currentUser = QTUserManager.sharedInstance.getCurrentUser()
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,10 +45,23 @@ class VerificationCodeViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if commingFrom == "profile" {
+            backgroundImageView.hidden = true
+        }else{
+            backgroundImageView.hidden = false
+        }
+    }
     @IBAction func cancelButton(sender: AnyObject) {
         print("cancel pressed")
-        self.dismissViewControllerAnimated(true, completion: {})
+        if commingFrom == "profile" {
+            currentUser.phoneIsVerified = false
+            QTUserManager.sharedInstance.updateUser(currentUser)
+            self.navigationController?.popViewControllerAnimated(true)
+        }else{
+            self.dismissViewControllerAnimated(true, completion: {})
+        }
     }
     
     func textFieldDidChange(textField: UITextField) {
@@ -70,7 +90,15 @@ class VerificationCodeViewController: UIViewController, UITextFieldDelegate {
     }
     
     func goToProfileInfo(){
-        performSegueWithIdentifier("toProfileInfo", sender: self);
+        if commingFrom == "profile" {
+            currentUser.phoneIsVerified = true
+            QTUserManager.sharedInstance.updateUser(currentUser)
+            self.navigationController?.popViewControllerAnimated(true)
+        }else{
+            currentUser.phoneIsVerified = true
+            QTUserManager.sharedInstance.updateUser(currentUser)
+            performSegueWithIdentifier("toProfileInfo", sender: self);
+        }
     }
     
     @IBAction func resendCodeButtonPressed(sender: AnyObject) {

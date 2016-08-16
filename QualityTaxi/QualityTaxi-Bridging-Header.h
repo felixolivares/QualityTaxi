@@ -13,6 +13,6 @@
 #import <Foundation/Foundation.h>
 #import <MagicalRecord/MagicalRecord.h>
 #import "SWRevealViewController.h"
-
+#import <DZNPhotoPickerController/DZNPhotoPickerController.h>
 
 #endif /* QualityTaxi_Bridging_Header_h */

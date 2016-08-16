@@ -13,6 +13,8 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var createBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
+    var newUser:QualityUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +37,11 @@ class CreateAccountViewController: UIViewController {
             
         }
     }
+    
+    func saveContext(){
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+    }
+    
     /*
     // MARK: - Navigation
 

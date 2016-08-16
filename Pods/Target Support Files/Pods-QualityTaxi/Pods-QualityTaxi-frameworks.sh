@@ -84,18 +84,24 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-QualityTaxi/AFNetworking.framework"
   install_framework "Pods-QualityTaxi/Alamofire.framework"
-  install_framework "Pods-QualityTaxi/AwesomeTextField.framework"
   install_framework "Pods-QualityTaxi/ChameleonFramework.framework"
+  install_framework "Pods-QualityTaxi/DZNEmptyDataSet.framework"
+  install_framework "Pods-QualityTaxi/DZNPhotoPickerController.framework"
   install_framework "Pods-QualityTaxi/FontAwesome_swift.framework"
   install_framework "Pods-QualityTaxi/IQKeyboardManagerSwift.framework"
   install_framework "Pods-QualityTaxi/MagicalRecord.framework"
+  install_framework "Pods-QualityTaxi/SDWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-QualityTaxi/AFNetworking.framework"
   install_framework "Pods-QualityTaxi/Alamofire.framework"
-  install_framework "Pods-QualityTaxi/AwesomeTextField.framework"
   install_framework "Pods-QualityTaxi/ChameleonFramework.framework"
+  install_framework "Pods-QualityTaxi/DZNEmptyDataSet.framework"
+  install_framework "Pods-QualityTaxi/DZNPhotoPickerController.framework"
   install_framework "Pods-QualityTaxi/FontAwesome_swift.framework"
   install_framework "Pods-QualityTaxi/IQKeyboardManagerSwift.framework"
   install_framework "Pods-QualityTaxi/MagicalRecord.framework"
+  install_framework "Pods-QualityTaxi/SDWebImage.framework"
 fi

@@ -48,22 +48,24 @@ class MainViewController: UIViewController, ENSideMenuDelegate, UIGestureRecogni
         viewTouchOverlayFull.hidden = true
         
         shadowView = UIView(frame: CGRectMake(UIScreen.mainScreen().bounds.origin.x,UIScreen.mainScreen().bounds.origin.y,5,UIScreen.mainScreen().bounds.size.height))
-//        shadowView.backgroundColor = UIColor(hexString: "2C2A2A")
         shadowView.backgroundColor = GradientColor(UIGradientStyle.LeftToRight, frame: shadowView.frame, colors: [UIColor.blackColor(), UIColor.clearColor()])
         shadowView.hidden = true
         self.navigationController!.view.addSubview(shadowView)
         
         
         defaults.setBool(false, forKey: "onGoingTrip")
-        print("Fonts \(UIFont.familyNames())")
+//        print("Fonts \(UIFont.familyNames())")
         
         askButton.layer.cornerRadius = 5.0
         askButton.backgroundColor = UIColor(gradientStyle: .TopToBottom, withFrame: askButton.frame, andColors: [UIColor(hexString: "F7B731"),UIColor(hexString: "F6A408")])
         
+        /*
         let users:[QualityUser] = QualityUser.MR_findAll() as! [QualityUser]
         for eachUser:QualityUser in users{
             print(eachUser.name)
-        }
+        }*/
+        
+        QTUserManager.sharedInstance.displayCurrentUser()
         
         if self.revealViewController() != nil {
 //            menuButton.target = self.revealViewController()

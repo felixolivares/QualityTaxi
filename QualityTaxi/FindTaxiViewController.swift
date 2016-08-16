@@ -25,7 +25,7 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     var bounds:GMSCoordinateBounds!
     var update:GMSCameraUpdate!
     var currentTripTime:String = ""
-    var currentTrip:QualityTrip!
+    var currentTrip:QTTrip!
     var fromMyTrips:Bool!
     
     //Tab bar
@@ -70,6 +70,8 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentTrip = QTUserManager.sharedInstance.getCurrentTrip()
         
 //        segmentedControl.alpha = 0
         viewMap.delegate = self
@@ -117,10 +119,11 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         
         self.addLocations()
         
-        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
-        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
-        let allTrips = QualityTrip.MR_executeFetchRequest(request)
-        currentTrip = allTrips?.first as! QualityTrip
+//        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
+//        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
+//        let allTrips = QualityTrip.MR_executeFetchRequest(request)
+//        currentTrip = allTrips?.first as! QualityTrip
+        
         
         driverName.text = currentTrip.driverName
         carKindLabel.text = currentTrip.carKind
@@ -128,15 +131,22 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         carPlatesLabel.text = currentTrip.carPlates
         timeAproxLabel.text = currentTrip.timeAprox
         
+//        driverName.text = QTUserManager.sharedInstance.currentUser.trip?.driverName
+//        carKindLabel.text = QTUserManager.sharedInstance.currentUser.trip?.carKind
+//        carColorLabel.text = QTUserManager.sharedInstance.currentUser.trip?.carColor
+//        carPlatesLabel.text = QTUserManager.sharedInstance.currentUser.trip?.carPlates
+//        timeAproxLabel.text = QTUserManager.sharedInstance.currentUser.trip?.timeAprox
+        
         if !fromMyTrips {
             self.navigationItem.setHidesBackButton(true, animated: false)
-            EZLoadingActivity.show("Solicitando Taxi", disableUI: false)
+//            EZLoadingActivity.show("Solicitando Taxi", disableUI: false)
             mainContainerBottomConstraint.constant = 65
             taskTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(FindTaxiViewController.runTimedCode), userInfo: nil, repeats: true)
         }else{
             goToStartBtn.hidden = true
             mainContainerBottomConstraint.constant = 10
-            let isActive:Bool = currentTrip.isActive as! Bool
+//            let isActive:Bool = currentTrip.isActive as! Bool
+            let isActive:Bool = currentTrip.isActive!
             self.showElementsFromMyTrips(isActive)
         }
         
@@ -296,7 +306,8 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
             self.locationMarker = GMSMarker(position: self.locations[0] as CLLocationCoordinate2D)
             self.timerLocations = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(self.updateTaxiLocation), userInfo: nil, repeats: true)
             self.currentTrip.isActive = true
-            self.saveContext()
+            QTUserManager.sharedInstance.updateTrip(self.currentTrip)
+//            self.saveContext()
         }
         self.firstFadeIn()
         defaults.setBool(true, forKey: "onGoingTrip")
@@ -399,7 +410,7 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     func setupLocationMarker(coordinate:CLLocationCoordinate2D, marker:GMSMarker){
         marker.position = coordinate
         marker.map = viewMap
-        UIView.animateWithDuration(2) {
+        UIView.animateWithDuration(3) {
             marker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
         }
         marker.opacity = 0.75
