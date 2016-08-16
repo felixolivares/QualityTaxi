@@ -18,6 +18,7 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     var moneyLeft = Float()
     var isMapTabActive:Bool = false
     var isInformationTabActive:Bool = false
+    var isOptionsTabActive:Bool = false
     var locations = [CLLocationCoordinate2D]()
     var timerLocations:NSTimer!
     var i:Int = 0
@@ -37,6 +38,14 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     @IBOutlet weak var firstIconLabel: UILabel!
     @IBOutlet weak var firstIcon: UILabel!
     @IBOutlet weak var secondTab: UIView!
+    
+    @IBOutlet weak var thirdIcon: UILabel!
+    @IBOutlet weak var thirdIconLabel: UILabel!
+    @IBOutlet weak var thirdIconLabelBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var thirdIconHorizontalContstraint: NSLayoutConstraint!
+    @IBOutlet weak var thirdTab: UIView!
+    
+    @IBOutlet weak var optionsContainerView: UIView!
 //    @IBOutlet weak var secondIconLabel: UILabel!
 //    @IBOutlet weak var secondIcon: UILabel!
 //    @IBOutlet weak var secondIconLabelBottomConstraint: NSLayoutConstraint!
@@ -80,6 +89,7 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         goToStartBtn.layer.cornerRadius = 5
         goToStartBtn.alpha = 0
         infoContainerView.alpha = 0
+        optionsContainerView.alpha = 0
         
         driverDetailsContainer.layer.cornerRadius = 5
         driverDetailsContainer.layer.borderColor = UIColor(hexString: "D3D5D5").CGColor
@@ -94,6 +104,10 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         let tapSecond = UITapGestureRecognizer(target: self, action: #selector(pressedSecondTab))
         tapSecond.delegate = self
         secondTab.addGestureRecognizer(tapSecond)
+        
+        let tapThird = UITapGestureRecognizer(target: self, action: #selector(pressedThirdTab))
+        tapThird.delegate = self
+        thirdTab.addGestureRecognizer(tapThird)
             
         
         firstIcon.font = UIFont.fontAwesomeOfSize(14)
@@ -106,13 +120,20 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         secondIcon.textColor = UIColor(hexString: "F7F7F7")
         secondIconLabel.alpha = 0
         
+        thirdIcon.font = UIFont.fontAwesomeOfSize(14)
+        thirdIcon.text = String.fontAwesomeIconWithCode("fa-ellipsis-h")
+        thirdIcon.textColor = UIColor(hexString: "F7F7F7")
+        thirdIconLabel.alpha = 0
+        
         
         self.firstIconLabel.alpha = 0
         self.firstIcon.textColor = UIColor(hexString: "F7F7F7")
         
-        //Information tab is always hidden at the begining
+        //Information tab and message tab are always hidden at the begining
         secondIconLabel.alpha = 0
         secondIcon.textColor = UIColor(hexString: "7F7F7F")
+        thirdIconLabel.alpha = 0
+        thirdIcon.textColor = UIColor(hexString: "7F7F7F")
         
         mainContainer.layer.borderWidth = 1
         mainContainer.layer.borderColor = UIColor(hexString: "E4E4E4").CGColor
@@ -216,11 +237,13 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
             //Map fade in
             self.firstFadeIn()
             
-            //Information fade out
+            //Information and Options fade out
             self.secondFadeOut()
+            self.thirdFadeOut()
             
             UIView.animateWithDuration(0.2, animations: {
                 self.infoContainerView.alpha = 0
+                self.optionsContainerView.alpha = 0
                 self.viewMap.alpha = 1
                 }, completion: { (complete) in
                     UIView.animateWithDuration(0.1, animations: {
@@ -232,20 +255,43 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
     
     func pressedSecondTab(){
         if !isInformationTabActive{
-            //Information fade out
+            //Information fade in
             self.secondFadeIn()
             
-            //Map fade in
+            //Map and Options fade out
             self.firstFadeOut()
+            self.thirdFadeOut()
             
             UIView.animateWithDuration(0.2, animations: {
                 self.viewMap.alpha = 0
+                self.optionsContainerView.alpha = 0
                 self.infoContainerView.alpha = 1
                 }, completion: { (complete) in
                     UIView.animateWithDuration(0.1, animations: {
                         
                     })
             })
+        }
+    }
+    
+    func pressedThirdTab(){
+        if !isOptionsTabActive{
+            //Options fade out
+            self.thirdFadeIn()
+            
+            
+            //Map and Info fade out
+            self.firstFadeOut()
+            self.secondFadeOut()
+            
+            UIView.animateWithDuration(0.2, animations: { 
+                self.viewMap.alpha = 0
+                self.infoContainerView.alpha = 0
+                self.optionsContainerView.alpha = 1
+                }, completion: { (complete) in
+                    
+            })
+            
         }
     }
 
@@ -271,6 +317,17 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         isMapTabActive = false
     }
     
+    func secondFadeIn(){
+        secondIconHorizontalConstraint.constant -= 4
+        secondIconLabelBottomConstraint.constant += 7
+        UIView.animateWithDuration(0.2) {
+            self.secondIconLabel.alpha = 1
+            self.secondIcon.textColor = UIColor(hexString: "F7F7F7")
+            self.view.layoutIfNeeded()
+        }
+        isInformationTabActive = true
+    }
+    
     func secondFadeOut(){
         secondIconHorizontalConstraint.constant += 4
         secondIconLabelBottomConstraint.constant -= 7
@@ -282,15 +339,26 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         isInformationTabActive = false
     }
     
-    func secondFadeIn(){
-        secondIconHorizontalConstraint.constant -= 4
-        secondIconLabelBottomConstraint.constant += 7
-        UIView.animateWithDuration(0.2) {
-            self.secondIconLabel.alpha = 1
-            self.secondIcon.textColor = UIColor(hexString: "F7F7F7")
+    func thirdFadeIn(){
+        thirdIconHorizontalContstraint.constant -= 4
+        thirdIconLabelBottomConstraint.constant += 7
+        UIView.animateWithDuration(0.3) { 
             self.view.layoutIfNeeded()
+            self.thirdIconLabel.alpha = 1
+            self.thirdIcon.textColor = UIColor(hexString: "F7F7F7")
         }
-        isInformationTabActive = true
+        isOptionsTabActive = true
+    }
+    
+    func thirdFadeOut(){
+        thirdIconHorizontalContstraint.constant += 4
+        thirdIconLabelBottomConstraint.constant -= 7
+        UIView.animateWithDuration(0.2) { 
+            self.view.layoutIfNeeded()
+            self.thirdIconLabel.alpha = 0
+            self.thirdIcon.textColor = UIColor(hexString: "7F7F7F")
+        }
+        isOptionsTabActive = false
     }
     
     func runTimedCode(){
