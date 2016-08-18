@@ -148,7 +148,7 @@ class SummaryTripViewController: UIViewController {
         
         QTUserManager.sharedInstance.currentUser.trip?.totalDistance = mapTasks.totalDistance
         QTUserManager.sharedInstance.currentUser.trip?.timeAprox = mapTasks.totalDuration
-        QTUserManager.sharedInstance.currentUser.trip?.rate = "$30.00"
+        QTUserManager.sharedInstance.currentUser.trip?.rate = "$35.00"
         QTUserManager.sharedInstance.currentUser.trip?.driverName = "Pedro Lopez"
         QTUserManager.sharedInstance.currentUser.trip?.carKind = "Altima"
         QTUserManager.sharedInstance.currentUser.trip?.carColor = "Amarillo"

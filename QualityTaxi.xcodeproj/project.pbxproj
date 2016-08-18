@@ -22,6 +22,8 @@
 		30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D1D7351BEEDD2E00AE549B /* StartViewController.swift */; };
 		30D1D7381BEFAA6500AE549B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7371BEFAA6500AE549B /* MapKit.framework */; };
 		30D1D73A1BEFAA7000AE549B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D1D7391BEFAA7000AE549B /* CoreLocation.framework */; };
+		8B03866F1D64DBFE00AD0BE0 /* MyriadPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B642C001CE46DF700415FF3 /* MyriadPro-Regular.otf */; };
+		8B0386701D64DC0400AD0BE0 /* MyriadPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8B642C061CE7A47E00415FF3 /* MyriadPro-Semibold.otf */; };
 		8B0447881D23161C00F911BA /* Privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 8B0447861D23161C00F911BA /* Privacy.html */; };
 		8B0447891D23161C00F911BA /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 8B0447871D23161C00F911BA /* Terms.html */; };
 		8B07F3841D52A76A003C858C /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B07F3831D52A76A003C858C /* VerificationCodeViewController.swift */; };
@@ -68,6 +70,7 @@
 		8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB6D9BC1CCEECF400454859 /* LoginViewController.swift */; };
 		8BCBBC591CDC24C700DE1126 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCBBC581CDC24C700DE1126 /* SWRevealViewController.m */; };
 		8BD182A21CD5070B005CD15F /* RequestSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */; };
+		8BD306DF1D63E8F70059F19C /* FinalizeTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD306DE1D63E8F60059F19C /* FinalizeTripViewController.swift */; };
 		8BE797591D5D392A0008AC30 /* QTPhoneParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE797581D5D392A0008AC30 /* QTPhoneParser.swift */; };
 		8BEE5DC61D5BC6DB00649935 /* QTFakeUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE5DC51D5BC6DB00649935 /* QTFakeUsers.swift */; };
 		C004D1FAD4D94027447FB81C /* Pods_QualityTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */; };
@@ -165,6 +168,7 @@
 		8BCBBC571CDC24C700DE1126 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8BCBBC581CDC24C700DE1126 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSelectedViewController.swift; sourceTree = "<group>"; };
+		8BD306DE1D63E8F60059F19C /* FinalizeTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalizeTripViewController.swift; sourceTree = "<group>"; };
 		8BE797581D5D392A0008AC30 /* QTPhoneParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTPhoneParser.swift; sourceTree = "<group>"; };
 		8BEE5DC51D5BC6DB00649935 /* QTFakeUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTFakeUsers.swift; sourceTree = "<group>"; };
 		C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -471,6 +475,7 @@
 				8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */,
 				8B9714C71CD3D6940065BF58 /* SummaryTripViewController.swift */,
 				8B9714C91CD40F5B0065BF58 /* FindTaxiViewController.swift */,
+				8BD306DE1D63E8F60059F19C /* FinalizeTripViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -636,6 +641,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B0386701D64DC0400AD0BE0 /* MyriadPro-Semibold.otf in Resources */,
+				8B03866F1D64DBFE00AD0BE0 /* MyriadPro-Regular.otf in Resources */,
 				30D1D6D81BEAEAF900AE549B /* LaunchScreen.storyboard in Resources */,
 				8B90C9CB1CDD228F00F7A91E /* MenuTableViewCell.xib in Resources */,
 				8B0447891D23161C00F911BA /* Terms.html in Resources */,
@@ -734,6 +741,7 @@
 				8B17BE001CDE484E00440C44 /* DriverMenuViewController.swift in Sources */,
 				8B8B6E931D21FF30002FECE2 /* AboutTableViewController.swift in Sources */,
 				8B52CBDB1CEE75F00020B9D2 /* MyTripsTableViewCell.swift in Sources */,
+				8BD306DF1D63E8F70059F19C /* FinalizeTripViewController.swift in Sources */,
 				8B7FC0411D0B785500102B35 /* PassengerNavigationController.swift in Sources */,
 				8B07F38A1D52BA8E003C858C /* ProfileInfoViewController.swift in Sources */,
 				8B6C9DCB1CCFF6A500A28613 /* CreateAccountViewController.swift in Sources */,

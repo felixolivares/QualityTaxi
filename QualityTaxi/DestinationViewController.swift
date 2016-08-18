@@ -36,12 +36,14 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
     let kResultsCellIdentifier = "ResultsCellIdentifier"
     var allResults : Array<Dictionary<NSObject, AnyObject>> = []
     var searchTimer = NSTimer()
+    var comingFromSummary:Bool = Bool()
+    
+    @IBAction func unwindToSetDestination(segue: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        currentTrip = QTUserManager.sharedInstance.getCurrentTrip()
-        print("trip info \( currentTrip.createdAt)")
+        
+        
         
         // Get current location
         self.locationManager.delegate = self
@@ -62,15 +64,6 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
         continueButton.alpha = 0
         continueButton.layer.cornerRadius = 5
         
-//        print("current trip time \(currentTripTime)")
-        
-        
-//        let predicate:NSPredicate = NSPredicate(format: "createdAt == %@", currentTripTime)
-//        let request:NSFetchRequest = QualityTrip.MR_requestAllWithPredicate(predicate)
-//        let allTrips = QualityTrip.MR_executeFetchRequest(request)
-//        currentTrip = allTrips?.first as! QualityTrip
-        
-        
         //Regiser custom Results cell
         let registerNib = UINib(nibName: "ResultsTableViewCell", bundle: nil)
         resultsTableView.registerNib(registerNib, forCellReuseIdentifier: kResultsCellIdentifier)
@@ -78,8 +71,19 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
         resultsTableView.layer.cornerRadius = 5
         
         moneyLeftLabel.text = String(format: "$%.2f", defaults.floatForKey("moneyLeft"))
+        
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        currentTrip = QTUserManager.sharedInstance.getCurrentTrip()
+        if comingFromSummary == true {
+            self.navigationItem.setHidesBackButton(true, animated: false)
+            print("coming from summary")
+        }else{
+            print("normal flow")
+        }
+    }
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.searchTimer.invalidate()
@@ -232,15 +236,25 @@ class DestinationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func continuePressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("toSummary", sender: nil)
+        if comingFromSummary {
+            self.performSegueWithIdentifier("fromDestinationToSummary", sender: nil)
+        }else{
+            self.performSegueWithIdentifier("toSummary", sender: nil)
+        }
     }
     
     
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc:SummaryTripViewController = segue.destinationViewController as! SummaryTripViewController
-        vc.currentTripTime = self.currentTripTime
+        if segue.identifier == "toSummary" {
+            let vc:SummaryTripViewController = segue.destinationViewController as! SummaryTripViewController
+            vc.currentTripTime = self.currentTripTime
+        }else{
+            let vc:FindTaxiViewController = segue.destinationViewController as! FindTaxiViewController
+            vc.currentTripTime = self.currentTripTime
+            vc.fromMyTrips = false
+        }
     }
     
     //Mark: - TableView Delegate Methods

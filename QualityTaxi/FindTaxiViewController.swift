@@ -121,7 +121,7 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         secondIconLabel.alpha = 0
         
         thirdIcon.font = UIFont.fontAwesomeOfSize(14)
-        thirdIcon.text = String.fontAwesomeIconWithCode("fa-ellipsis-h")
+        thirdIcon.text = String.fontAwesomeIconWithCode("fa-cog")
         thirdIcon.textColor = UIColor(hexString: "F7F7F7")
         thirdIconLabel.alpha = 0
         
@@ -238,8 +238,12 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
             self.firstFadeIn()
             
             //Information and Options fade out
-            self.secondFadeOut()
-            self.thirdFadeOut()
+            if isInformationTabActive {
+                self.secondFadeOut()
+            }
+            if isOptionsTabActive {
+                self.thirdFadeOut()
+            }
             
             UIView.animateWithDuration(0.2, animations: {
                 self.infoContainerView.alpha = 0
@@ -259,8 +263,12 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
             self.secondFadeIn()
             
             //Map and Options fade out
-            self.firstFadeOut()
-            self.thirdFadeOut()
+            if isMapTabActive{
+                self.firstFadeOut()
+            }
+            if isOptionsTabActive {
+                self.thirdFadeOut()
+            }
             
             UIView.animateWithDuration(0.2, animations: {
                 self.viewMap.alpha = 0
@@ -279,10 +287,13 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
             //Options fade out
             self.thirdFadeIn()
             
-            
             //Map and Info fade out
-            self.firstFadeOut()
-            self.secondFadeOut()
+            if isMapTabActive{
+                self.firstFadeOut()
+            }
+            if isInformationTabActive {
+                self.secondFadeOut()
+            }
             
             UIView.animateWithDuration(0.2, animations: { 
                 self.viewMap.alpha = 0
@@ -484,14 +495,14 @@ class FindTaxiViewController: UIViewController, UIGestureRecognizerDelegate, GMS
         marker.opacity = 0.75
 
     }
-    /*
+
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "unwindToDestination"{
+            print("unwind segue to destination")
+            let vc:DestinationViewController = segue.destinationViewController as! DestinationViewController
+            vc.comingFromSummary = true
+        }
     }
-    */
-
 }
