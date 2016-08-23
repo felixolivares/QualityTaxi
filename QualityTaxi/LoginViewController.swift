@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         if devMode {
-            userTextField.text = "pasajero"
+            userTextField.text = "chofer"
             passwordTextField.text = "1234"
         }    
         

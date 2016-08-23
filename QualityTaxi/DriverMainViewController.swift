@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class DriverMainViewController: UIViewController, ENSideMenuDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -19,6 +20,19 @@ class DriverMainViewController: UIViewController, ENSideMenuDelegate {
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+        
+        let runkeeperSwitch = DGRunkeeperSwitch(titles: ["Disponible", "Ocupado"])
+//        let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Feed", rightTitle: "Leaderboard")
+        runkeeperSwitch.backgroundColor = UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0)
+        runkeeperSwitch.selectedBackgroundColor = .whiteColor()
+        runkeeperSwitch.titleColor = .whiteColor()
+        runkeeperSwitch.selectedTitleColor = UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0)
+        runkeeperSwitch.titleFont = UIFont(name: "HelveticaNeue-Medium", size: 13.0)
+        runkeeperSwitch.frame = CGRect(x: 50.0, y: 20.0, width: view.bounds.width - 100.0, height: 30.0)
+        runkeeperSwitch.autoresizingMask = [.FlexibleWidth]
+        view.addSubview(runkeeperSwitch)
+
+
     }
 
     override func didReceiveMemoryWarning() {

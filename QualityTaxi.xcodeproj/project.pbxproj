@@ -72,6 +72,9 @@
 		8BD182A21CD5070B005CD15F /* RequestSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */; };
 		8BD306DF1D63E8F70059F19C /* FinalizeTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD306DE1D63E8F60059F19C /* FinalizeTripViewController.swift */; };
 		8BE797591D5D392A0008AC30 /* QTPhoneParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE797581D5D392A0008AC30 /* QTPhoneParser.swift */; };
+		8BEDDEBF1D6BDBE3006FD377 /* DGRunkeeperSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDDEBE1D6BDBE3006FD377 /* DGRunkeeperSwitch.swift */; };
+		8BEDDEC31D6C1672006FD377 /* DynamicBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDDEC21D6C1672006FD377 /* DynamicBlurView.swift */; };
+		8BEDDEC51D6C174F006FD377 /* PerformRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDDEC41D6C174F006FD377 /* PerformRequestViewController.swift */; };
 		8BEE5DC61D5BC6DB00649935 /* QTFakeUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE5DC51D5BC6DB00649935 /* QTFakeUsers.swift */; };
 		C004D1FAD4D94027447FB81C /* Pods_QualityTaxi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46302169DF8F9E466615F80B /* Pods_QualityTaxi.framework */; };
 /* End PBXBuildFile section */
@@ -170,6 +173,9 @@
 		8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSelectedViewController.swift; sourceTree = "<group>"; };
 		8BD306DE1D63E8F60059F19C /* FinalizeTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalizeTripViewController.swift; sourceTree = "<group>"; };
 		8BE797581D5D392A0008AC30 /* QTPhoneParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTPhoneParser.swift; sourceTree = "<group>"; };
+		8BEDDEBE1D6BDBE3006FD377 /* DGRunkeeperSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DGRunkeeperSwitch.swift; sourceTree = "<group>"; };
+		8BEDDEC21D6C1672006FD377 /* DynamicBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicBlurView.swift; sourceTree = "<group>"; };
+		8BEDDEC41D6C174F006FD377 /* PerformRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformRequestViewController.swift; sourceTree = "<group>"; };
 		8BEE5DC51D5BC6DB00649935 /* QTFakeUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTFakeUsers.swift; sourceTree = "<group>"; };
 		C4DCD9D00A4C622055608729 /* Pods-QualityTaxi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QualityTaxi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QualityTaxi/Pods-QualityTaxi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -345,6 +351,8 @@
 		8B0ADEFF1CE18C9300E074C2 /* Utilites */ = {
 			isa = PBXGroup;
 			children = (
+				8BEDDEC11D6C165A006FD377 /* Blur */,
+				8BEDDEC01D6C164F006FD377 /* Switch */,
 				8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */,
 			);
 			name = Utilites;
@@ -396,7 +404,6 @@
 				8BDD4C451D32C0DD00F90071 /* Driver */,
 				8BDD4C441D32C0D700F90071 /* Passenger */,
 				8BDD4C411D32C0B800F90071 /* Menus */,
-				8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */,
 				8B7FC0401D0B785500102B35 /* PassengerNavigationController.swift */,
 				8B8B6E901D21F206002FECE2 /* SettingsPassengerViewController.swift */,
 				8B8B6E921D21FF30002FECE2 /* AboutTableViewController.swift */,
@@ -463,6 +470,8 @@
 				8B54B4051CDAA27200D7632E /* DriverMainViewController.swift */,
 				8B54B4071CDAD44200D7632E /* DriverLocationViewController.swift */,
 				8B9714D41CD47D510065BF58 /* TripsViewController.swift */,
+				8BD182A11CD5070B005CD15F /* RequestSelectedViewController.swift */,
+				8BEDDEC41D6C174F006FD377 /* PerformRequestViewController.swift */,
 			);
 			name = Driver;
 			sourceTree = "<group>";
@@ -513,6 +522,22 @@
 				8BEE5DC51D5BC6DB00649935 /* QTFakeUsers.swift */,
 			);
 			name = "User Manager";
+			sourceTree = "<group>";
+		};
+		8BEDDEC01D6C164F006FD377 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				8BEDDEBE1D6BDBE3006FD377 /* DGRunkeeperSwitch.swift */,
+			);
+			name = Switch;
+			sourceTree = "<group>";
+		};
+		8BEDDEC11D6C165A006FD377 /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				8BEDDEC21D6C1672006FD377 /* DynamicBlurView.swift */,
+			);
+			name = Blur;
 			sourceTree = "<group>";
 		};
 		A1A4F5B230392FFB35E01A99 /* Pods */ = {
@@ -728,6 +753,7 @@
 				8B8B6E971D220961002FECE2 /* AboutContentViewController.swift in Sources */,
 				8B9714D21CD4754A0065BF58 /* TripTableViewCell.swift in Sources */,
 				8B9714D51CD47D510065BF58 /* TripsViewController.swift in Sources */,
+				8BEDDEC51D6C174F006FD377 /* PerformRequestViewController.swift in Sources */,
 				30D1D7011BEAF03400AE549B /* ENSideMenu.swift in Sources */,
 				8B90C9C51CDD1EDE00F7A91E /* PassengerMenuViewController.swift in Sources */,
 				30D1D72F1BED703E00AE549B /* UIColorExtensions.swift in Sources */,
@@ -766,12 +792,14 @@
 				8B90C9CA1CDD228F00F7A91E /* MenuTableViewCell.swift in Sources */,
 				8B4CB46A1CD2599C003AC9D6 /* UIViewExtension.swift in Sources */,
 				8B62BDD31D59106E00EF7AF1 /* QualityTrip+CoreDataProperties.swift in Sources */,
+				8BEDDEC31D6C1672006FD377 /* DynamicBlurView.swift in Sources */,
 				8B90C9D11CDDD8E800F7A91E /* UIViewController+STZPopupView.swift in Sources */,
 				8B54B4081CDAD44200D7632E /* DriverLocationViewController.swift in Sources */,
 				8B9714CC1CD410500065BF58 /* EZLoadingActivity.swift in Sources */,
 				8B07F3881D52AECC003C858C /* QTButton.swift in Sources */,
 				8B4CB4661CD1862D003AC9D6 /* MapTasks.swift in Sources */,
 				8BCBBC591CDC24C700DE1126 /* SWRevealViewController.m in Sources */,
+				8BEDDEBF1D6BDBE3006FD377 /* DGRunkeeperSwitch.swift in Sources */,
 				8BB6D9BD1CCEECF400454859 /* LoginViewController.swift in Sources */,
 				8B54B4061CDAA27200D7632E /* DriverMainViewController.swift in Sources */,
 				30D1D7331BED74C000AE549B /* QualityTaxi.xcdatamodeld in Sources */,

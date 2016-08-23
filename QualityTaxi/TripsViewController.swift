@@ -34,45 +34,45 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let trip1 = ClientTrip()
         trip1.from = "Canario 51 Col. Nuevo Progreso"
         trip1.to = "Delfin 110, Lopez Mateos"
-        trip1.rate = "35"
+        trip1.rate = "35.00"
         trip1.distance = 12.0
         trip1.id = "234"
         trip1.distanceToUser = 3.0
         trip1.cash = "35"
-        trip1.name = "Juan"
+        trip1.name = "Juan Magan"
         allTrips.append(trip1)
         
         let trip2 = ClientTrip()
         trip2.from = "Juarez 21 Col. Centro"
         trip2.to = "Paraiso 36 Fracc. Villas del Paraise"
-        trip2.rate = "40"
+        trip2.rate = "40.00"
         trip2.distance = 8.0
         trip2.id = "21"
         trip2.distanceToUser = 3.0
         trip2.cash = "35"
-        trip2.name = "Pedro"
+        trip2.name = "Pedro Infante"
         allTrips.append(trip2)
 
         let trip3 = ClientTrip()
         trip3.from = "Iturbide 34, Menchaca"
         trip3.to = "Madero 453 Col Centro"
-        trip3.rate = "25"
+        trip3.rate = "25.00"
         trip3.distance = 3.0
         trip3.id = "46"
         trip3.distanceToUser = 3.0
         trip3.cash = "35"
-        trip3.name = "Luis"
+        trip3.name = "Luis Fernandez"
         allTrips.append(trip3)
 
         let trip4 = ClientTrip()
         trip4.from = "Roma 32 Col. Chapalita"
         trip4.to = "Girasol 64 Jardines"
-        trip4.rate = "30"
+        trip4.rate = "30.00"
         trip4.distance = 5.0
         trip4.id = "1234"
         trip4.distanceToUser = 3.0
         trip4.cash = "35"
-        trip4.name = "Paco"
+        trip4.name = "Paco Stanley"
         allTrips.append(trip4)        
         
         //Sorted results by Distance at the beginning
@@ -91,7 +91,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let trip1 = ClientTrip()
         trip1.from = "Niños Heroes 37, Moctezuma"
         trip1.to = "Obregon 145, Jazmines"
-        trip1.rate = "35"
+        trip1.rate = "35.00"
         trip1.distance = 7.0
         trip1.id = "668"
         allTrips.append(trip1)
@@ -123,7 +123,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let trip1 = ClientTrip()
         trip1.from = "Rio Bravo 134, Col. Mololoa"
         trip1.to = "Uruguay 459, Col. Magisteral"
-        trip1.rate = "40"
+        trip1.rate = "40.00"
         trip1.distance = 11.0
         trip1.id = "334"
         allTrips.append(trip1)
