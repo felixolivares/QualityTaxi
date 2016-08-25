@@ -148,7 +148,7 @@ class MapTasks: NSObject {
         let days = hours / 24
         let remainingHours = hours % 24
         let remainingMins = mins % 60
-        let remainingSecs = totalDurationInSeconds % 60
+        _ = totalDurationInSeconds % 60
         
 //        if days > 0 {
 //            totalDuration = "\(days) d, \(remainingHours) h, \(remainingMins) mins, \(remainingSecs) secs"

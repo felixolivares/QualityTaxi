@@ -11,7 +11,9 @@ import UIKit
 
 class DriverMainViewController: UIViewController, ENSideMenuDelegate {
 
+    @IBOutlet weak var switchContainerView: UIView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,16 +23,17 @@ class DriverMainViewController: UIViewController, ENSideMenuDelegate {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
+        
         let runkeeperSwitch = DGRunkeeperSwitch(titles: ["Disponible", "Ocupado"])
 //        let runkeeperSwitch = DGRunkeeperSwitch(leftTitle: "Feed", rightTitle: "Leaderboard")
-        runkeeperSwitch.backgroundColor = UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0)
-        runkeeperSwitch.selectedBackgroundColor = .whiteColor()
-        runkeeperSwitch.titleColor = .whiteColor()
-        runkeeperSwitch.selectedTitleColor = UIColor(red: 239.0/255.0, green: 95.0/255.0, blue: 49.0/255.0, alpha: 1.0)
+        runkeeperSwitch.backgroundColor = UIColor(hexString: "F6B231")
+        runkeeperSwitch.selectedBackgroundColor = UIColor(hexString: "1C3F58")
+        runkeeperSwitch.titleColor = UIColor(hexString: "1C3F58")
+        runkeeperSwitch.selectedTitleColor = .whiteColor()
         runkeeperSwitch.titleFont = UIFont(name: "HelveticaNeue-Medium", size: 13.0)
-        runkeeperSwitch.frame = CGRect(x: 50.0, y: 20.0, width: view.bounds.width - 100.0, height: 30.0)
+        runkeeperSwitch.frame = CGRect(x: 50.0, y: 10.0, width: switchContainerView.bounds.width - 100.0, height: 30.0)
         runkeeperSwitch.autoresizingMask = [.FlexibleWidth]
-        view.addSubview(runkeeperSwitch)
+        switchContainerView.addSubview(runkeeperSwitch)
 
 
     }

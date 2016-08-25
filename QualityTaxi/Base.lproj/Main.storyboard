@@ -2017,6 +2017,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="UaX-St-Oqa"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="sortingButton" destination="SCV-nY-rvX" id="sD5-qd-KZU"/>
                         <outlet property="subBar" destination="udQ-9F-l8H" id="eW1-Yp-v0K"/>
                         <outlet property="tableView" destination="Rxi-vB-toL" id="TjT-m4-SLF"/>
                         <segue destination="yzv-wV-lgU" kind="push" identifier="toSelectedRequest" id="s2G-K3-szs"/>
@@ -2077,6 +2078,13 @@
                                     <segue destination="tbC-ic-MJ0" kind="push" id="XuL-LI-vm3"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLW-Rb-2j7">
+                                <rect key="frame" x="-4" y="64" width="328" height="50"/>
+                                <color key="backgroundColor" red="0.074509803921568626" green="0.098039215686274508" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lzx-PW-Hyp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2085,9 +2093,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="RPo-Dm-Jt6" secondAttribute="trailing" constant="-20" id="Lgg-Yt-YXF"/>
                             <constraint firstItem="wJv-H0-kNl" firstAttribute="leading" secondItem="wGj-hZ-7g8" secondAttribute="leadingMargin" id="N0O-Lf-fFc"/>
                             <constraint firstItem="Sjn-UR-UsJ" firstAttribute="top" secondItem="M1O-4l-bZb" secondAttribute="bottom" id="Q7R-EP-y67"/>
+                            <constraint firstItem="TLW-Rb-2j7" firstAttribute="top" secondItem="M1O-4l-bZb" secondAttribute="bottom" id="SQS-h1-RyK"/>
                             <constraint firstItem="RPo-Dm-Jt6" firstAttribute="top" secondItem="M1O-4l-bZb" secondAttribute="bottom" id="XOF-4t-3A7"/>
                             <constraint firstItem="RPo-Dm-Jt6" firstAttribute="leading" secondItem="wGj-hZ-7g8" secondAttribute="leadingMargin" constant="-20" id="bxS-q6-Ct2"/>
                             <constraint firstItem="4Jq-Pf-3e6" firstAttribute="top" secondItem="RPo-Dm-Jt6" secondAttribute="bottom" id="ceD-lh-P5B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TLW-Rb-2j7" secondAttribute="trailing" constant="-20" id="n67-af-Adz"/>
+                            <constraint firstItem="TLW-Rb-2j7" firstAttribute="leading" secondItem="wGj-hZ-7g8" secondAttribute="leadingMargin" constant="-20" id="nNd-Il-mAe"/>
                             <constraint firstItem="Sjn-UR-UsJ" firstAttribute="leading" secondItem="wGj-hZ-7g8" secondAttribute="leadingMargin" constant="-20" id="tcQ-lk-6cF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wJv-H0-kNl" secondAttribute="trailing" id="y7l-qR-ELs"/>
                         </constraints>
@@ -2102,6 +2113,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="soy-VL-M6f" id="EVb-uz-D7f"/>
+                        <outlet property="switchContainerView" destination="TLW-Rb-2j7" id="0VU-VK-9Hf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CT-hK-fzJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2207,7 +2219,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40.00 MX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgF-zB-5A1">
                                                 <rect key="frame" x="8" y="11" width="232" height="19"/>
                                                 <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="19"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tarifa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIj-lK-ZbJ">
@@ -2241,13 +2253,13 @@
                                                             <constraint firstAttribute="width" constant="55" id="mCP-mQ-6T4"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Efectivo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GN4-Dg-a1X">
                                                         <rect key="frame" x="12" y="14" width="57" height="17"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -2273,7 +2285,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.7 Km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYP-Ey-yau">
                                                         <rect key="frame" x="16" y="14" width="49" height="17"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia con el usuario" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkN-5L-Ic9">
@@ -2283,7 +2295,7 @@
                                                             <constraint firstAttribute="width" constant="66" id="vkd-sI-cLA"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -2309,7 +2321,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.4 Km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHu-1N-GAe">
                                                         <rect key="frame" x="16" y="14" width="49" height="17"/>
                                                         <fontDescription key="fontDescription" name="MyriadPro-Regular" family="Myriad Pro" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia del viaje" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCA-6t-Bey">
@@ -2319,7 +2331,7 @@
                                                             <constraint firstAttribute="height" constant="30" id="lhj-0X-gIX"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -2356,13 +2368,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USUARIO: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybn-bT-QOx">
                                         <rect key="frame" x="20" y="227" width="54" height="12"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPp-fU-imP">
                                         <rect key="frame" x="20" y="242" width="248" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2455,7 +2467,7 @@
                                 <rect key="frame" x="16" y="105" width="288" height="284"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="El pasajero se encuentra en la siguiente ubicación: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFG-wH-UW6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recoger al pasajero en la siguiente ubicación: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFG-wH-UW6">
                                 <rect key="frame" x="16" y="80" width="288" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="0fe-CG-vsY"/>
@@ -2494,6 +2506,7 @@
                                 </state>
                                 <connections>
                                     <action selector="askTaxi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DWh-Wm-Ktz"/>
+                                    <action selector="startTripButtonPressed:" destination="7RT-CE-zBy" eventType="touchUpInside" id="Jsm-rD-Gfh"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvU-cd-EHj">
@@ -2516,19 +2529,19 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="red-circle" translatesAutoresizingMaskIntoConstraints="NO" id="bKf-GM-b3C">
                                         <rect key="frame" x="10" y="36" width="10" height="10"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paraiso 36, Fracc Villas del Paraiso 63245" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cud-g4-6sX">
-                                        <rect key="frame" x="28" y="1" width="255" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canario 51, Nuevo Progreso 63783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-lO-VbT">
+                                        <rect key="frame" x="28" y="28" width="255" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="26" id="zvk-sY-4eq"/>
+                                            <constraint firstAttribute="height" constant="26" id="WtD-lw-4Oi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canario 51, Nuevo Progreso 63783" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-lO-VbT">
-                                        <rect key="frame" x="28" y="28" width="255" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paraiso 36, Fracc Villas del Paraiso 63245" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cud-g4-6sX">
+                                        <rect key="frame" x="28" y="1" width="255" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="26" id="WtD-lw-4Oi"/>
+                                            <constraint firstAttribute="height" constant="26" id="zvk-sY-4eq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -2580,9 +2593,7 @@
                             <constraint firstItem="nKZ-8G-C53" firstAttribute="leading" secondItem="1H7-ad-4SR" secondAttribute="leadingMargin" id="0dq-tY-2dr"/>
                             <constraint firstItem="caD-K3-cts" firstAttribute="top" secondItem="XFG-wH-UW6" secondAttribute="bottom" constant="8" id="52z-LL-GkY"/>
                             <constraint firstItem="XFG-wH-UW6" firstAttribute="leading" secondItem="1H7-ad-4SR" secondAttribute="leadingMargin" id="6Fy-2d-vbK"/>
-                            <constraint firstItem="gi9-KZ-5rF" firstAttribute="centerY" secondItem="nKZ-8G-C53" secondAttribute="centerY" id="B3B-gg-jM8"/>
                             <constraint firstItem="no9-bY-1rW" firstAttribute="top" secondItem="nKZ-8G-C53" secondAttribute="bottom" constant="8" id="Dlf-6G-nrx"/>
-                            <constraint firstItem="nKZ-8G-C53" firstAttribute="top" secondItem="vvU-cd-EHj" secondAttribute="bottom" constant="8" id="Fa3-d5-bwT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gi9-KZ-5rF" secondAttribute="trailing" id="PAL-As-lcp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XFG-wH-UW6" secondAttribute="trailing" id="VuJ-Ts-kII"/>
                             <constraint firstItem="caD-K3-cts" firstAttribute="trailing" secondItem="1H7-ad-4SR" secondAttribute="trailingMargin" id="WWS-IL-DP6"/>
@@ -2594,15 +2605,24 @@
                             <constraint firstItem="caD-K3-cts" firstAttribute="leading" secondItem="1H7-ad-4SR" secondAttribute="leadingMargin" id="jCa-dT-lEX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="no9-bY-1rW" secondAttribute="trailing" id="jg5-AO-d43"/>
                             <constraint firstItem="gi9-KZ-5rF" firstAttribute="width" secondItem="nKZ-8G-C53" secondAttribute="width" id="lfZ-cJ-C5q"/>
+                            <constraint firstItem="vvU-cd-EHj" firstAttribute="bottom" secondItem="gi9-KZ-5rF" secondAttribute="top" constant="-8" id="lm6-Yk-s5g"/>
                             <constraint firstItem="vvU-cd-EHj" firstAttribute="top" secondItem="caD-K3-cts" secondAttribute="bottom" constant="8" id="nDN-MU-MiI"/>
                             <constraint firstItem="5Ne-JS-xUn" firstAttribute="top" secondItem="no9-bY-1rW" secondAttribute="bottom" constant="20" id="tTq-hw-OXq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vvU-cd-EHj" secondAttribute="trailing" id="y2b-Y8-2h6"/>
+                            <constraint firstItem="no9-bY-1rW" firstAttribute="top" secondItem="gi9-KZ-5rF" secondAttribute="bottom" constant="8" id="yfV-Dt-1u8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Quality Taxi" id="9OR-VD-xIe"/>
                     <connections>
+                        <outlet property="arrivalPingBottomConstraint" destination="Dlf-6G-nrx" id="Ner-XN-vCR"/>
                         <outlet property="arrivalPingButton" destination="nKZ-8G-C53" id="UJl-A9-m8D"/>
+                        <outlet property="arrivalPingLeadingConstraint" destination="0dq-tY-2dr" id="Y8k-Kv-sy0"/>
                         <outlet property="cancelButton" destination="no9-bY-1rW" id="rUD-js-FyF"/>
+                        <outlet property="cancelTripBottomConstraint" destination="tTq-hw-OXq" id="Ul5-nN-4NS"/>
+                        <outlet property="cancelTripTopConstraint" destination="yfV-Dt-1u8" id="3sa-Co-vFm"/>
+                        <outlet property="cancelTripTrailingConstraint" destination="jg5-AO-d43" id="toE-Ac-XdG"/>
+                        <outlet property="directionsContainerView" destination="vvU-cd-EHj" id="ZTM-FM-ECt"/>
+                        <outlet property="mapView" destination="caD-K3-cts" id="JdB-Zg-qc2"/>
                         <outlet property="startTripButton" destination="gi9-KZ-5rF" id="XWj-sI-glr"/>
                     </connections>
                 </viewController>

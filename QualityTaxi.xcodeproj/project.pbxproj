@@ -34,6 +34,8 @@
 		8B281E4F1D5A60610082DA1F /* QTValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B281E4E1D5A60610082DA1F /* QTValidation.swift */; };
 		8B281E521D5AD7800082DA1F /* QualityUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B281E501D5AD7800082DA1F /* QualityUser+CoreDataProperties.swift */; };
 		8B281E531D5AD7800082DA1F /* QualityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B281E511D5AD7800082DA1F /* QualityUser.swift */; };
+		8B3C7C131D6CA8170044F97B /* QTPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C7C121D6CA8170044F97B /* QTPopup.swift */; };
+		8B3C7C161D6D0D440044F97B /* AIFlatSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3C7C151D6D0D440044F97B /* AIFlatSwitch.swift */; };
 		8B4CB4661CD1862D003AC9D6 /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */; };
 		8B4CB46A1CD2599C003AC9D6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */; };
 		8B4CB46C1CD2998A003AC9D6 /* DestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */; };
@@ -131,6 +133,8 @@
 		8B281E4E1D5A60610082DA1F /* QTValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTValidation.swift; sourceTree = "<group>"; };
 		8B281E501D5AD7800082DA1F /* QualityUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QualityUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8B281E511D5AD7800082DA1F /* QualityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualityUser.swift; sourceTree = "<group>"; };
+		8B3C7C121D6CA8170044F97B /* QTPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QTPopup.swift; sourceTree = "<group>"; };
+		8B3C7C151D6D0D440044F97B /* AIFlatSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AIFlatSwitch.swift; path = AIFlatSwitch/AIFlatSwitch.swift; sourceTree = "<group>"; };
 		8B4CB4651CD1862C003AC9D6 /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTasks.swift; sourceTree = "<group>"; };
 		8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8B4CB46B1CD2998A003AC9D6 /* DestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				304BEB9B1BFC0D5D008383FA /* OpenSans-Bold.ttf */,
+				8B642C001CE46DF700415FF3 /* MyriadPro-Regular.otf */,
+				8B642C061CE7A47E00415FF3 /* MyriadPro-Semibold.otf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				8B07F3871D52AECC003C858C /* QTButton.swift */,
+				8B3C7C121D6CA8170044F97B /* QTPopup.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -390,8 +397,6 @@
 				8B4CB4691CD2599C003AC9D6 /* UIViewExtension.swift */,
 				30D1D6D11BEAEAF900AE549B /* Main.storyboard */,
 				30D1D6D61BEAEAF900AE549B /* LaunchScreen.storyboard */,
-				8B642C001CE46DF700415FF3 /* MyriadPro-Regular.otf */,
-				8B642C061CE7A47E00415FF3 /* MyriadPro-Semibold.otf */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -527,6 +532,7 @@
 		8BEDDEC01D6C164F006FD377 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
+				8B3C7C151D6D0D440044F97B /* AIFlatSwitch.swift */,
 				8BEDDEBE1D6BDBE3006FD377 /* DGRunkeeperSwitch.swift */,
 			);
 			name = Switch;
@@ -767,6 +773,7 @@
 				8B17BE001CDE484E00440C44 /* DriverMenuViewController.swift in Sources */,
 				8B8B6E931D21FF30002FECE2 /* AboutTableViewController.swift in Sources */,
 				8B52CBDB1CEE75F00020B9D2 /* MyTripsTableViewCell.swift in Sources */,
+				8B3C7C161D6D0D440044F97B /* AIFlatSwitch.swift in Sources */,
 				8BD306DF1D63E8F70059F19C /* FinalizeTripViewController.swift in Sources */,
 				8B7FC0411D0B785500102B35 /* PassengerNavigationController.swift in Sources */,
 				8B07F38A1D52BA8E003C858C /* ProfileInfoViewController.swift in Sources */,
@@ -779,6 +786,7 @@
 				8B07F3841D52A76A003C858C /* VerificationCodeViewController.swift in Sources */,
 				30D1D7361BEEDD2E00AE549B /* StartViewController.swift in Sources */,
 				8B62BDD41D59106E00EF7AF1 /* QualityTrip.swift in Sources */,
+				8B3C7C131D6CA8170044F97B /* QTPopup.swift in Sources */,
 				8B90C9D01CDDD8E800F7A91E /* STZPopupViewConfig.swift in Sources */,
 				8BD182A21CD5070B005CD15F /* RequestSelectedViewController.swift in Sources */,
 				8B9714CA1CD40F5B0065BF58 /* FindTaxiViewController.swift in Sources */,

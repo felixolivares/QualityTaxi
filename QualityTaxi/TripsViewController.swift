@@ -20,6 +20,8 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var sorting = ""
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    @IBOutlet weak var sortingButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -164,7 +166,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell:TripTableViewCell = tableView.dequeueReusableCellWithIdentifier(kTripCellIdentifier) as! TripTableViewCell
         cell.fromLabel.text = allTrips[indexPath.row].from
         cell.toLabel.text = allTrips[indexPath.row].to
-        cell.rateLabel.text = "$ " + allTrips[indexPath.row].rate
+        cell.rateLabel.text = "$" + allTrips[indexPath.row].rate
         cell.distanceLabel.text = String(allTrips[indexPath.row].distance) + " Km"
         return cell
     }
@@ -186,6 +188,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.allTrips.sortInPlace({$0.distance > $1.distance})
             self.tableView.reloadData()
             self.sorting = "distance"
+            self.sortingButton.setTitle("Distancia", forState: .Normal)
         })
         
         let rateAction = UIAlertAction(title: "Precio", style: .Default, handler: {
@@ -194,6 +197,7 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.allTrips.sortInPlace{$0.rate.compare($1.rate) == .OrderedDescending}
             self.tableView.reloadData()
             self.sorting = "rate"
+            self.sortingButton.setTitle("Precio", forState: .Normal)
         })
         
         let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: {

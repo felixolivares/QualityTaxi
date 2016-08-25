@@ -42,7 +42,7 @@ public class DynamicBlurView: UIView {
     private var staticImage: UIImage?
     private var fromBlurRadius: CGFloat?
     private var displayLink: CADisplayLink?
-    private let DisplayLinkSelector: Selector = "displayDidRefresh:"
+    private let DisplayLinkSelector: Selector = #selector(DynamicBlurView.displayDidRefresh(_:))
     private var blurLayer: BlurLayer {
         return layer as! BlurLayer
     }
@@ -56,7 +56,7 @@ public class DynamicBlurView: UIView {
     }
     
     private var queue: dispatch_queue_t {
-        if respondsToSelector("maskView") { // #available (iOS 8.0, *)
+        if respondsToSelector(Selector("maskView")) { // #available (iOS 8.0, *)
             return dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)
         } else {
             return dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
@@ -305,7 +305,7 @@ public extension UIImage {
         let imageRef = CGImage
         var boxSize = UInt32(radius * scale * ratio)
         if boxSize % 2 == 0 {
-            boxSize++
+            boxSize += 1
         }
         
         let height = CGImageGetHeight(imageRef)
