@@ -162,6 +162,7 @@ class SummaryTripViewController: UIViewController {
         defaults.setObject(currentTripTime, forKey: "currentTrip")
         defaults.synchronize()
         
+        //Take snapshot of map and save it
         myTripMapView.hidden = false
         UIGraphicsBeginImageContextWithOptions(myTripMapView.frame.size, false, 0.0)
         self.myTripMapView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
